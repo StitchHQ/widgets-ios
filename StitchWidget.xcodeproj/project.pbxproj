@@ -33,6 +33,18 @@
 		73E56D942A97AA3D0005162D /* StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E56D892A97AA3D0005162D /* StitchWidget.framework */; };
 		73E56D992A97AA3D0005162D /* StitchWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */; };
 		73E56D9A2A97AA3D0005162D /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73E56D8C2A97AA3D0005162D /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F3543A2AAB917100C8BA1B /* Fonts.swift */; };
+		73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */; };
+		73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */; };
+		73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */; };
+		73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */; };
+		73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */; };
+		73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */; };
+		73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */; };
+		73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */; };
+		73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */; };
+		73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */; };
+		73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */; };
 		D626EB5D2D139C6BFE73929D /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +88,18 @@
 		73E56D932A97AA3D0005162D /* StitchWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StitchWidgetTests.swift; sourceTree = "<group>"; };
 		73E56DEB2A97ADC50005162D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		73F3543A2AAB917100C8BA1B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
+		73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-SemiBold.ttf"; sourceTree = "<group>"; };
+		73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
+		73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Bold.ttf"; sourceTree = "<group>"; };
+		73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Medium.ttf"; sourceTree = "<group>"; };
+		73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
+		73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SansSerif-Medium.ttf"; sourceTree = "<group>"; };
+		73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monospace-Medium.ttf"; sourceTree = "<group>"; };
+		73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Serif-Medium.ttf"; sourceTree = "<group>"; };
+		73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +160,7 @@
 		73CD95E32AA24D5400FA84AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				73F354392AAB915000C8BA1B /* Font */,
 				73CD96112AA24EA500FA84AE /* Alert */,
 				73CD960E2AA24E4A00FA84AE /* Color */,
 				73CD960B2AA24DBE00FA84AE /* Network */,
@@ -299,6 +324,25 @@
 			path = StitchWidgetTests;
 			sourceTree = "<group>";
 		};
+		73F354392AAB915000C8BA1B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				73F3543A2AAB917100C8BA1B /* Fonts.swift */,
+				73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */,
+				73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */,
+				73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */,
+				73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */,
+				73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */,
+				73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */,
+				73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */,
+				73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */,
+				73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */,
+				73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */,
+				73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		A9E4372B934308D87C78D4BB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,11 +449,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */,
+				73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */,
 				73CD96032AA24D5400FA84AE /* PinView.xib in Resources */,
 				73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */,
+				73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */,
 				73D490932AA4DA5200F9F212 /* mastercard.png in Resources */,
+				73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */,
+				73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */,
+				73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */,
 				73CD96012AA24D5400FA84AE /* WidgetCardView.xib in Resources */,
+				73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */,
+				73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */,
+				73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */,
 				73D490912AA4DA4900F9F212 /* creditcard.png in Resources */,
+				73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */,
+				73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +562,7 @@
 				73CD96002AA24D5400FA84AE /* WidgetCardView.swift in Sources */,
 				73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */,
 				73CD95FC2AA24D5400FA84AE /* ExtensionButton.swift in Sources */,
+				73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */,
 				73CD96062AA24D5400FA84AE /* AESUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
