@@ -44,7 +44,7 @@
 		73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */; };
 		73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */; };
 		D626EB5D2D139C6BFE73929D /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */; };
-		E21B40762AB1B88D00B2BEE3 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = E21B40752AB1B88D00B2BEE3 /* creditcard.png */; };
+		E21B407C2AB1B96800B2BEE3 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = E21B407B2AB1B96800B2BEE3 /* creditcard.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,8 +100,8 @@
 		9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E21B40752AB1B88D00B2BEE3 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
-		E21B40772AB1B88F00B2BEE3 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		E21B407B2AB1B96800B2BEE3 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
+		E21B407D2AB1B96900B2BEE3 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
 		E6B75B8B5EF8C89D725D2B39 /* Pods-StitchWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +138,7 @@
 		73CD95DF2AA24D5400FA84AE /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				E21B40742AB1B88600B2BEE3 /* Assest */,
+				E21B407A2AB1B95F00B2BEE3 /* Assest */,
 				73CD95E02AA24D5400FA84AE /* Entity */,
 				73CD95E32AA24D5400FA84AE /* Common */,
 				73CD95EB2AA24D5400FA84AE /* View */,
@@ -344,11 +344,11 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E21B40742AB1B88600B2BEE3 /* Assest */ = {
+		E21B407A2AB1B95F00B2BEE3 /* Assest */ = {
 			isa = PBXGroup;
 			children = (
-				E21B40752AB1B88D00B2BEE3 /* creditcard.png */,
-				E21B40772AB1B88F00B2BEE3 /* mastercard.png */,
+				E21B407B2AB1B96800B2BEE3 /* creditcard.png */,
+				E21B407D2AB1B96900B2BEE3 /* mastercard.png */,
 			);
 			path = Assest;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				73CD96032AA24D5400FA84AE /* PinView.xib in Resources */,
 				73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */,
 				73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */,
-				E21B40762AB1B88D00B2BEE3 /* creditcard.png in Resources */,
+				E21B407C2AB1B96800B2BEE3 /* creditcard.png in Resources */,
 				73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */,
 				73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */,
 				73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */,
