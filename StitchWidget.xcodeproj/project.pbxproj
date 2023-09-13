@@ -27,8 +27,6 @@
 		73CD960D2AA24DBE00FA84AE /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */; };
 		73CD96102AA24E4A00FA84AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960F2AA24E4A00FA84AE /* Color.swift */; };
 		73CD96132AA24EB000FA84AE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD96122AA24EB000FA84AE /* Alert.swift */; };
-		73D490912AA4DA4900F9F212 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73D490902AA4DA4900F9F212 /* creditcard.png */; };
-		73D490932AA4DA5200F9F212 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73D490922AA4DA5200F9F212 /* mastercard.png */; };
 		73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D8D2A97AA3D0005162D /* StitchWidget.docc */; };
 		73E56D942A97AA3D0005162D /* StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E56D892A97AA3D0005162D /* StitchWidget.framework */; };
 		73E56D992A97AA3D0005162D /* StitchWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */; };
@@ -80,8 +78,6 @@
 		73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		73CD960F2AA24E4A00FA84AE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		73CD96122AA24EB000FA84AE /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		73D490902AA4DA4900F9F212 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
-		73D490922AA4DA5200F9F212 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
 		73E56D892A97AA3D0005162D /* StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E56D8C2A97AA3D0005162D /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
 		73E56D8D2A97AA3D0005162D /* StitchWidget.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StitchWidget.docc; sourceTree = "<group>"; };
@@ -275,15 +271,6 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
-		73D490942AA4DA6500F9F212 /* Assests */ = {
-			isa = PBXGroup;
-			children = (
-				73D490902AA4DA4900F9F212 /* creditcard.png */,
-				73D490922AA4DA5200F9F212 /* mastercard.png */,
-			);
-			path = Assests;
-			sourceTree = "<group>";
-		};
 		73E56D7F2A97AA3D0005162D = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +294,6 @@
 		73E56D8B2A97AA3D0005162D /* StitchWidget */ = {
 			isa = PBXGroup;
 			children = (
-				73D490942AA4DA6500F9F212 /* Assests */,
 				73CD95DF2AA24D5400FA84AE /* Widget */,
 				73E56DEB2A97ADC50005162D /* Info.plist */,
 				73E56D8C2A97AA3D0005162D /* StitchWidget.h */,
@@ -454,7 +440,6 @@
 				73CD96032AA24D5400FA84AE /* PinView.xib in Resources */,
 				73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */,
 				73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */,
-				73D490932AA4DA5200F9F212 /* mastercard.png in Resources */,
 				73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */,
 				73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */,
 				73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */,
@@ -462,7 +447,6 @@
 				73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */,
 				73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */,
 				73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */,
-				73D490912AA4DA4900F9F212 /* creditcard.png in Resources */,
 				73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */,
 				73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */,
 			);
