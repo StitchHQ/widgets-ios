@@ -8,43 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4227A84238157DDF8C124EAF /* Pods_StitchWidget_StitchWidgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D38D6453B13ADA3498C310 /* Pods_StitchWidget_StitchWidgetTests.framework */; };
-		73CD95F92AA24D5400FA84AE /* GetCardDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */; };
-		73CD95FA2AA24D5400FA84AE /* SessionKeyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */; };
-		73CD95FB2AA24D5400FA84AE /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */; };
-		73CD95FC2AA24D5400FA84AE /* ExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */; };
-		73CD95FD2AA24D5400FA84AE /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E72AA24D5400FA84AE /* ExtensionString.swift */; };
-		73CD95FE2AA24D5400FA84AE /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */; };
-		73CD95FF2AA24D5400FA84AE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95EA2AA24D5400FA84AE /* Constant.swift */; };
-		73CD96002AA24D5400FA84AE /* WidgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */; };
-		73CD96012AA24D5400FA84AE /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */; };
-		73CD96022AA24D5400FA84AE /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F02AA24D5400FA84AE /* PinView.swift */; };
-		73CD96032AA24D5400FA84AE /* PinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95F12AA24D5400FA84AE /* PinView.xib */; };
-		73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */; };
-		73CD96052AA24D5400FA84AE /* ActivateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */; };
-		73CD96062AA24D5400FA84AE /* AESUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F62AA24D5400FA84AE /* AESUtils.swift */; };
-		73CD96072AA24D5400FA84AE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F82AA24D5400FA84AE /* Service.swift */; };
-		73CD960A2AA24D7300FA84AE /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD96092AA24D7300FA84AE /* Indicator.swift */; };
-		73CD960D2AA24DBE00FA84AE /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */; };
-		73CD96102AA24E4A00FA84AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960F2AA24E4A00FA84AE /* Color.swift */; };
-		73CD96132AA24EB000FA84AE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD96122AA24EB000FA84AE /* Alert.swift */; };
-		73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D8D2A97AA3D0005162D /* StitchWidget.docc */; };
 		73E56D942A97AA3D0005162D /* StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E56D892A97AA3D0005162D /* StitchWidget.framework */; };
 		73E56D992A97AA3D0005162D /* StitchWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */; };
-		73E56D9A2A97AA3D0005162D /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73E56D8C2A97AA3D0005162D /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F3543A2AAB917100C8BA1B /* Fonts.swift */; };
-		73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */; };
-		73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */; };
-		73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */; };
-		73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */; };
-		73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */; };
-		73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */; };
-		73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */; };
-		73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */; };
-		73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */; };
-		73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */; };
-		73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */; };
 		D626EB5D2D139C6BFE73929D /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */; };
-		E21B407C2AB1B96800B2BEE3 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = E21B407B2AB1B96800B2BEE3 /* creditcard.png */; };
+		E21B40822AB1BA1800B2BEE3 /* StitchWidget.docc in Sources */ = {isa = PBXBuildFile; fileRef = E21B407E2AB1BA1800B2BEE3 /* StitchWidget.docc */; };
+		E21B40832AB1BA1800B2BEE3 /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E21B407F2AB1BA1800B2BEE3 /* StitchWidget.h */; };
+		E21B40842AB1BA1800B2BEE3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E21B40802AB1BA1800B2BEE3 /* Info.plist */; };
+		E21B40852AB1BA1800B2BEE3 /* Widget in Resources */ = {isa = PBXBuildFile; fileRef = E21B40812AB1BA1800B2BEE3 /* Widget */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,48 +30,16 @@
 /* Begin PBXFileReference section */
 		1CDDE94EFB74A1A07712AB3C /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; sourceTree = "<group>"; };
 		20D38D6453B13ADA3498C310 /* Pods_StitchWidget_StitchWidgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget_StitchWidgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCardDetailEntity.swift; sourceTree = "<group>"; };
-		73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionKeyEntity.swift; sourceTree = "<group>"; };
-		73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
-		73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionButton.swift; sourceTree = "<group>"; };
-		73CD95E72AA24D5400FA84AE /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
-		73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
-		73CD95EA2AA24D5400FA84AE /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
-		73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetCardView.xib; sourceTree = "<group>"; };
-		73CD95F02AA24D5400FA84AE /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
-		73CD95F12AA24D5400FA84AE /* PinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinView.xib; sourceTree = "<group>"; };
-		73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateCardView.xib; sourceTree = "<group>"; };
-		73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateCardView.swift; sourceTree = "<group>"; };
-		73CD95F62AA24D5400FA84AE /* AESUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESUtils.swift; sourceTree = "<group>"; };
-		73CD95F82AA24D5400FA84AE /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		73CD96092AA24D7300FA84AE /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
-		73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
-		73CD960F2AA24E4A00FA84AE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		73CD96122AA24EB000FA84AE /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		73E56D892A97AA3D0005162D /* StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73E56D8C2A97AA3D0005162D /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
-		73E56D8D2A97AA3D0005162D /* StitchWidget.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StitchWidget.docc; sourceTree = "<group>"; };
 		73E56D932A97AA3D0005162D /* StitchWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StitchWidgetTests.swift; sourceTree = "<group>"; };
-		73E56DEB2A97ADC50005162D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		73F3543A2AAB917100C8BA1B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
-		73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-SemiBold.ttf"; sourceTree = "<group>"; };
-		73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
-		73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Bold.ttf"; sourceTree = "<group>"; };
-		73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SansSerif-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monospace-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Serif-Medium.ttf"; sourceTree = "<group>"; };
-		73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E21B407B2AB1B96800B2BEE3 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
-		E21B407D2AB1B96900B2BEE3 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		E21B407E2AB1BA1800B2BEE3 /* StitchWidget.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StitchWidget.docc; sourceTree = "<group>"; };
+		E21B407F2AB1BA1800B2BEE3 /* StitchWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
+		E21B40802AB1BA1800B2BEE3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E21B40812AB1BA1800B2BEE3 /* Widget */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Widget; sourceTree = "<group>"; };
 		E6B75B8B5EF8C89D725D2B39 /* Pods-StitchWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,146 +73,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		73CD95DF2AA24D5400FA84AE /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				E21B407A2AB1B95F00B2BEE3 /* Assest */,
-				73CD95E02AA24D5400FA84AE /* Entity */,
-				73CD95E32AA24D5400FA84AE /* Common */,
-				73CD95EB2AA24D5400FA84AE /* View */,
-				73CD95F52AA24D5400FA84AE /* AESUtils */,
-				73CD95F72AA24D5400FA84AE /* Service */,
-			);
-			path = Widget;
-			sourceTree = "<group>";
-		};
-		73CD95E02AA24D5400FA84AE /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */,
-				73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		73CD95E32AA24D5400FA84AE /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				73F354392AAB915000C8BA1B /* Font */,
-				73CD96112AA24EA500FA84AE /* Alert */,
-				73CD960E2AA24E4A00FA84AE /* Color */,
-				73CD960B2AA24DBE00FA84AE /* Network */,
-				73CD96082AA24D7300FA84AE /* Indicator */,
-				73CD95E42AA24D5400FA84AE /* Extension */,
-				73CD95E92AA24D5400FA84AE /* Constant */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		73CD95E42AA24D5400FA84AE /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */,
-				73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */,
-				73CD95E72AA24D5400FA84AE /* ExtensionString.swift */,
-				73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		73CD95E92AA24D5400FA84AE /* Constant */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95EA2AA24D5400FA84AE /* Constant.swift */,
-			);
-			path = Constant;
-			sourceTree = "<group>";
-		};
-		73CD95EB2AA24D5400FA84AE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95EC2AA24D5400FA84AE /* WidgetCardView */,
-				73CD95EF2AA24D5400FA84AE /* PinView */,
-				73CD95F22AA24D5400FA84AE /* ActivateCardView */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		73CD95EC2AA24D5400FA84AE /* WidgetCardView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */,
-				73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */,
-			);
-			path = WidgetCardView;
-			sourceTree = "<group>";
-		};
-		73CD95EF2AA24D5400FA84AE /* PinView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F02AA24D5400FA84AE /* PinView.swift */,
-				73CD95F12AA24D5400FA84AE /* PinView.xib */,
-			);
-			path = PinView;
-			sourceTree = "<group>";
-		};
-		73CD95F22AA24D5400FA84AE /* ActivateCardView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */,
-				73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */,
-			);
-			path = ActivateCardView;
-			sourceTree = "<group>";
-		};
-		73CD95F52AA24D5400FA84AE /* AESUtils */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F62AA24D5400FA84AE /* AESUtils.swift */,
-			);
-			path = AESUtils;
-			sourceTree = "<group>";
-		};
-		73CD95F72AA24D5400FA84AE /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F82AA24D5400FA84AE /* Service.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		73CD96082AA24D7300FA84AE /* Indicator */ = {
-			isa = PBXGroup;
-			children = (
-				73CD96092AA24D7300FA84AE /* Indicator.swift */,
-			);
-			path = Indicator;
-			sourceTree = "<group>";
-		};
-		73CD960B2AA24DBE00FA84AE /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		73CD960E2AA24E4A00FA84AE /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				73CD960F2AA24E4A00FA84AE /* Color.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
-		73CD96112AA24EA500FA84AE /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				73CD96122AA24EB000FA84AE /* Alert.swift */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
 		73E56D7F2A97AA3D0005162D = {
 			isa = PBXGroup;
 			children = (
@@ -298,10 +96,10 @@
 		73E56D8B2A97AA3D0005162D /* StitchWidget */ = {
 			isa = PBXGroup;
 			children = (
-				73CD95DF2AA24D5400FA84AE /* Widget */,
-				73E56DEB2A97ADC50005162D /* Info.plist */,
-				73E56D8C2A97AA3D0005162D /* StitchWidget.h */,
-				73E56D8D2A97AA3D0005162D /* StitchWidget.docc */,
+				E21B40802AB1BA1800B2BEE3 /* Info.plist */,
+				E21B407E2AB1BA1800B2BEE3 /* StitchWidget.docc */,
+				E21B407F2AB1BA1800B2BEE3 /* StitchWidget.h */,
+				E21B40812AB1BA1800B2BEE3 /* Widget */,
 			);
 			path = StitchWidget;
 			sourceTree = "<group>";
@@ -312,25 +110,6 @@
 				73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */,
 			);
 			path = StitchWidgetTests;
-			sourceTree = "<group>";
-		};
-		73F354392AAB915000C8BA1B /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				73F3543A2AAB917100C8BA1B /* Fonts.swift */,
-				73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */,
-				73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */,
-				73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */,
-				73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */,
-				73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */,
-				73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */,
-				73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */,
-				73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */,
-				73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */,
-				73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */,
-				73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		A9E4372B934308D87C78D4BB /* Pods */ = {
@@ -344,15 +123,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E21B407A2AB1B95F00B2BEE3 /* Assest */ = {
-			isa = PBXGroup;
-			children = (
-				E21B407B2AB1B96800B2BEE3 /* creditcard.png */,
-				E21B407D2AB1B96900B2BEE3 /* mastercard.png */,
-			);
-			path = Assest;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -360,7 +130,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E56D9A2A97AA3D0005162D /* StitchWidget.h in Headers */,
+				E21B40832AB1BA1800B2BEE3 /* StitchWidget.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,21 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */,
-				73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */,
-				73CD96032AA24D5400FA84AE /* PinView.xib in Resources */,
-				73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */,
-				73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */,
-				E21B407C2AB1B96800B2BEE3 /* creditcard.png in Resources */,
-				73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */,
-				73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */,
-				73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */,
-				73CD96012AA24D5400FA84AE /* WidgetCardView.xib in Resources */,
-				73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */,
-				73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */,
-				73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */,
-				73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */,
-				73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */,
+				E21B40852AB1BA1800B2BEE3 /* Widget in Resources */,
+				E21B40842AB1BA1800B2BEE3 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,24 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CD96022AA24D5400FA84AE /* PinView.swift in Sources */,
-				73CD960A2AA24D7300FA84AE /* Indicator.swift in Sources */,
-				73CD96072AA24D5400FA84AE /* Service.swift in Sources */,
-				73CD96132AA24EB000FA84AE /* Alert.swift in Sources */,
-				73CD95FA2AA24D5400FA84AE /* SessionKeyEntity.swift in Sources */,
-				73CD960D2AA24DBE00FA84AE /* NetworkCall.swift in Sources */,
-				73CD96102AA24E4A00FA84AE /* Color.swift in Sources */,
-				73CD95FE2AA24D5400FA84AE /* ExtensionTextField.swift in Sources */,
-				73CD95F92AA24D5400FA84AE /* GetCardDetailEntity.swift in Sources */,
-				73CD95FF2AA24D5400FA84AE /* Constant.swift in Sources */,
-				73CD95FD2AA24D5400FA84AE /* ExtensionString.swift in Sources */,
-				73CD95FB2AA24D5400FA84AE /* ApplicationExtension.swift in Sources */,
-				73CD96052AA24D5400FA84AE /* ActivateCardView.swift in Sources */,
-				73CD96002AA24D5400FA84AE /* WidgetCardView.swift in Sources */,
-				73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */,
-				73CD95FC2AA24D5400FA84AE /* ExtensionButton.swift in Sources */,
-				73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */,
-				73CD96062AA24D5400FA84AE /* AESUtils.swift in Sources */,
+				E21B40822AB1BA1800B2BEE3 /* StitchWidget.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,7 +523,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -800,7 +539,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1CDDE94EFB74A1A07712AB3C /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
