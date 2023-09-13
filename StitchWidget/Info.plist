@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>EuclidFlex-Bold.ttf</string>
+		<string>EuclidFlex-Medium.ttf</string>
+		<string>EuclidFlex-Regular.ttf</string>
+		<string>EuclidFlex-SemiBold.ttf</string>
+		<string> Ubuntu-Medium.ttf</string>
+		<string>serif.ttf</string>
+		<string>monospace.medium.ttf</string>
+		<string>Sans Serif Medium.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>NotoSans-Medium.ttf</string>
+		<string>DancingScript-Medium.ttf</string>
+	</array>
+</dict>
+</plist>
