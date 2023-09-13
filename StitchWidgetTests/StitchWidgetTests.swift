@@ -1,14 +1,14 @@
 //
-//  StitchWidgetTests.swift
-//  StitchWidgetTests
+//  stitchwidgetTests.swift
+//  stitchwidgetTests
 //
-//  Created by vizhi on 24/08/23.
+//  Created by vizhi on 13/09/23.
 //
 
 import XCTest
-@testable import StitchWidget
+@testable import stitchwidget
 
-final class StitchWidgetTests: XCTestCase {
+final class stitchwidgetTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

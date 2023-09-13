@@ -4,23 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>StitchWidget.xcscheme_^#shared#^_</key>
+		<key>stitchwidget.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>73E56D882A97AA3D0005162D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>73E56D922A97AA3D0005162D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
+			<integer>0</integer>
 		</dict>
 	</dict>
 </dict>
