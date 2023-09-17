@@ -24,7 +24,7 @@ class ServiceNetworkCall : NSObject{
 
     var parameters = Parameters()
     var method: HTTPMethod!
-    var url :String! = ""
+    var url :String? = ""
     var encoding: ParameterEncoding! = JSONEncoding.default
     var isHead = true
     var istoken = -1
@@ -75,7 +75,7 @@ class ServiceNetworkCall : NSObject{
                 }
             }
             
-            AF.request(url,method: method,parameters: parameters,encoding: encoding, headers: head).responseData(completionHandler: {response in
+            AF.request(url!,method: method,parameters: parameters,encoding: encoding, headers: head).responseData(completionHandler: {response in
                 switch response.result{
                 case .success(let res):
                     if let code = response.response?.statusCode{
