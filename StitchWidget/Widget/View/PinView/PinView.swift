@@ -7,7 +7,6 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
 public class PinView: UIView {
     
     @IBOutlet weak var overView: UIView!

@@ -7,425 +7,503 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4227A84238157DDF8C124EAF /* Pods_StitchWidget_StitchWidgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D38D6453B13ADA3498C310 /* Pods_StitchWidget_StitchWidgetTests.framework */; };
-		73CD95F92AA24D5400FA84AE /* GetCardDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */; };
-		73CD95FA2AA24D5400FA84AE /* SessionKeyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */; };
-		73CD95FB2AA24D5400FA84AE /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */; };
-		73CD95FC2AA24D5400FA84AE /* ExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */; };
-		73CD95FD2AA24D5400FA84AE /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E72AA24D5400FA84AE /* ExtensionString.swift */; };
-		73CD95FE2AA24D5400FA84AE /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */; };
-		73CD95FF2AA24D5400FA84AE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95EA2AA24D5400FA84AE /* Constant.swift */; };
-		73CD96002AA24D5400FA84AE /* WidgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */; };
-		73CD96012AA24D5400FA84AE /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */; };
-		73CD96022AA24D5400FA84AE /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F02AA24D5400FA84AE /* PinView.swift */; };
-		73CD96032AA24D5400FA84AE /* PinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95F12AA24D5400FA84AE /* PinView.xib */; };
-		73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */; };
-		73CD96052AA24D5400FA84AE /* ActivateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */; };
-		73CD96062AA24D5400FA84AE /* AESUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F62AA24D5400FA84AE /* AESUtils.swift */; };
-		73CD96072AA24D5400FA84AE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD95F82AA24D5400FA84AE /* Service.swift */; };
-		73CD960A2AA24D7300FA84AE /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD96092AA24D7300FA84AE /* Indicator.swift */; };
-		73CD960D2AA24DBE00FA84AE /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */; };
-		73CD96102AA24E4A00FA84AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD960F2AA24E4A00FA84AE /* Color.swift */; };
-		73CD96132AA24EB000FA84AE /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD96122AA24EB000FA84AE /* Alert.swift */; };
-		73D490912AA4DA4900F9F212 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73D490902AA4DA4900F9F212 /* creditcard.png */; };
-		73D490932AA4DA5200F9F212 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73D490922AA4DA5200F9F212 /* mastercard.png */; };
-		73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D8D2A97AA3D0005162D /* StitchWidget.docc */; };
-		73E56D942A97AA3D0005162D /* StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E56D892A97AA3D0005162D /* StitchWidget.framework */; };
-		73E56D992A97AA3D0005162D /* StitchWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */; };
-		73E56D9A2A97AA3D0005162D /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73E56D8C2A97AA3D0005162D /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F3543A2AAB917100C8BA1B /* Fonts.swift */; };
-		73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */; };
-		73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */; };
-		73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */; };
-		73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */; };
-		73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */; };
-		73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */; };
-		73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */; };
-		73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */; };
-		73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */; };
-		73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */; };
-		73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */; };
-		D626EB5D2D139C6BFE73929D /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */; };
+		39FED515B353454838870976 /* Pods_StitchWidget_StitchWidgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A8B9D5D9D441B0C5DC55C /* Pods_StitchWidget_StitchWidgetTests.framework */; };
+		3FB282DBD0FB7FED9CCB4CD2 /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E292F37FEBFF0CCEDACB721 /* Pods_StitchWidget.framework */; };
+		73144C452ABAC3FA00CB1A24 /* StitchWidget.docc in Sources */ = {isa = PBXBuildFile; fileRef = 73144C442ABAC3FA00CB1A24 /* StitchWidget.docc */; };
+		73144C4B2ABAC3FA00CB1A24 /* StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73144C402ABAC3FA00CB1A24 /* StitchWidget.framework */; };
+		73144C502ABAC3FA00CB1A24 /* StitchWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C4F2ABAC3FA00CB1A24 /* StitchWidgetTests.swift */; };
+		73144C512ABAC3FA00CB1A24 /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73144C432ABAC3FA00CB1A24 /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73144C8C2ABAC42000CB1A24 /* GetCardDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C5C2ABAC42000CB1A24 /* GetCardDetailEntity.swift */; };
+		73144C8D2ABAC42000CB1A24 /* SessionKeyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C5D2ABAC42000CB1A24 /* SessionKeyEntity.swift */; };
+		73144C8E2ABAC42000CB1A24 /* creditcard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73144C5F2ABAC42000CB1A24 /* creditcard.png */; };
+		73144C8F2ABAC42000CB1A24 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 73144C602ABAC42000CB1A24 /* mastercard.png */; };
+		73144C902ABAC42000CB1A24 /* ApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C632ABAC42000CB1A24 /* ApplicationExtension.swift */; };
+		73144C912ABAC42000CB1A24 /* ExtensionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C642ABAC42000CB1A24 /* ExtensionButton.swift */; };
+		73144C922ABAC42000CB1A24 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C652ABAC42000CB1A24 /* ExtensionString.swift */; };
+		73144C932ABAC42000CB1A24 /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C662ABAC42000CB1A24 /* ExtensionTextField.swift */; };
+		73144C942ABAC42000CB1A24 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C682ABAC42000CB1A24 /* Indicator.swift */; };
+		73144C952ABAC42000CB1A24 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C6A2ABAC42000CB1A24 /* Alert.swift */; };
+		73144C962ABAC42000CB1A24 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C6C2ABAC42000CB1A24 /* Color.swift */; };
+		73144C972ABAC42000CB1A24 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C6E2ABAC42000CB1A24 /* NetworkCall.swift */; };
+		73144C982ABAC42000CB1A24 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C702ABAC42000CB1A24 /* Constant.swift */; };
+		73144C992ABAC42000CB1A24 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C722ABAC42000CB1A24 /* Roboto-Medium.ttf */; };
+		73144C9A2ABAC42000CB1A24 /* EuclidFlex-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C732ABAC42000CB1A24 /* EuclidFlex-Bold.ttf */; };
+		73144C9B2ABAC42000CB1A24 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C742ABAC42000CB1A24 /* Ubuntu-Medium.ttf */; };
+		73144C9C2ABAC42000CB1A24 /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C752ABAC42000CB1A24 /* NotoSans-Medium.ttf */; };
+		73144C9D2ABAC42000CB1A24 /* Serif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C762ABAC42000CB1A24 /* Serif-Medium.ttf */; };
+		73144C9E2ABAC42000CB1A24 /* SansSerif-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C772ABAC42000CB1A24 /* SansSerif-Medium.ttf */; };
+		73144C9F2ABAC42000CB1A24 /* EuclidFlex-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C782ABAC42000CB1A24 /* EuclidFlex-SemiBold.ttf */; };
+		73144CA02ABAC42000CB1A24 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C792ABAC42000CB1A24 /* Fonts.swift */; };
+		73144CA12ABAC42000CB1A24 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C7A2ABAC42000CB1A24 /* DancingScript-Medium.ttf */; };
+		73144CA22ABAC42000CB1A24 /* EuclidFlex-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C7B2ABAC42000CB1A24 /* EuclidFlex-Medium.ttf */; };
+		73144CA32ABAC42000CB1A24 /* Monospace-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C7C2ABAC42000CB1A24 /* Monospace-Medium.ttf */; };
+		73144CA42ABAC42000CB1A24 /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73144C7D2ABAC42000CB1A24 /* EuclidFlex-Regular.ttf */; };
+		73144CA52ABAC42000CB1A24 /* WidgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C802ABAC42000CB1A24 /* WidgetCardView.swift */; };
+		73144CA62ABAC42000CB1A24 /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73144C812ABAC42000CB1A24 /* WidgetCardView.xib */; };
+		73144CA72ABAC42000CB1A24 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C832ABAC42000CB1A24 /* PinView.swift */; };
+		73144CA82ABAC42000CB1A24 /* PinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73144C842ABAC42000CB1A24 /* PinView.xib */; };
+		73144CA92ABAC42000CB1A24 /* ActivateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73144C862ABAC42000CB1A24 /* ActivateCardView.xib */; };
+		73144CAA2ABAC42000CB1A24 /* ActivateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C872ABAC42000CB1A24 /* ActivateCardView.swift */; };
+		73144CAB2ABAC42000CB1A24 /* AESUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C892ABAC42000CB1A24 /* AESUtils.swift */; };
+		73144CAC2ABAC42000CB1A24 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73144C8B2ABAC42000CB1A24 /* Service.swift */; };
+		739AEEF32ABB5DC100861784 /* CryptoSwift.framework in Resources */ = {isa = PBXBuildFile; fileRef = 739AEEEE2ABB5AE400861784 /* CryptoSwift.framework */; };
+		739AEF3B2AC4A59700861784 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 739AEF302AC4A58200861784 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		73E56D952A97AA3D0005162D /* PBXContainerItemProxy */ = {
+		73144C4C2ABAC3FA00CB1A24 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 73E56D802A97AA3D0005162D /* Project object */;
+			containerPortal = 73144C372ABAC3FA00CB1A24 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 73E56D882A97AA3D0005162D;
+			remoteGlobalIDString = 73144C3F2ABAC3FA00CB1A24;
 			remoteInfo = StitchWidget;
+		};
+		739AEF2F2AC4A58200861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		739AEF312AC4A58200861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75211F92207249D8004E41F8;
+			remoteInfo = "CryptoSwift-TestHostApp";
+		};
+		739AEF332AC4A58200861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+		739AEF352AC4A58200861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7595C14A2072E48C00EA1A5F;
+			remoteInfo = "TestsPerformance-Mac";
+		};
+		739AEF372AC4A58200861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7564F0602072EAEB00CA5A96;
+			remoteInfo = "TestsPerformance-iOS";
+		};
+		739AEF392AC4A59100861784 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		739AEEF12ABB5AE400861784 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				739AEF3B2AC4A59700861784 /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		1CDDE94EFB74A1A07712AB3C /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; sourceTree = "<group>"; };
-		20D38D6453B13ADA3498C310 /* Pods_StitchWidget_StitchWidgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget_StitchWidgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCardDetailEntity.swift; sourceTree = "<group>"; };
-		73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionKeyEntity.swift; sourceTree = "<group>"; };
-		73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
-		73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionButton.swift; sourceTree = "<group>"; };
-		73CD95E72AA24D5400FA84AE /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
-		73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
-		73CD95EA2AA24D5400FA84AE /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
-		73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetCardView.xib; sourceTree = "<group>"; };
-		73CD95F02AA24D5400FA84AE /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
-		73CD95F12AA24D5400FA84AE /* PinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinView.xib; sourceTree = "<group>"; };
-		73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateCardView.xib; sourceTree = "<group>"; };
-		73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateCardView.swift; sourceTree = "<group>"; };
-		73CD95F62AA24D5400FA84AE /* AESUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESUtils.swift; sourceTree = "<group>"; };
-		73CD95F82AA24D5400FA84AE /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		73CD96092AA24D7300FA84AE /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
-		73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
-		73CD960F2AA24E4A00FA84AE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		73CD96122AA24EB000FA84AE /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		73D490902AA4DA4900F9F212 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
-		73D490922AA4DA5200F9F212 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
-		73E56D892A97AA3D0005162D /* StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73E56D8C2A97AA3D0005162D /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
-		73E56D8D2A97AA3D0005162D /* StitchWidget.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StitchWidget.docc; sourceTree = "<group>"; };
-		73E56D932A97AA3D0005162D /* StitchWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StitchWidgetTests.swift; sourceTree = "<group>"; };
-		73E56DEB2A97ADC50005162D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		73F3543A2AAB917100C8BA1B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
-		73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-SemiBold.ttf"; sourceTree = "<group>"; };
-		73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
-		73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Bold.ttf"; sourceTree = "<group>"; };
-		73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SansSerif-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monospace-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Serif-Medium.ttf"; sourceTree = "<group>"; };
-		73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
-		9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E6B75B8B5EF8C89D725D2B39 /* Pods-StitchWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.release.xcconfig"; sourceTree = "<group>"; };
+		3E292F37FEBFF0CCEDACB721 /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73144C402ABAC3FA00CB1A24 /* StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73144C432ABAC3FA00CB1A24 /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
+		73144C442ABAC3FA00CB1A24 /* StitchWidget.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StitchWidget.docc; sourceTree = "<group>"; };
+		73144C4A2ABAC3FA00CB1A24 /* StitchWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StitchWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73144C4F2ABAC3FA00CB1A24 /* StitchWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StitchWidgetTests.swift; sourceTree = "<group>"; };
+		73144C5C2ABAC42000CB1A24 /* GetCardDetailEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCardDetailEntity.swift; sourceTree = "<group>"; };
+		73144C5D2ABAC42000CB1A24 /* SessionKeyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionKeyEntity.swift; sourceTree = "<group>"; };
+		73144C5F2ABAC42000CB1A24 /* creditcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditcard.png; sourceTree = "<group>"; };
+		73144C602ABAC42000CB1A24 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		73144C632ABAC42000CB1A24 /* ApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationExtension.swift; sourceTree = "<group>"; };
+		73144C642ABAC42000CB1A24 /* ExtensionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionButton.swift; sourceTree = "<group>"; };
+		73144C652ABAC42000CB1A24 /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		73144C662ABAC42000CB1A24 /* ExtensionTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
+		73144C682ABAC42000CB1A24 /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		73144C6A2ABAC42000CB1A24 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		73144C6C2ABAC42000CB1A24 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		73144C6E2ABAC42000CB1A24 /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
+		73144C702ABAC42000CB1A24 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		73144C722ABAC42000CB1A24 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		73144C732ABAC42000CB1A24 /* EuclidFlex-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Bold.ttf"; sourceTree = "<group>"; };
+		73144C742ABAC42000CB1A24 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		73144C752ABAC42000CB1A24 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
+		73144C762ABAC42000CB1A24 /* Serif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Serif-Medium.ttf"; sourceTree = "<group>"; };
+		73144C772ABAC42000CB1A24 /* SansSerif-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SansSerif-Medium.ttf"; sourceTree = "<group>"; };
+		73144C782ABAC42000CB1A24 /* EuclidFlex-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-SemiBold.ttf"; sourceTree = "<group>"; };
+		73144C792ABAC42000CB1A24 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		73144C7A2ABAC42000CB1A24 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
+		73144C7B2ABAC42000CB1A24 /* EuclidFlex-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Medium.ttf"; sourceTree = "<group>"; };
+		73144C7C2ABAC42000CB1A24 /* Monospace-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monospace-Medium.ttf"; sourceTree = "<group>"; };
+		73144C7D2ABAC42000CB1A24 /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
+		73144C802ABAC42000CB1A24 /* WidgetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
+		73144C812ABAC42000CB1A24 /* WidgetCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetCardView.xib; sourceTree = "<group>"; };
+		73144C832ABAC42000CB1A24 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		73144C842ABAC42000CB1A24 /* PinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinView.xib; sourceTree = "<group>"; };
+		73144C862ABAC42000CB1A24 /* ActivateCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateCardView.xib; sourceTree = "<group>"; };
+		73144C872ABAC42000CB1A24 /* ActivateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateCardView.swift; sourceTree = "<group>"; };
+		73144C892ABAC42000CB1A24 /* AESUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESUtils.swift; sourceTree = "<group>"; };
+		73144C8B2ABAC42000CB1A24 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		73144CAD2ABAC71E00CB1A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		73144CB62ABACAD900CB1A24 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		739AEEEE2ABB5AE400861784 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = "../../../Downloads/CryptoSwift-main/CryptoSwift.xcodeproj"; sourceTree = "<group>"; };
+		7B927535386D388D4FC4D33C /* Pods-StitchWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.release.xcconfig"; sourceTree = "<group>"; };
+		824A8B9D5D9D441B0C5DC55C /* Pods_StitchWidget_StitchWidgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget_StitchWidgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEBF1DA024DFC62BF9B9574B /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.release.xcconfig"; sourceTree = "<group>"; };
+		F87E460420E81CCEB98FA206 /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		F97180E8F860736480A17475 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		73E56D862A97AA3D0005162D /* Frameworks */ = {
+		73144C3D2ABAC3FA00CB1A24 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D626EB5D2D139C6BFE73929D /* Pods_StitchWidget.framework in Frameworks */,
+				3FB282DBD0FB7FED9CCB4CD2 /* Pods_StitchWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73E56D902A97AA3D0005162D /* Frameworks */ = {
+		73144C472ABAC3FA00CB1A24 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E56D942A97AA3D0005162D /* StitchWidget.framework in Frameworks */,
-				4227A84238157DDF8C124EAF /* Pods_StitchWidget_StitchWidgetTests.framework in Frameworks */,
+				73144C4B2ABAC3FA00CB1A24 /* StitchWidget.framework in Frameworks */,
+				39FED515B353454838870976 /* Pods_StitchWidget_StitchWidgetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14DB59F5E156A250B9D54AAA /* Frameworks */ = {
+		73144C362ABAC3FA00CB1A24 = {
 			isa = PBXGroup;
 			children = (
-				A507FB2169FBAB73B006D6AF /* Pods_StitchWidget.framework */,
-				20D38D6453B13ADA3498C310 /* Pods_StitchWidget_StitchWidgetTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		73CD95DF2AA24D5400FA84AE /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95E02AA24D5400FA84AE /* Entity */,
-				73CD95E32AA24D5400FA84AE /* Common */,
-				73CD95EB2AA24D5400FA84AE /* View */,
-				73CD95F52AA24D5400FA84AE /* AESUtils */,
-				73CD95F72AA24D5400FA84AE /* Service */,
-			);
-			path = Widget;
-			sourceTree = "<group>";
-		};
-		73CD95E02AA24D5400FA84AE /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95E12AA24D5400FA84AE /* GetCardDetailEntity.swift */,
-				73CD95E22AA24D5400FA84AE /* SessionKeyEntity.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		73CD95E32AA24D5400FA84AE /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				73F354392AAB915000C8BA1B /* Font */,
-				73CD96112AA24EA500FA84AE /* Alert */,
-				73CD960E2AA24E4A00FA84AE /* Color */,
-				73CD960B2AA24DBE00FA84AE /* Network */,
-				73CD96082AA24D7300FA84AE /* Indicator */,
-				73CD95E42AA24D5400FA84AE /* Extension */,
-				73CD95E92AA24D5400FA84AE /* Constant */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		73CD95E42AA24D5400FA84AE /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95E52AA24D5400FA84AE /* ApplicationExtension.swift */,
-				73CD95E62AA24D5400FA84AE /* ExtensionButton.swift */,
-				73CD95E72AA24D5400FA84AE /* ExtensionString.swift */,
-				73CD95E82AA24D5400FA84AE /* ExtensionTextField.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		73CD95E92AA24D5400FA84AE /* Constant */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95EA2AA24D5400FA84AE /* Constant.swift */,
-			);
-			path = Constant;
-			sourceTree = "<group>";
-		};
-		73CD95EB2AA24D5400FA84AE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95EC2AA24D5400FA84AE /* WidgetCardView */,
-				73CD95EF2AA24D5400FA84AE /* PinView */,
-				73CD95F22AA24D5400FA84AE /* ActivateCardView */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		73CD95EC2AA24D5400FA84AE /* WidgetCardView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95ED2AA24D5400FA84AE /* WidgetCardView.swift */,
-				73CD95EE2AA24D5400FA84AE /* WidgetCardView.xib */,
-			);
-			path = WidgetCardView;
-			sourceTree = "<group>";
-		};
-		73CD95EF2AA24D5400FA84AE /* PinView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F02AA24D5400FA84AE /* PinView.swift */,
-				73CD95F12AA24D5400FA84AE /* PinView.xib */,
-			);
-			path = PinView;
-			sourceTree = "<group>";
-		};
-		73CD95F22AA24D5400FA84AE /* ActivateCardView */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F32AA24D5400FA84AE /* ActivateCardView.xib */,
-				73CD95F42AA24D5400FA84AE /* ActivateCardView.swift */,
-			);
-			path = ActivateCardView;
-			sourceTree = "<group>";
-		};
-		73CD95F52AA24D5400FA84AE /* AESUtils */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F62AA24D5400FA84AE /* AESUtils.swift */,
-			);
-			path = AESUtils;
-			sourceTree = "<group>";
-		};
-		73CD95F72AA24D5400FA84AE /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				73CD95F82AA24D5400FA84AE /* Service.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		73CD96082AA24D7300FA84AE /* Indicator */ = {
-			isa = PBXGroup;
-			children = (
-				73CD96092AA24D7300FA84AE /* Indicator.swift */,
-			);
-			path = Indicator;
-			sourceTree = "<group>";
-		};
-		73CD960B2AA24DBE00FA84AE /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				73CD960C2AA24DBE00FA84AE /* NetworkCall.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		73CD960E2AA24E4A00FA84AE /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				73CD960F2AA24E4A00FA84AE /* Color.swift */,
-			);
-			path = Color;
-			sourceTree = "<group>";
-		};
-		73CD96112AA24EA500FA84AE /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				73CD96122AA24EB000FA84AE /* Alert.swift */,
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
-		73D490942AA4DA6500F9F212 /* Assests */ = {
-			isa = PBXGroup;
-			children = (
-				73D490902AA4DA4900F9F212 /* creditcard.png */,
-				73D490922AA4DA5200F9F212 /* mastercard.png */,
-			);
-			path = Assests;
-			sourceTree = "<group>";
-		};
-		73E56D7F2A97AA3D0005162D = {
-			isa = PBXGroup;
-			children = (
-				73E56D8B2A97AA3D0005162D /* StitchWidget */,
-				73E56D972A97AA3D0005162D /* StitchWidgetTests */,
-				73E56D8A2A97AA3D0005162D /* Products */,
-				A9E4372B934308D87C78D4BB /* Pods */,
-				14DB59F5E156A250B9D54AAA /* Frameworks */,
+				73144C422ABAC3FA00CB1A24 /* StitchWidget */,
+				73144C4E2ABAC3FA00CB1A24 /* StitchWidgetTests */,
+				73144C412ABAC3FA00CB1A24 /* Products */,
+				BC9E153D4D04E4BCC5E5DAC5 /* Pods */,
+				FF1271DFCF7986C6379A2EAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		73E56D8A2A97AA3D0005162D /* Products */ = {
+		73144C412ABAC3FA00CB1A24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73E56D892A97AA3D0005162D /* StitchWidget.framework */,
-				73E56D932A97AA3D0005162D /* StitchWidgetTests.xctest */,
+				73144C402ABAC3FA00CB1A24 /* StitchWidget.framework */,
+				73144C4A2ABAC3FA00CB1A24 /* StitchWidgetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		73E56D8B2A97AA3D0005162D /* StitchWidget */ = {
+		73144C422ABAC3FA00CB1A24 /* StitchWidget */ = {
 			isa = PBXGroup;
 			children = (
-				73D490942AA4DA6500F9F212 /* Assests */,
-				73CD95DF2AA24D5400FA84AE /* Widget */,
-				73E56DEB2A97ADC50005162D /* Info.plist */,
-				73E56D8C2A97AA3D0005162D /* StitchWidget.h */,
-				73E56D8D2A97AA3D0005162D /* StitchWidget.docc */,
+				739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */,
+				73144CAD2ABAC71E00CB1A24 /* Info.plist */,
+				73144C5A2ABAC42000CB1A24 /* Widget */,
+				73144C432ABAC3FA00CB1A24 /* StitchWidget.h */,
+				73144C442ABAC3FA00CB1A24 /* StitchWidget.docc */,
 			);
 			path = StitchWidget;
 			sourceTree = "<group>";
 		};
-		73E56D972A97AA3D0005162D /* StitchWidgetTests */ = {
+		73144C4E2ABAC3FA00CB1A24 /* StitchWidgetTests */ = {
 			isa = PBXGroup;
 			children = (
-				73E56D982A97AA3D0005162D /* StitchWidgetTests.swift */,
+				73144C4F2ABAC3FA00CB1A24 /* StitchWidgetTests.swift */,
 			);
 			path = StitchWidgetTests;
 			sourceTree = "<group>";
 		};
-		73F354392AAB915000C8BA1B /* Font */ = {
+		73144C5A2ABAC42000CB1A24 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				73F3543A2AAB917100C8BA1B /* Fonts.swift */,
-				73F3544D2AAB91AC00C8BA1B /* Monospace-Medium.ttf */,
-				73F3544B2AAB91AC00C8BA1B /* NotoSans-Medium.ttf */,
-				73F3544E2AAB91AC00C8BA1B /* Roboto-Medium.ttf */,
-				73F3544C2AAB91AC00C8BA1B /* SansSerif-Medium.ttf */,
-				73F3544F2AAB91AC00C8BA1B /* Serif-Medium.ttf */,
-				73F354502AAB91AC00C8BA1B /* Ubuntu-Medium.ttf */,
-				73F354432AAB91A100C8BA1B /* DancingScript-Medium.ttf */,
-				73F354442AAB91A100C8BA1B /* EuclidFlex-Bold.ttf */,
-				73F354452AAB91A100C8BA1B /* EuclidFlex-Medium.ttf */,
-				73F354412AAB91A100C8BA1B /* EuclidFlex-Regular.ttf */,
-				73F354422AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf */,
+				73144C5B2ABAC42000CB1A24 /* Entity */,
+				73144C5E2ABAC42000CB1A24 /* Assests */,
+				73144C612ABAC42000CB1A24 /* Common */,
+				73144C7E2ABAC42000CB1A24 /* View */,
+				73144C882ABAC42000CB1A24 /* AESUtils */,
+				73144C8A2ABAC42000CB1A24 /* Service */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		73144C5B2ABAC42000CB1A24 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				73144C5C2ABAC42000CB1A24 /* GetCardDetailEntity.swift */,
+				73144C5D2ABAC42000CB1A24 /* SessionKeyEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		73144C5E2ABAC42000CB1A24 /* Assests */ = {
+			isa = PBXGroup;
+			children = (
+				73144C5F2ABAC42000CB1A24 /* creditcard.png */,
+				73144C602ABAC42000CB1A24 /* mastercard.png */,
+			);
+			path = Assests;
+			sourceTree = "<group>";
+		};
+		73144C612ABAC42000CB1A24 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				73144C622ABAC42000CB1A24 /* Extension */,
+				73144C672ABAC42000CB1A24 /* Indicator */,
+				73144C692ABAC42000CB1A24 /* Alert */,
+				73144C6B2ABAC42000CB1A24 /* Color */,
+				73144C6D2ABAC42000CB1A24 /* Network */,
+				73144C6F2ABAC42000CB1A24 /* Constant */,
+				73144C712ABAC42000CB1A24 /* Font */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		73144C622ABAC42000CB1A24 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				73144C632ABAC42000CB1A24 /* ApplicationExtension.swift */,
+				73144C642ABAC42000CB1A24 /* ExtensionButton.swift */,
+				73144C652ABAC42000CB1A24 /* ExtensionString.swift */,
+				73144C662ABAC42000CB1A24 /* ExtensionTextField.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		73144C672ABAC42000CB1A24 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				73144C682ABAC42000CB1A24 /* Indicator.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
+		73144C692ABAC42000CB1A24 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				73144C6A2ABAC42000CB1A24 /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		73144C6B2ABAC42000CB1A24 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				73144C6C2ABAC42000CB1A24 /* Color.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		73144C6D2ABAC42000CB1A24 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				73144C6E2ABAC42000CB1A24 /* NetworkCall.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		73144C6F2ABAC42000CB1A24 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				73144C702ABAC42000CB1A24 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		73144C712ABAC42000CB1A24 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				73144C722ABAC42000CB1A24 /* Roboto-Medium.ttf */,
+				73144C732ABAC42000CB1A24 /* EuclidFlex-Bold.ttf */,
+				73144C742ABAC42000CB1A24 /* Ubuntu-Medium.ttf */,
+				73144C752ABAC42000CB1A24 /* NotoSans-Medium.ttf */,
+				73144C762ABAC42000CB1A24 /* Serif-Medium.ttf */,
+				73144C772ABAC42000CB1A24 /* SansSerif-Medium.ttf */,
+				73144C782ABAC42000CB1A24 /* EuclidFlex-SemiBold.ttf */,
+				73144C792ABAC42000CB1A24 /* Fonts.swift */,
+				73144C7A2ABAC42000CB1A24 /* DancingScript-Medium.ttf */,
+				73144C7B2ABAC42000CB1A24 /* EuclidFlex-Medium.ttf */,
+				73144C7C2ABAC42000CB1A24 /* Monospace-Medium.ttf */,
+				73144C7D2ABAC42000CB1A24 /* EuclidFlex-Regular.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
 		};
-		A9E4372B934308D87C78D4BB /* Pods */ = {
+		73144C7E2ABAC42000CB1A24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */,
-				E6B75B8B5EF8C89D725D2B39 /* Pods-StitchWidget.release.xcconfig */,
-				B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */,
-				1CDDE94EFB74A1A07712AB3C /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */,
+				73144C7F2ABAC42000CB1A24 /* WidgetCardView */,
+				73144C822ABAC42000CB1A24 /* PinView */,
+				73144C852ABAC42000CB1A24 /* ActivateCardView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		73144C7F2ABAC42000CB1A24 /* WidgetCardView */ = {
+			isa = PBXGroup;
+			children = (
+				73144C802ABAC42000CB1A24 /* WidgetCardView.swift */,
+				73144C812ABAC42000CB1A24 /* WidgetCardView.xib */,
+			);
+			path = WidgetCardView;
+			sourceTree = "<group>";
+		};
+		73144C822ABAC42000CB1A24 /* PinView */ = {
+			isa = PBXGroup;
+			children = (
+				73144C832ABAC42000CB1A24 /* PinView.swift */,
+				73144C842ABAC42000CB1A24 /* PinView.xib */,
+			);
+			path = PinView;
+			sourceTree = "<group>";
+		};
+		73144C852ABAC42000CB1A24 /* ActivateCardView */ = {
+			isa = PBXGroup;
+			children = (
+				73144C862ABAC42000CB1A24 /* ActivateCardView.xib */,
+				73144C872ABAC42000CB1A24 /* ActivateCardView.swift */,
+			);
+			path = ActivateCardView;
+			sourceTree = "<group>";
+		};
+		73144C882ABAC42000CB1A24 /* AESUtils */ = {
+			isa = PBXGroup;
+			children = (
+				73144C892ABAC42000CB1A24 /* AESUtils.swift */,
+			);
+			path = AESUtils;
+			sourceTree = "<group>";
+		};
+		73144C8A2ABAC42000CB1A24 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				73144C8B2ABAC42000CB1A24 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		739AEF282AC4A58200861784 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				739AEF302AC4A58200861784 /* CryptoSwift.framework */,
+				739AEF322AC4A58200861784 /* CryptoSwift-TestHostApp.app */,
+				739AEF342AC4A58200861784 /* CryptoSwiftTests.xctest */,
+				739AEF362AC4A58200861784 /* TestsPerformance-Mac.xctest */,
+				739AEF382AC4A58200861784 /* TestsPerformance-iOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC9E153D4D04E4BCC5E5DAC5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F87E460420E81CCEB98FA206 /* Pods-StitchWidget.debug.xcconfig */,
+				7B927535386D388D4FC4D33C /* Pods-StitchWidget.release.xcconfig */,
+				F97180E8F860736480A17475 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */,
+				EEBF1DA024DFC62BF9B9574B /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF1271DFCF7986C6379A2EAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				739AEEEE2ABB5AE400861784 /* CryptoSwift.framework */,
+				73144CB62ABACAD900CB1A24 /* CryptoSwift.framework */,
+				3E292F37FEBFF0CCEDACB721 /* Pods_StitchWidget.framework */,
+				824A8B9D5D9D441B0C5DC55C /* Pods_StitchWidget_StitchWidgetTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		73E56D842A97AA3D0005162D /* Headers */ = {
+		73144C3B2ABAC3FA00CB1A24 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E56D9A2A97AA3D0005162D /* StitchWidget.h in Headers */,
+				73144C512ABAC3FA00CB1A24 /* StitchWidget.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		73E56D882A97AA3D0005162D /* StitchWidget */ = {
+		73144C3F2ABAC3FA00CB1A24 /* StitchWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73E56D9D2A97AA3D0005162D /* Build configuration list for PBXNativeTarget "StitchWidget" */;
+			buildConfigurationList = 73144C542ABAC3FA00CB1A24 /* Build configuration list for PBXNativeTarget "StitchWidget" */;
 			buildPhases = (
-				70FBA8F6C4E8C504A28395CB /* [CP] Check Pods Manifest.lock */,
-				73E56D842A97AA3D0005162D /* Headers */,
-				73E56D852A97AA3D0005162D /* Sources */,
-				73E56D862A97AA3D0005162D /* Frameworks */,
-				73E56D872A97AA3D0005162D /* Resources */,
+				308E809177395E56E3FEAFF8 /* [CP] Check Pods Manifest.lock */,
+				73144C3B2ABAC3FA00CB1A24 /* Headers */,
+				73144C3C2ABAC3FA00CB1A24 /* Sources */,
+				73144C3D2ABAC3FA00CB1A24 /* Frameworks */,
+				73144C3E2ABAC3FA00CB1A24 /* Resources */,
+				739AEEF12ABB5AE400861784 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				739AEF3A2AC4A59100861784 /* PBXTargetDependency */,
 			);
 			name = StitchWidget;
 			productName = StitchWidget;
-			productReference = 73E56D892A97AA3D0005162D /* StitchWidget.framework */;
+			productReference = 73144C402ABAC3FA00CB1A24 /* StitchWidget.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		73E56D922A97AA3D0005162D /* StitchWidgetTests */ = {
+		73144C492ABAC3FA00CB1A24 /* StitchWidgetTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73E56DA02A97AA3D0005162D /* Build configuration list for PBXNativeTarget "StitchWidgetTests" */;
+			buildConfigurationList = 73144C572ABAC3FA00CB1A24 /* Build configuration list for PBXNativeTarget "StitchWidgetTests" */;
 			buildPhases = (
-				C9A4A126C43F41750572319F /* [CP] Check Pods Manifest.lock */,
-				73E56D8F2A97AA3D0005162D /* Sources */,
-				73E56D902A97AA3D0005162D /* Frameworks */,
-				73E56D912A97AA3D0005162D /* Resources */,
-				4EB46C1A3A27669AAA256CCF /* [CP] Embed Pods Frameworks */,
+				8B74746ABC74F4FE56E43E1E /* [CP] Check Pods Manifest.lock */,
+				73144C462ABAC3FA00CB1A24 /* Sources */,
+				73144C472ABAC3FA00CB1A24 /* Frameworks */,
+				73144C482ABAC3FA00CB1A24 /* Resources */,
+				31D3CF0CF1CC59F8E6F1B813 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				73E56D962A97AA3D0005162D /* PBXTargetDependency */,
+				73144C4D2ABAC3FA00CB1A24 /* PBXTargetDependency */,
 			);
 			name = StitchWidgetTests;
 			productName = StitchWidgetTests;
-			productReference = 73E56D932A97AA3D0005162D /* StitchWidgetTests.xctest */;
+			productReference = 73144C4A2ABAC3FA00CB1A24 /* StitchWidgetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		73E56D802A97AA3D0005162D /* Project object */ = {
+		73144C372ABAC3FA00CB1A24 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					73E56D882A97AA3D0005162D = {
+					73144C3F2ABAC3FA00CB1A24 = {
 						CreatedOnToolsVersion = 14.3;
 					};
-					73E56D922A97AA3D0005162D = {
+					73144C492ABAC3FA00CB1A24 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
-			buildConfigurationList = 73E56D832A97AA3D0005162D /* Build configuration list for PBXProject "StitchWidget" */;
+			buildConfigurationList = 73144C3A2ABAC3FA00CB1A24 /* Build configuration list for PBXProject "StitchWidget" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -433,42 +511,87 @@
 				en,
 				Base,
 			);
-			mainGroup = 73E56D7F2A97AA3D0005162D;
-			productRefGroup = 73E56D8A2A97AA3D0005162D /* Products */;
+			mainGroup = 73144C362ABAC3FA00CB1A24;
+			productRefGroup = 73144C412ABAC3FA00CB1A24 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 739AEF282AC4A58200861784 /* Products */;
+					ProjectRef = 739AEF272AC4A58200861784 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
-				73E56D882A97AA3D0005162D /* StitchWidget */,
-				73E56D922A97AA3D0005162D /* StitchWidgetTests */,
+				73144C3F2ABAC3FA00CB1A24 /* StitchWidget */,
+				73144C492ABAC3FA00CB1A24 /* StitchWidgetTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		739AEF302AC4A58200861784 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 739AEF2F2AC4A58200861784 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		739AEF322AC4A58200861784 /* CryptoSwift-TestHostApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CryptoSwift-TestHostApp.app";
+			remoteRef = 739AEF312AC4A58200861784 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		739AEF342AC4A58200861784 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = 739AEF332AC4A58200861784 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		739AEF362AC4A58200861784 /* TestsPerformance-Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "TestsPerformance-Mac.xctest";
+			remoteRef = 739AEF352AC4A58200861784 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		739AEF382AC4A58200861784 /* TestsPerformance-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "TestsPerformance-iOS.xctest";
+			remoteRef = 739AEF372AC4A58200861784 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
-		73E56D872A97AA3D0005162D /* Resources */ = {
+		73144C3E2ABAC3FA00CB1A24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73F354492AAB91A100C8BA1B /* EuclidFlex-Bold.ttf in Resources */,
-				73F354512AAB91AC00C8BA1B /* NotoSans-Medium.ttf in Resources */,
-				73CD96032AA24D5400FA84AE /* PinView.xib in Resources */,
-				73CD96042AA24D5400FA84AE /* ActivateCardView.xib in Resources */,
-				73F354522AAB91AC00C8BA1B /* SansSerif-Medium.ttf in Resources */,
-				73D490932AA4DA5200F9F212 /* mastercard.png in Resources */,
-				73F3544A2AAB91A100C8BA1B /* EuclidFlex-Medium.ttf in Resources */,
-				73F354482AAB91A100C8BA1B /* DancingScript-Medium.ttf in Resources */,
-				73F354532AAB91AC00C8BA1B /* Monospace-Medium.ttf in Resources */,
-				73CD96012AA24D5400FA84AE /* WidgetCardView.xib in Resources */,
-				73F354542AAB91AC00C8BA1B /* Roboto-Medium.ttf in Resources */,
-				73F354462AAB91A100C8BA1B /* EuclidFlex-Regular.ttf in Resources */,
-				73F354552AAB91AC00C8BA1B /* Serif-Medium.ttf in Resources */,
-				73D490912AA4DA4900F9F212 /* creditcard.png in Resources */,
-				73F354562AAB91AC00C8BA1B /* Ubuntu-Medium.ttf in Resources */,
-				73F354472AAB91A100C8BA1B /* EuclidFlex-SemiBold.ttf in Resources */,
+				739AEEF32ABB5DC100861784 /* CryptoSwift.framework in Resources */,
+				73144CA82ABAC42000CB1A24 /* PinView.xib in Resources */,
+				73144C8E2ABAC42000CB1A24 /* creditcard.png in Resources */,
+				73144C9B2ABAC42000CB1A24 /* Ubuntu-Medium.ttf in Resources */,
+				73144C9C2ABAC42000CB1A24 /* NotoSans-Medium.ttf in Resources */,
+				73144CA12ABAC42000CB1A24 /* DancingScript-Medium.ttf in Resources */,
+				73144CA22ABAC42000CB1A24 /* EuclidFlex-Medium.ttf in Resources */,
+				73144C8F2ABAC42000CB1A24 /* mastercard.png in Resources */,
+				73144C9E2ABAC42000CB1A24 /* SansSerif-Medium.ttf in Resources */,
+				73144C9D2ABAC42000CB1A24 /* Serif-Medium.ttf in Resources */,
+				73144CA62ABAC42000CB1A24 /* WidgetCardView.xib in Resources */,
+				73144C9F2ABAC42000CB1A24 /* EuclidFlex-SemiBold.ttf in Resources */,
+				73144CA92ABAC42000CB1A24 /* ActivateCardView.xib in Resources */,
+				73144C9A2ABAC42000CB1A24 /* EuclidFlex-Bold.ttf in Resources */,
+				73144C992ABAC42000CB1A24 /* Roboto-Medium.ttf in Resources */,
+				73144CA42ABAC42000CB1A24 /* EuclidFlex-Regular.ttf in Resources */,
+				73144CA32ABAC42000CB1A24 /* Monospace-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73E56D912A97AA3D0005162D /* Resources */ = {
+		73144C482ABAC3FA00CB1A24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,24 +601,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4EB46C1A3A27669AAA256CCF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70FBA8F6C4E8C504A28395CB /* [CP] Check Pods Manifest.lock */ = {
+		308E809177395E56E3FEAFF8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,7 +623,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C9A4A126C43F41750572319F /* [CP] Check Pods Manifest.lock */ = {
+		31D3CF0CF1CC59F8E6F1B813 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StitchWidget-StitchWidgetTests/Pods-StitchWidget-StitchWidgetTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B74746ABC74F4FE56E43E1E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -542,53 +665,59 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		73E56D852A97AA3D0005162D /* Sources */ = {
+		73144C3C2ABAC3FA00CB1A24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CD96022AA24D5400FA84AE /* PinView.swift in Sources */,
-				73CD960A2AA24D7300FA84AE /* Indicator.swift in Sources */,
-				73CD96072AA24D5400FA84AE /* Service.swift in Sources */,
-				73CD96132AA24EB000FA84AE /* Alert.swift in Sources */,
-				73CD95FA2AA24D5400FA84AE /* SessionKeyEntity.swift in Sources */,
-				73CD960D2AA24DBE00FA84AE /* NetworkCall.swift in Sources */,
-				73CD96102AA24E4A00FA84AE /* Color.swift in Sources */,
-				73CD95FE2AA24D5400FA84AE /* ExtensionTextField.swift in Sources */,
-				73CD95F92AA24D5400FA84AE /* GetCardDetailEntity.swift in Sources */,
-				73CD95FF2AA24D5400FA84AE /* Constant.swift in Sources */,
-				73CD95FD2AA24D5400FA84AE /* ExtensionString.swift in Sources */,
-				73CD95FB2AA24D5400FA84AE /* ApplicationExtension.swift in Sources */,
-				73CD96052AA24D5400FA84AE /* ActivateCardView.swift in Sources */,
-				73CD96002AA24D5400FA84AE /* WidgetCardView.swift in Sources */,
-				73E56D8E2A97AA3D0005162D /* StitchWidget.docc in Sources */,
-				73CD95FC2AA24D5400FA84AE /* ExtensionButton.swift in Sources */,
-				73F3543B2AAB917100C8BA1B /* Fonts.swift in Sources */,
-				73CD96062AA24D5400FA84AE /* AESUtils.swift in Sources */,
+				73144CA52ABAC42000CB1A24 /* WidgetCardView.swift in Sources */,
+				73144C952ABAC42000CB1A24 /* Alert.swift in Sources */,
+				73144C8D2ABAC42000CB1A24 /* SessionKeyEntity.swift in Sources */,
+				73144CA02ABAC42000CB1A24 /* Fonts.swift in Sources */,
+				73144C932ABAC42000CB1A24 /* ExtensionTextField.swift in Sources */,
+				73144CAC2ABAC42000CB1A24 /* Service.swift in Sources */,
+				73144CA72ABAC42000CB1A24 /* PinView.swift in Sources */,
+				73144C962ABAC42000CB1A24 /* Color.swift in Sources */,
+				73144CAA2ABAC42000CB1A24 /* ActivateCardView.swift in Sources */,
+				73144C8C2ABAC42000CB1A24 /* GetCardDetailEntity.swift in Sources */,
+				73144C922ABAC42000CB1A24 /* ExtensionString.swift in Sources */,
+				73144C902ABAC42000CB1A24 /* ApplicationExtension.swift in Sources */,
+				73144C452ABAC3FA00CB1A24 /* StitchWidget.docc in Sources */,
+				73144C972ABAC42000CB1A24 /* NetworkCall.swift in Sources */,
+				73144C912ABAC42000CB1A24 /* ExtensionButton.swift in Sources */,
+				73144C942ABAC42000CB1A24 /* Indicator.swift in Sources */,
+				73144C982ABAC42000CB1A24 /* Constant.swift in Sources */,
+				73144CAB2ABAC42000CB1A24 /* AESUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73E56D8F2A97AA3D0005162D /* Sources */ = {
+		73144C462ABAC3FA00CB1A24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E56D992A97AA3D0005162D /* StitchWidgetTests.swift in Sources */,
+				73144C502ABAC3FA00CB1A24 /* StitchWidgetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		73E56D962A97AA3D0005162D /* PBXTargetDependency */ = {
+		73144C4D2ABAC3FA00CB1A24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 73E56D882A97AA3D0005162D /* StitchWidget */;
-			targetProxy = 73E56D952A97AA3D0005162D /* PBXContainerItemProxy */;
+			target = 73144C3F2ABAC3FA00CB1A24 /* StitchWidget */;
+			targetProxy = 73144C4C2ABAC3FA00CB1A24 /* PBXContainerItemProxy */;
+		};
+		739AEF3A2AC4A59100861784 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = 739AEF392AC4A59100861784 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		73E56D9B2A97AA3D0005162D /* Debug */ = {
+		73144C522ABAC3FA00CB1A24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -649,9 +778,10 @@
 			};
 			name = Debug;
 		};
-		73E56D9C2A97AA3D0005162D /* Release */ = {
+		73144C532ABAC3FA00CB1A24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -697,6 +827,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -706,11 +837,11 @@
 			};
 			name = Release;
 		};
-		73E56D9E2A97AA3D0005162D /* Debug */ = {
+		73144C552ABAC3FA00CB1A24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A76570DBADEE7291300B97F /* Pods-StitchWidget.debug.xcconfig */;
+			baseConfigurationReference = F87E460420E81CCEB98FA206 /* Pods-StitchWidget.debug.xcconfig */;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -718,6 +849,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StitchWidget/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -743,11 +881,11 @@
 			};
 			name = Debug;
 		};
-		73E56D9F2A97AA3D0005162D /* Release */ = {
+		73144C562ABAC3FA00CB1A24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6B75B8B5EF8C89D725D2B39 /* Pods-StitchWidget.release.xcconfig */;
+			baseConfigurationReference = 7B927535386D388D4FC4D33C /* Pods-StitchWidget.release.xcconfig */;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -755,6 +893,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StitchWidget/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -781,9 +926,9 @@
 			};
 			name = Release;
 		};
-		73E56DA12A97AA3D0005162D /* Debug */ = {
+		73144C582ABAC3FA00CB1A24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B426B1FBFDEDA06A8A8B3718 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */;
+			baseConfigurationReference = F97180E8F860736480A17475 /* Pods-StitchWidget-StitchWidgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -798,9 +943,9 @@
 			};
 			name = Debug;
 		};
-		73E56DA22A97AA3D0005162D /* Release */ = {
+		73144C592ABAC3FA00CB1A24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CDDE94EFB74A1A07712AB3C /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */;
+			baseConfigurationReference = EEBF1DA024DFC62BF9B9574B /* Pods-StitchWidget-StitchWidgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -818,34 +963,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		73E56D832A97AA3D0005162D /* Build configuration list for PBXProject "StitchWidget" */ = {
+		73144C3A2ABAC3FA00CB1A24 /* Build configuration list for PBXProject "StitchWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73E56D9B2A97AA3D0005162D /* Debug */,
-				73E56D9C2A97AA3D0005162D /* Release */,
+				73144C522ABAC3FA00CB1A24 /* Debug */,
+				73144C532ABAC3FA00CB1A24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73E56D9D2A97AA3D0005162D /* Build configuration list for PBXNativeTarget "StitchWidget" */ = {
+		73144C542ABAC3FA00CB1A24 /* Build configuration list for PBXNativeTarget "StitchWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73E56D9E2A97AA3D0005162D /* Debug */,
-				73E56D9F2A97AA3D0005162D /* Release */,
+				73144C552ABAC3FA00CB1A24 /* Debug */,
+				73144C562ABAC3FA00CB1A24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73E56DA02A97AA3D0005162D /* Build configuration list for PBXNativeTarget "StitchWidgetTests" */ = {
+		73144C572ABAC3FA00CB1A24 /* Build configuration list for PBXNativeTarget "StitchWidgetTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73E56DA12A97AA3D0005162D /* Debug */,
-				73E56DA22A97AA3D0005162D /* Release */,
+				73144C582ABAC3FA00CB1A24 /* Debug */,
+				73144C592ABAC3FA00CB1A24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 73E56D802A97AA3D0005162D /* Project object */;
+	rootObject = 73144C372ABAC3FA00CB1A24 /* Project object */;
 }

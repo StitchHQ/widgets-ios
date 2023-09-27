@@ -33,7 +33,7 @@ class AESUtils {
         }
         
         do {
-            let aes = try AES(key: keyData.bytes, blockMode: CBC(iv: ivData.bytes), padding: .pkcs5)
+            let aes = try AES(key: keyData.bytes, blockMode: GCM(iv: ivData.bytes,mode: .combined), padding: .noPadding)
             let decryptedBytes = try aes.decrypt(encryptedData.bytes)
             guard let decryptedText = String(bytes: decryptedBytes, encoding: .utf8) else {
                 throw NSError(domain: "com.example.app", code: -1, userInfo: [NSLocalizedDescriptionKey: "Decryption failed: Unable to convert decrypted data to UTF-8 string"])
@@ -78,7 +78,7 @@ class AESUtils {
 
     func createCipher(keyData: Data, ivBytes: Data) throws -> AES? {
         do {
-            let cipher = try AES(key: keyData.bytes, blockMode: CBC(iv: ivBytes.bytes), padding: .pkcs5)
+            let cipher = try AES(key: keyData.bytes, blockMode: GCM(iv: ivBytes.bytes,mode: .combined), padding: .noPadding)
             return cipher
         } catch {
             throw NSError(domain: "CipherCreationError", code: -4, userInfo: nil)

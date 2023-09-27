@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73E56D882A97AA3D0005162D"
+               BlueprintIdentifier = "73144C3F2ABAC3FA00CB1A24"
                BuildableName = "StitchWidget.framework"
                BlueprintName = "StitchWidget"
                ReferencedContainer = "container:StitchWidget.xcodeproj">
@@ -34,7 +34,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73E56D922A97AA3D0005162D"
+               BlueprintIdentifier = "73144C492ABAC3FA00CB1A24"
                BuildableName = "StitchWidgetTests.xctest"
                BlueprintName = "StitchWidgetTests"
                ReferencedContainer = "container:StitchWidget.xcodeproj">
@@ -62,7 +62,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "73E56D882A97AA3D0005162D"
+            BlueprintIdentifier = "73144C3F2ABAC3FA00CB1A24"
             BuildableName = "StitchWidget.framework"
             BlueprintName = "StitchWidget"
             ReferencedContainer = "container:StitchWidget.xcodeproj">
