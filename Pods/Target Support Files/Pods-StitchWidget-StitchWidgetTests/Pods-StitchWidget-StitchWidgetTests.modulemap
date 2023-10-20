@@ -1,6 +1,0 @@
-framework module Pods_StitchWidget_StitchWidgetTests {
-  umbrella header "Pods-StitchWidget-StitchWidgetTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
