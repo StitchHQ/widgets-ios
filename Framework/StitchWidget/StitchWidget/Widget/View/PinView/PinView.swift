@@ -71,7 +71,7 @@ public class PinView: UIView {
                     pinRequiredLabel.textColor = fontColor
                     activateLabel.textColor = fontColor
                     activateView.backgroundColor = backgroundColor
-                    
+                    return
                 }else{
                     setfontValue(font: "EuclidFlex-Medium",fontSize: 14.0)
 
