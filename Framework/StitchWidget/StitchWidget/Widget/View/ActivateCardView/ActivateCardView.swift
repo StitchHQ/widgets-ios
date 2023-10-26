@@ -90,6 +90,7 @@ public class ActivateCardView: UIView {
                     cvvTextField.textColor = fontColor
                     cardTextField.textColor = fontColor
                     overView.backgroundColor = backgroundColor
+                    return
                 }else{
                     setfontValue(font: "EuclidFlex-Medium",fontSize: 14.0)
                     cardRequiredLabel.textColor = .black
