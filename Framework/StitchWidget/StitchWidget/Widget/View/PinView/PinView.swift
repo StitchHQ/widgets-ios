@@ -53,14 +53,14 @@ public class PinView: UIView {
             
             for item in widget {
                 let data = item as! [String: Any]
-                let type = data["type"] as! String
+                let typeVal = data["type"] as! String
                 let backgroundColor = data["backgroundColor"] as! UIColor
                 let fontColor = data["fontColor"] as! UIColor
                 let font = data["font"] as! String
                 let fontsize = data["fontSize"] as! Float
                 setfontValue(font: font,fontSize: fontsize)
 
-                if type != "View Card" && type != "Activate Card"  {
+                if type == typeVal {
                     
                     olfPinLabel.textColor = fontColor
                     newPinLabel.textColor = fontColor
@@ -123,9 +123,9 @@ public class PinView: UIView {
             overView.isHidden = true
             activateView.isHidden = true
         type = pintype
-        newPinLabel.text = (type == "SetPin") ? "Confirm PIN*" : "New PIN*"
-        olfPinLabel.text = (type == "SetPin") ? "4 Digit PIN*" : "4 Digit old PIN*"
-        pinButton.setTitle((type == "SetPin") ? "Set Pin" : "Change Pin", for: .normal)
+        newPinLabel.text = (type == "Set Pin") ? "Confirm PIN*" : "New PIN*"
+        olfPinLabel.text = (type == "Set Pin") ? "4 Digit PIN*" : "4 Digit old PIN*"
+        pinButton.setTitle((type == "Set Pin") ? "Set Pin" : "Change Pin", for: .normal)
     }
     
     public func setStyleSheet(styleSheet: String){
@@ -153,31 +153,31 @@ public class PinView: UIView {
     private func validate() -> Bool {
         guard let pinStr = oldPinTextField.text, !pinStr.isEmpty else {
             oldPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "SetPin") ? ConstantData.pinEmpty : ConstantData.oldPinEmpty,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "Set Pin") ? ConstantData.pinEmpty : ConstantData.oldPinEmpty,buttonTitle: ConstantData.ok)
             return false
         }
         
         guard pinStr.isValid4Password else {
             oldPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "SetPin") ? ConstantData.pinlength : ConstantData.oldPinlength,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "Set Pin") ? ConstantData.pinlength : ConstantData.oldPinlength,buttonTitle: ConstantData.ok)
 
             return false
         }
         
         guard let confirmPinStr = newPinTextField.text, !confirmPinStr.isEmpty else {
             newPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "SetPin") ? ConstantData.confirmPinEmpty : ConstantData.newPinEmpty,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "Set Pin") ? ConstantData.confirmPinEmpty : ConstantData.newPinEmpty,buttonTitle: ConstantData.ok)
             return false
         }
         
         guard confirmPinStr.isValid4Password else {
             newPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "SetPin") ? ConstantData.confirmPinlength : ConstantData.newPinlength,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "Set Pin") ? ConstantData.confirmPinlength : ConstantData.newPinlength,buttonTitle: ConstantData.ok)
 
             return false
         }
         
-        if type == "SetPin" {
+        if type == "Set Pin" {
             if pinStr != confirmPinStr {
                 newPinTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinMismatch,buttonTitle: ConstantData.ok)
@@ -208,7 +208,7 @@ extension PinView  {
         
         do {
             let confirmPinEncrypt = try AESUtils().encrypt(pin: newPinTextField.text ?? "", key: generalKey)
-            if type == "SetPin" {
+            if type == "Set Pin" {
                 let data = [
                     "pin": confirmPinEncrypt,
                     "token": token,
