@@ -143,6 +143,7 @@ public class WidgetCardView: UIView {
                     }
                     
                     self.setPaddingTextField(bottomDate: dateBottom,topDate: dateTop,leadCvv:cvvLeft,leadDate: dateLeft,BottomCvv: cvvBottom,trailDate: dateRight,TrailCvv: cvvRight,topCardNo: cardNoTop,BottomCardNo: cardNoBottom,cvvTop: cvvTop,cardNoLeft: cardNoLeft,cardNoRight: cardNoRight)
+                    return
                 }else {
                     setDefaultStype()
                 }
