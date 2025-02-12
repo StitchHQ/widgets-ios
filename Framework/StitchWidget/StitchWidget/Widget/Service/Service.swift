@@ -9,15 +9,32 @@ import Foundation
 import UIKit
 import Alamofire
 
-enum servicesURL :String{
-    case baseUrl = "https://sandbox.stitch.fi/"
-    case commonApi = "stitch-ui-api-zitadel/v1/stitchapp/api"
+
+struct AppEnvironment {
+    static var env = Environment.Qa
+}
+
+enum Environment: String {
+    case Qa
+    case Sit
     
+    var baseURL: String {
+        switch self {
+        case .Qa:   return "https://dev.stitch.fi/qa/v1/widgets/"
+        case .Sit:  return "https://sit.stitch.fi/qa/v1/widgets/"
+        }
+    }
+}
+
+enum servicesURL :String{
+    
+    static let baseUrl = AppEnvironment.env.baseURL
+
     //View Card
-    case sessionKey = "stitch-rest-api/v1/widgets/secure/sessionkey"
-    case secureCard = "stitch-rest-api/v1/widgets/secure/card"
-    case setPin = "stitch-rest-api/v1/widgets/secure/setpin"
-    case changePin = "stitch-rest-api/v1/widgets/secure/changepin"
+    case sessionKey = "secure/sessionkey"
+    case secureCard = "secure/card"
+    case setPin = "secure/setpin"
+    case changePin = "secure/changepin"
     case activateCard = "stitch-rest-api/v1/widgets/secure/card/activation"
 }
 class ServiceNetworkCall : NSObject{
@@ -26,12 +43,10 @@ class ServiceNetworkCall : NSObject{
     var method: HTTPMethod!
     var url :String? = ""
     var encoding: ParameterEncoding! = JSONEncoding.default
-    var isHead = true
-    var istoken = -1
     var type = ""
     let activityInstance = Indicator()
 
-    init(data: [String:Any],url :String?, method: HTTPMethod = .post, isJSONRequest: Bool = true,isHead: Bool = true,istoken: Int = -1,type: String = ""){
+    init(data: [String:Any],url :String?, method: HTTPMethod = .post, isJSONRequest: Bool = true,type: String = ""){
         super.init()
        
         data.forEach{parameters.updateValue($0.value, forKey: $0.key)}
@@ -40,40 +55,16 @@ class ServiceNetworkCall : NSObject{
         }
         self.url = url
         self.method = method
-        self.isHead = isHead
-        self.istoken = istoken
         self.type = type
 
     }
 
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
         if Reachability.isConnectedToNetwork(){
-            var head:HTTPHeaders = [:]
             let number = arc4random()
             self.activityInstance.showIndicator()
-            
-            if istoken == 1 {
-                if let token = UserDefaults.standard.value(forKey: "token") as? String {
-                    
-                    head = ["Authorization": token,"X-Correlation-ID": "\(number)"]
-                }
-            }else if istoken == 2 {
-                if let httpHead = UserDefaults.standard.value(forKey: "Headers") as? String {
-                    head = ["Authorization": "Bearer " + httpHead,"X-Correlation-ID": "\(number)"]
-                }
-            }else if istoken == -1 {
-                head = []
-            }else{
-                if isHead {
-                    if let httpHead = UserDefaults.standard.value(forKey: "Headers") as? String {
-                        head = ["Authorization": "Bearer " + httpHead]
-                    }
-                }else{
-                    if let token = UserDefaults.standard.value(forKey: "tokenType") as? String {
-                        head = ["Authorization": token]
-                    }
-                }
-            }
+        
+            let head: HTTPHeaders = ["X-Correlation-ID": "\(number)"]
             
             AF.request(url!,method: method,parameters: parameters,encoding: encoding, headers: head).responseData(completionHandler: {response in
                 switch response.result{
@@ -145,17 +136,7 @@ class ServiceNetworkCall : NSObject{
     
     private func showErrorMessage(){
         UserDefaults.standard.set(nil, forKey: "Headers")
-        UserDefaults.standard.set(nil, forKey: "tokenType")
         UserDefaults.standard.set(nil, forKey: "token")
-//        let vc = Router.storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//
-//        let navigationController = UINavigationController()
-//        navigationController.viewControllers = [vc]
-//        navigationController.isNavigationBarHidden = true
-//        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-//        appDelegate.window?.rootViewController = navigationController
-//        appDelegate.window?.makeKeyAndVisible()
     }
 }
 extension Error {

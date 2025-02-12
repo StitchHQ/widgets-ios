@@ -38,7 +38,6 @@ public class ActivateCardView: UIView {
         activeLabel.textAlignment = .center
         overView.layer.cornerRadius = 10
         activateCardBtn.setCornerRadiusButton(size: 10)
-//        IQKeyboardManager.shared.enable = true
         overView.isHidden = true
         cardTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         cvvTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -51,8 +50,6 @@ public class ActivateCardView: UIView {
         cvvLabel.text = "Card CVV*"
         cardLabel.text = "Card Number*"
         activateCardBtn.addTarget(self, action: #selector(tapActivate(_:)), for: .touchUpInside)
-
-
     }
     
     public func setStyleSheet(styleSheet: String){
@@ -138,22 +135,29 @@ public class ActivateCardView: UIView {
 extension ActivateCardView  {
     
     public func sessionKey() {
-        let data = [
-            "token": token,
-            "deviceFingerPrint": deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
+        if self.cardType == "activated" {
+            self.activeLabel.text = "Card in Activated State"
+            self.overView.isHidden = false
+            self.cardView.isHidden = true
+    }else if self.cardType == "invalid" {
+            self.activateCard()
+
+        }else{
+            
+            self.overView.isHidden = true
+            self.cardView.isHidden = false
+        }
     }
 }
 extension ActivateCardView  {
     
     private func sessionKeyAPI(body: [String: Any]){
-        let url = servicesURL.baseUrl.rawValue + servicesURL.sessionKey.rawValue
-        ServiceNetworkCall(data: body, url: url, method: .post,istoken: 2).executeQuery(){
+        let url = servicesURL.baseUrl + servicesURL.sessionKey.rawValue
+        ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
-                self.generalKey = session.generatedKey!
+                self.generalKey = session.key ?? ""
                 if self.cardType == "activated" {
                     self.activeLabel.text = "Card in Activated State"
                     self.overView.isHidden = false
@@ -191,8 +195,8 @@ extension ActivateCardView  {
         activateCardApi(body: data)
     }
     private func activateCardApi(body: [String: Any]){
-        let url = servicesURL.baseUrl.rawValue + servicesURL.activateCard.rawValue
-        ServiceNetworkCall(data: body, url: url, method: .post,istoken: -1,type:  "ActivateCard").executeQuery(){
+        let url = servicesURL.baseUrl + servicesURL.activateCard.rawValue
+        ServiceNetworkCall(data: body, url: url, method: .post,type:  "ActivateCard").executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
@@ -219,9 +223,7 @@ extension ActivateCardView  {
                             self.activeLabel.text = "Card in Activated State"
                         }
                     }
-
                 }
-                
             }
         }
     }
@@ -240,7 +242,6 @@ extension ActivateCardView: UITextFieldDelegate {
         return updatedText.count <= 3
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
-        //your code
         if cardTextField.text != "" && cvvTextField.text != "" {
             activateCardBtn.backgroundColor = UIColor.blueColor
         }else{

@@ -49,7 +49,7 @@ class AESUtils {
             throw NSError(domain: "EncryptionError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid key format"])
         }
         
-        let ivBytes = try generateRandomBytes(count: 16)
+        let ivBytes = try generateRandomBytes(count: 12)
         let ivBase64 = ivBytes.base64EncodedString()
         
         guard let cipher = try? createCipher(keyData: keyData, ivBytes: ivBytes) else {

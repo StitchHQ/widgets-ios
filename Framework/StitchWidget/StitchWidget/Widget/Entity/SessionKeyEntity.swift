@@ -8,10 +8,18 @@
 import Foundation
 
 struct SessionKeyEntity : Codable {
-    let generatedKey : String?
-    
+    let token : String?
+    let key: String?
     enum CodingKeys: String, CodingKey {
         
-        case generatedKey = "generatedKey"
+        case token = "token"
+        case key = "key"
+    }
+}
+
+struct setPinSuccess : Codable {
+    let status : String?
+    enum CodingKeys: String, CodingKey {
+        case status = "status"
     }
 }

@@ -34,14 +34,19 @@
 		7342FBF22AE0F0F000F82616 /* EuclidFlex-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBCB2AE0F0F000F82616 /* EuclidFlex-Medium.ttf */; };
 		7342FBF32AE0F0F000F82616 /* Monospace-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBCC2AE0F0F000F82616 /* Monospace-Medium.ttf */; };
 		7342FBF42AE0F0F000F82616 /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBCD2AE0F0F000F82616 /* EuclidFlex-Regular.ttf */; };
-		7342FBF52AE0F0F000F82616 /* WidgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD02AE0F0F000F82616 /* WidgetCardView.swift */; };
-		7342FBF62AE0F0F000F82616 /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBD12AE0F0F000F82616 /* WidgetCardView.xib */; };
 		7342FBF72AE0F0F000F82616 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD32AE0F0F000F82616 /* PinView.swift */; };
 		7342FBF82AE0F0F000F82616 /* PinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBD42AE0F0F000F82616 /* PinView.xib */; };
 		7342FBF92AE0F0F000F82616 /* ActivateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBD62AE0F0F000F82616 /* ActivateCardView.xib */; };
 		7342FBFA2AE0F0F000F82616 /* ActivateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD72AE0F0F000F82616 /* ActivateCardView.swift */; };
 		7342FBFB2AE0F0F000F82616 /* AESUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD92AE0F0F000F82616 /* AESUtils.swift */; };
 		7342FBFC2AE0F0F000F82616 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBDB2AE0F0F000F82616 /* Service.swift */; };
+		736AFE3A2D425F2400294CF7 /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE382D425F2400294CF7 /* WidgetCardView.xib */; };
+		736AFE3B2D425F2400294CF7 /* WidgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736AFE372D425F2400294CF7 /* WidgetCardView.swift */; };
+		736AFE3F2D4408B800294CF7 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE3E2D4408B800294CF7 /* visa.png */; };
+		736AFE442D46A13F00294CF7 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE412D46A13F00294CF7 /* Inter-Medium.ttf */; };
+		736AFE452D46A13F00294CF7 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE402D46A13F00294CF7 /* Inter-Bold.ttf */; };
+		736AFE462D46A13F00294CF7 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE432D46A13F00294CF7 /* Inter-SemiBold.ttf */; };
+		736AFE472D46A13F00294CF7 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE422D46A13F00294CF7 /* Inter-Regular.ttf */; };
 		73B7C3ED2AE0EFD6008953A9 /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73B7C3EC2AE0EFD6008953A9 /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -73,14 +78,19 @@
 		7342FBCB2AE0F0F000F82616 /* EuclidFlex-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Medium.ttf"; sourceTree = "<group>"; };
 		7342FBCC2AE0F0F000F82616 /* Monospace-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monospace-Medium.ttf"; sourceTree = "<group>"; };
 		7342FBCD2AE0F0F000F82616 /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
-		7342FBD02AE0F0F000F82616 /* WidgetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
-		7342FBD12AE0F0F000F82616 /* WidgetCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WidgetCardView.xib; sourceTree = "<group>"; };
 		7342FBD32AE0F0F000F82616 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		7342FBD42AE0F0F000F82616 /* PinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinView.xib; sourceTree = "<group>"; };
 		7342FBD62AE0F0F000F82616 /* ActivateCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateCardView.xib; sourceTree = "<group>"; };
 		7342FBD72AE0F0F000F82616 /* ActivateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateCardView.swift; sourceTree = "<group>"; };
 		7342FBD92AE0F0F000F82616 /* AESUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESUtils.swift; sourceTree = "<group>"; };
 		7342FBDB2AE0F0F000F82616 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		736AFE372D425F2400294CF7 /* WidgetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
+		736AFE382D425F2400294CF7 /* WidgetCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WidgetCardView.xib; sourceTree = "<group>"; };
+		736AFE3E2D4408B800294CF7 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		736AFE402D46A13F00294CF7 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		736AFE412D46A13F00294CF7 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		736AFE422D46A13F00294CF7 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		736AFE432D46A13F00294CF7 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		73B7C3E92AE0EFD6008953A9 /* StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B7C3EC2AE0EFD6008953A9 /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +144,7 @@
 			children = (
 				7342FBAF2AE0F0F000F82616 /* creditcard.png */,
 				7342FBB02AE0F0F000F82616 /* mastercard.png */,
+				736AFE3E2D4408B800294CF7 /* visa.png */,
 			);
 			path = Assests;
 			sourceTree = "<group>";
@@ -206,6 +217,10 @@
 		7342FBC12AE0F0F000F82616 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				736AFE402D46A13F00294CF7 /* Inter-Bold.ttf */,
+				736AFE412D46A13F00294CF7 /* Inter-Medium.ttf */,
+				736AFE422D46A13F00294CF7 /* Inter-Regular.ttf */,
+				736AFE432D46A13F00294CF7 /* Inter-SemiBold.ttf */,
 				7342FBC22AE0F0F000F82616 /* Roboto-Medium.ttf */,
 				7342FBC32AE0F0F000F82616 /* EuclidFlex-Bold.ttf */,
 				7342FBC42AE0F0F000F82616 /* Ubuntu-Medium.ttf */,
@@ -225,20 +240,11 @@
 		7342FBCE2AE0F0F000F82616 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7342FBCF2AE0F0F000F82616 /* WidgetCardView */,
+				736AFE392D425F2400294CF7 /* WidgetCardView */,
 				7342FBD22AE0F0F000F82616 /* PinView */,
 				7342FBD52AE0F0F000F82616 /* ActivateCardView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		7342FBCF2AE0F0F000F82616 /* WidgetCardView */ = {
-			isa = PBXGroup;
-			children = (
-				7342FBD02AE0F0F000F82616 /* WidgetCardView.swift */,
-				7342FBD12AE0F0F000F82616 /* WidgetCardView.xib */,
-			);
-			path = WidgetCardView;
 			sourceTree = "<group>";
 		};
 		7342FBD22AE0F0F000F82616 /* PinView */ = {
@@ -273,6 +279,15 @@
 				7342FBDB2AE0F0F000F82616 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		736AFE392D425F2400294CF7 /* WidgetCardView */ = {
+			isa = PBXGroup;
+			children = (
+				736AFE372D425F2400294CF7 /* WidgetCardView.swift */,
+				736AFE382D425F2400294CF7 /* WidgetCardView.xib */,
+			);
+			path = WidgetCardView;
 			sourceTree = "<group>";
 		};
 		73B7C3DF2AE0EFD6008953A9 = {
@@ -374,18 +389,23 @@
 				7342FBDE2AE0F0F000F82616 /* creditcard.png in Resources */,
 				7342FBEB2AE0F0F000F82616 /* Ubuntu-Medium.ttf in Resources */,
 				7342FBEC2AE0F0F000F82616 /* NotoSans-Medium.ttf in Resources */,
+				736AFE442D46A13F00294CF7 /* Inter-Medium.ttf in Resources */,
+				736AFE452D46A13F00294CF7 /* Inter-Bold.ttf in Resources */,
+				736AFE462D46A13F00294CF7 /* Inter-SemiBold.ttf in Resources */,
+				736AFE472D46A13F00294CF7 /* Inter-Regular.ttf in Resources */,
 				7342FBF12AE0F0F000F82616 /* DancingScript-Medium.ttf in Resources */,
 				7342FBF22AE0F0F000F82616 /* EuclidFlex-Medium.ttf in Resources */,
 				7342FBDF2AE0F0F000F82616 /* mastercard.png in Resources */,
 				7342FBEE2AE0F0F000F82616 /* SansSerif-Medium.ttf in Resources */,
 				7342FBED2AE0F0F000F82616 /* Serif-Medium.ttf in Resources */,
-				7342FBF62AE0F0F000F82616 /* WidgetCardView.xib in Resources */,
 				7342FBEF2AE0F0F000F82616 /* EuclidFlex-SemiBold.ttf in Resources */,
 				7342FBF92AE0F0F000F82616 /* ActivateCardView.xib in Resources */,
 				7342FBEA2AE0F0F000F82616 /* EuclidFlex-Bold.ttf in Resources */,
+				736AFE3A2D425F2400294CF7 /* WidgetCardView.xib in Resources */,
 				7342FBE92AE0F0F000F82616 /* Roboto-Medium.ttf in Resources */,
 				7342FBF42AE0F0F000F82616 /* EuclidFlex-Regular.ttf in Resources */,
 				7342FBF32AE0F0F000F82616 /* Monospace-Medium.ttf in Resources */,
+				736AFE3F2D4408B800294CF7 /* visa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,9 +429,9 @@
 				7342FBDC2AE0F0F000F82616 /* GetCardDetailEntity.swift in Sources */,
 				7342FBFC2AE0F0F000F82616 /* Service.swift in Sources */,
 				7342FBE52AE0F0F000F82616 /* Alert.swift in Sources */,
+				736AFE3B2D425F2400294CF7 /* WidgetCardView.swift in Sources */,
 				7342FBE82AE0F0F000F82616 /* Constant.swift in Sources */,
 				7342FBDD2AE0F0F000F82616 /* SessionKeyEntity.swift in Sources */,
-				7342FBF52AE0F0F000F82616 /* WidgetCardView.swift in Sources */,
 				7342FBE62AE0F0F000F82616 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
