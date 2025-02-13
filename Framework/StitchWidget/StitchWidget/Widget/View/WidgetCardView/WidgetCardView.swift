@@ -43,14 +43,6 @@ public class WidgetCardView: UIView {
     @IBOutlet weak var backCvvtopConstant: NSLayoutConstraint!
     @IBOutlet weak var backCvvBottomConstant: NSLayoutConstraint!
     @IBOutlet weak var backCardNoLead: NSLayoutConstraint!
-    var generalKey = ""
-    let activityInstance = Indicator()
-    var styleType = ""
-    var accountNo = ""
-    var cvv = ""
-    var isCvvMask = false
-    var isCardMask = false
-    var panLastFour = ""
     @IBOutlet weak var cvvStackView: UIStackView!
     @IBOutlet weak var bottomCVV: NSLayoutConstraint!
     @IBOutlet weak var validThStackView: UIStackView!
@@ -59,6 +51,20 @@ public class WidgetCardView: UIView {
     @IBOutlet weak var validThruLabel: UILabel!
     @IBOutlet weak var cvvTitleLabel: UILabel!
     @IBOutlet weak var titleCardName: UILabel!
+    
+    @IBOutlet weak var cvvEyeBtn: UIButton!
+    @IBOutlet weak var cardNoEyeBtn: UIButton!
+    var generalKey = ""
+    let activityInstance = Indicator()
+    var styleType = ""
+    var accountNo = ""
+    var cvv = ""
+    var isCvvMask = false
+    var isCardMask = false
+    var panLastFour = ""
+    
+    var isCvvEye = false
+    var isCardNoEye = false
     public override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -74,10 +80,39 @@ public class WidgetCardView: UIView {
         titleCardName.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         cvvTitleLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         validThruLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
-    
+        cvvEyeBtn.setTitle("", for: .normal)
+        cardNoEyeBtn.setTitle("", for: .normal)
 
     }
     
+    @IBAction func onCvvEyeAction(_ sender: Any) {
+        if isCvvEye {
+            if cvvLabel.text == "XXX" {
+                cvvLabel.text = cvv
+                cvvEyeBtn.setImage(UIImage(named: "eye"), for: .normal)
+
+            }else{
+                cvvLabel.text = "XXX"
+                cvvEyeBtn.setImage(UIImage(named: "eye-off"), for: .normal)
+
+            }
+        }
+    }
+    
+    
+    @IBAction func onCardNoEyeAction(_ sender: Any) {
+        if isCardNoEye {
+            if cardNumberLabel.text == "XXXX XXXX XXXX \(panLastFour)" {
+                cardNumberLabel.text = accountNo
+                cardNoEyeBtn.setImage(UIImage(named: "eye"), for: .normal)
+
+            }else{
+                cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
+                cardNoEyeBtn.setImage(UIImage(named: "eye-off"), for: .normal)
+
+            }
+        }
+    }
     
     public func setUserDefault(widget: NSMutableArray){
        
@@ -93,6 +128,7 @@ public class WidgetCardView: UIView {
                 let fontColor = data["fontColor"] as! UIColor
                 let iscvvMask = data["iscvvMask"] as! Bool
                 let iscardNoMask = data["isCardNoMask"] as! Bool
+                let isEyeMask = data["isEyeMask"] as! Bool
                 let font = data["font"] as! String
                 let fontsize = data["fontSize"] as! Float
                 
@@ -119,6 +155,20 @@ public class WidgetCardView: UIView {
                     backCardView.backgroundColor = backgroundColor
                     isCardMask = iscardNoMask
                     isCvvMask = iscvvMask
+                    self.isCvvEye = isEyeMask
+                    self.isCardNoEye = isEyeMask
+                    if isEyeMask {
+                        cvvEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
+                        cardNoEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
+                        cvvEyeBtn.isHidden = false
+                        cardNoEyeBtn.isHidden = false
+                    }else{
+                        cvvEyeBtn.isHidden = true
+                        cardNoEyeBtn.isHidden = true
+                    }
+                    if isEyeMask {
+                        
+                    }
                     let date = Date()
 
                     if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
@@ -229,6 +279,8 @@ public class WidgetCardView: UIView {
         frontImgView = nil
         isCardMask = true
         isCvvMask = true
+        isCardNoEye = true
+        isCvvEye = true
 
     }
     private func setfontValue(font: String,fontSize: Float){
@@ -419,23 +471,27 @@ extension WidgetCardView  {
             let accountNumber = try AESUtils().decrypt(encryptedText: accountNo, key: self.generalKey)
             let last4 = accountNumber.suffix(4)
             panLastFour = String(last4)
-            if isCardMask {
-                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
-                self.backCardNo.text = "XXXX XXXX XXXX \(panLastFour)"
-            }else{
-                self.cardNumberLabel.text = accountNumber
-                self.backCardNo.text = accountNumber
-            }
+//            if isCardMask {
+//                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
+//                self.backCardNo.text = "XXXX XXXX XXXX \(panLastFour)"
+//            }else{
+//                self.cardNumberLabel.text = accountNumber
+//                self.backCardNo.text = accountNumber
+//            }
             self.accountNo = accountNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
-            if isCvvMask {
+//            if isCvvMask {
+//                self.cvvLabel.text = "XXX"
+//                self.backCvvLabel.text = "XXX"
+//            }else{
+//                self.cvvLabel.text = cvvText
+//                self.backCvvLabel.text = cvvText
+//
+//            }
+//            if isCvvEye {
+                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
                 self.cvvLabel.text = "XXX"
-                self.backCvvLabel.text = "XXX"
-            }else{
-                self.cvvLabel.text = cvvText
-                self.backCvvLabel.text = cvvText
-
-            }
+//            }
             self.cvv = cvvText
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
             self.validThruValue.text = expiryText
