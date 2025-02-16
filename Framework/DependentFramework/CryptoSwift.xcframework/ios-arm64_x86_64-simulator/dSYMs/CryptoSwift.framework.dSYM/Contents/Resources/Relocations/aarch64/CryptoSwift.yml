@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/vizhi/Library/Caches/org.carthage.CarthageKit/DerivedData/15.0_15A240d/CryptoSwift/1.8.0/Build/Products/Release-iphonesimulator/CryptoSwift.framework/CryptoSwift'
-relocations:     []
-...
