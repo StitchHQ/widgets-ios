@@ -149,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				7342FBAB2AE0F0F000F82616 /* Entity */,
-				7342FBAE2AE0F0F000F82616 /* Assests */,
 				7342FBB12AE0F0F000F82616 /* Common */,
 				7342FBCE2AE0F0F000F82616 /* View */,
 				7342FBD82AE0F0F000F82616 /* AESUtils */,
@@ -165,17 +164,6 @@
 				7342FBAD2AE0F0F000F82616 /* SessionKeyEntity.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		7342FBAE2AE0F0F000F82616 /* Assests */ = {
-			isa = PBXGroup;
-			children = (
-				7342FBAF2AE0F0F000F82616 /* creditcard.png */,
-				7381A2122D5CE1DB00A3FE23 /* eye.png */,
-				7342FBB02AE0F0F000F82616 /* mastercard.png */,
-				7381A2102D5CE11500A3FE23 /* Vector.png */,
-			);
-			path = Assests;
 			sourceTree = "<group>";
 		};
 		7342FBB12AE0F0F000F82616 /* Common */ = {
@@ -342,6 +330,10 @@
 		73B7C3EB2AE0EFD6008953A9 /* StitchWidget */ = {
 			isa = PBXGroup;
 			children = (
+				7342FBAF2AE0F0F000F82616 /* creditcard.png */,
+				7381A2122D5CE1DB00A3FE23 /* eye.png */,
+				7342FBB02AE0F0F000F82616 /* mastercard.png */,
+				7381A2102D5CE11500A3FE23 /* Vector.png */,
 				7342FBAA2AE0F0F000F82616 /* Widget */,
 				73B7C3EC2AE0EFD6008953A9 /* StitchWidget.h */,
 			);
@@ -354,7 +346,6 @@
 				B79E089A794C1141FB7666DB /* Pods-StitchWidget.debug.xcconfig */,
 				3CE427300DB0E6E7A667E4BF /* Pods-StitchWidget.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
