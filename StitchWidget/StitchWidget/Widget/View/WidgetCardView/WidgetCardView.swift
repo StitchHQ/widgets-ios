@@ -349,7 +349,7 @@ public class WidgetCardView: UIView {
         if isCardMask {
             if backCardNo.text == "XXXX XXXX XXXX \(panLastFour)" {
                 backCardNo.text = accountNo
-                if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
+                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
                 }else{
                     let date = Date()
                     UserDefaults.standard.set(date, forKey: "MaskTime")
@@ -365,7 +365,7 @@ public class WidgetCardView: UIView {
         if isCvvMask {
             if backCvvLabel.text == "XXX" {
                 backCvvLabel.text = cvv
-                if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
+                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
                 }else{
                     let date = Date()
                     UserDefaults.standard.set(date, forKey: "MaskTime")
@@ -381,7 +381,7 @@ public class WidgetCardView: UIView {
         if isCardMask {
             if cardNumberLabel.text == "XXXX XXXX XXXX \(panLastFour)" {
                 cardNumberLabel.text = accountNo
-                if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
+                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
                 }else{
                     let date = Date()
                     
@@ -397,7 +397,7 @@ public class WidgetCardView: UIView {
             
             if cvvLabel.text == "XXX" {
                 cvvLabel.text = cvv
-                if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
+                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
                 }else{
                     let date = Date()
                     
