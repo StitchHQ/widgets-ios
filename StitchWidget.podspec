@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://zgit.csez.zohocorpin.com/desk-mobile/zd-portal-utilities'
   s.license          = { :type => 'MIT', :text => 'LICENSE' }
   s.authors          = { 'sudarvizhi' => 'sudarvizhi2611@gmail.com'}
-  s.source           = { :git => 'https://github.com/StitchHQ/widgets-ios', :tag => s.version }
+  s.source           = { :git => 'https://github.com/StitchHQ/widgets-ios.git', :tag => s.version }
 
   s.platform         = :ios, '13.0'
 
