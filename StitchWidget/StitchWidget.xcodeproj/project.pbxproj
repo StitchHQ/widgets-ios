@@ -38,8 +38,6 @@
 		7342FBF42AE0F0F000F82616 /* EuclidFlex-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBCD2AE0F0F000F82616 /* EuclidFlex-Regular.ttf */; };
 		7342FBF72AE0F0F000F82616 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD32AE0F0F000F82616 /* PinView.swift */; };
 		7342FBF82AE0F0F000F82616 /* PinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBD42AE0F0F000F82616 /* PinView.xib */; };
-		7342FBF92AE0F0F000F82616 /* ActivateCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7342FBD62AE0F0F000F82616 /* ActivateCardView.xib */; };
-		7342FBFA2AE0F0F000F82616 /* ActivateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD72AE0F0F000F82616 /* ActivateCardView.swift */; };
 		7342FBFB2AE0F0F000F82616 /* AESUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBD92AE0F0F000F82616 /* AESUtils.swift */; };
 		7342FBFC2AE0F0F000F82616 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBDB2AE0F0F000F82616 /* Service.swift */; };
 		736AFE3A2D425F2400294CF7 /* WidgetCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 736AFE382D425F2400294CF7 /* WidgetCardView.xib */; };
@@ -87,8 +85,6 @@
 		7342FBCD2AE0F0F000F82616 /* EuclidFlex-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidFlex-Regular.ttf"; sourceTree = "<group>"; };
 		7342FBD32AE0F0F000F82616 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		7342FBD42AE0F0F000F82616 /* PinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinView.xib; sourceTree = "<group>"; };
-		7342FBD62AE0F0F000F82616 /* ActivateCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateCardView.xib; sourceTree = "<group>"; };
-		7342FBD72AE0F0F000F82616 /* ActivateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivateCardView.swift; sourceTree = "<group>"; };
 		7342FBD92AE0F0F000F82616 /* AESUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AESUtils.swift; sourceTree = "<group>"; };
 		7342FBDB2AE0F0F000F82616 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		736AFE372D425F2400294CF7 /* WidgetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCardView.swift; sourceTree = "<group>"; };
@@ -261,7 +257,6 @@
 			children = (
 				736AFE392D425F2400294CF7 /* WidgetCardView */,
 				7342FBD22AE0F0F000F82616 /* PinView */,
-				7342FBD52AE0F0F000F82616 /* ActivateCardView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,15 +268,6 @@
 				7342FBD42AE0F0F000F82616 /* PinView.xib */,
 			);
 			path = PinView;
-			sourceTree = "<group>";
-		};
-		7342FBD52AE0F0F000F82616 /* ActivateCardView */ = {
-			isa = PBXGroup;
-			children = (
-				7342FBD62AE0F0F000F82616 /* ActivateCardView.xib */,
-				7342FBD72AE0F0F000F82616 /* ActivateCardView.swift */,
-			);
-			path = ActivateCardView;
 			sourceTree = "<group>";
 		};
 		7342FBD82AE0F0F000F82616 /* AESUtils */ = {
@@ -435,7 +421,6 @@
 				7342FBEE2AE0F0F000F82616 /* SansSerif-Medium.ttf in Resources */,
 				7342FBED2AE0F0F000F82616 /* Serif-Medium.ttf in Resources */,
 				7342FBEF2AE0F0F000F82616 /* EuclidFlex-SemiBold.ttf in Resources */,
-				7342FBF92AE0F0F000F82616 /* ActivateCardView.xib in Resources */,
 				7342FBEA2AE0F0F000F82616 /* EuclidFlex-Bold.ttf in Resources */,
 				736AFE3A2D425F2400294CF7 /* WidgetCardView.xib in Resources */,
 				7342FBE92AE0F0F000F82616 /* Roboto-Medium.ttf in Resources */,
@@ -484,7 +469,6 @@
 				7342FBE32AE0F0F000F82616 /* ExtensionTextField.swift in Sources */,
 				7342FBE02AE0F0F000F82616 /* ApplicationExtension.swift in Sources */,
 				733DC1062D6074AC003D9C01 /* ExtensionCrypto.swift in Sources */,
-				7342FBFA2AE0F0F000F82616 /* ActivateCardView.swift in Sources */,
 				7342FBF02AE0F0F000F82616 /* Fonts.swift in Sources */,
 				7342FBE72AE0F0F000F82616 /* NetworkCall.swift in Sources */,
 				7342FBE12AE0F0F000F82616 /* ExtensionButton.swift in Sources */,

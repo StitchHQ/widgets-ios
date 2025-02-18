@@ -32,7 +32,7 @@ public class PinView: UIView {
         initalLoad()
     }
     
-    fileprivate func initalLoad(){
+    private func initalLoad(){
         newPinTextField.delegate = self
         oldPinTextField.delegate = self
         newPinTextField.keyboardType = .numberPad
