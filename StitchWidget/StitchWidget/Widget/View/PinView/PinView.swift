@@ -48,7 +48,7 @@ public class PinView: UIView {
       
 
     }
-    fileprivate func setUserDefault(widget: NSMutableArray){
+    public func setUserDefault(widget: NSMutableArray){
         if widget.count != 0 {
             
             for item in widget {
