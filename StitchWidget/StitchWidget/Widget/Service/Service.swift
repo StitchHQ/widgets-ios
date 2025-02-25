@@ -9,27 +9,10 @@ import Foundation
 import UIKit
 import Alamofire
 
-
-struct AppEnvironment {
-    static var env = Environment.Qa
-}
-
-enum Environment: String {
-    case Qa
-    case Sit
-    
-    var baseURL: String {
-        switch self {
-        case .Qa:   return "https://dev.stitch.fi/qa/v1/widgets/"
-        case .Sit:  return "https://sit.stitch.fi/qa/v1/widgets/"
-        }
-    }
-}
+public let baseUrl = ""
 
 enum servicesURL :String{
     
-    static let baseUrl = AppEnvironment.env.baseURL
-
     //View Card
     case sessionKey = "secure/sessionkey"
     case secureCard = "secure/card"

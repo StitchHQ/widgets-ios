@@ -437,7 +437,7 @@ extension WidgetCardView  {
             "token": token,
             "deviceFingerprint": deviceFinger
         ] as [String : Any]
-        let url = servicesURL.baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
@@ -454,7 +454,7 @@ extension WidgetCardView  {
         }
     }
     fileprivate func getCardDetails(body: [String : Any]) {
-        let url = servicesURL.baseUrl + servicesURL.secureCard.rawValue
+        let url = baseUrl + servicesURL.secureCard.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<GetCardDetailEntity,Error>) in
             switch result{

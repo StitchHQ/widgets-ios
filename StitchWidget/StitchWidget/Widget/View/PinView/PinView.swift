@@ -296,7 +296,7 @@ extension PinView  {
 extension PinView  {
     
     fileprivate func setPinAPI(body: [String: Any]){
-        let url = servicesURL.baseUrl + servicesURL.setPin.rawValue
+        let url = baseUrl + servicesURL.setPin.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post,type: "SetPin").executeQuery(){
             (result: Result<setPinSuccess,Error>) in
             switch result{
@@ -326,7 +326,7 @@ extension PinView  {
 
 
 private func changePinAPI(body: [String: Any]){
-    let url = servicesURL.baseUrl + servicesURL.changePin.rawValue
+    let url = baseUrl + servicesURL.changePin.rawValue
     ServiceNetworkCall(data: body, url: url, method: .post,type: "ResetPin").executeQuery(){
         (result: Result<setPinSuccess,Error>) in
         switch result{
@@ -356,7 +356,7 @@ private func changePinAPI(body: [String: Any]){
 
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
-        let url = servicesURL.baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
