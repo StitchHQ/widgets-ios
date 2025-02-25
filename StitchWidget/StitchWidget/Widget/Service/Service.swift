@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Alamofire
 
-public let baseUrl = ""
+public var baseUrl = ""
 
 enum servicesURL :String{
     
