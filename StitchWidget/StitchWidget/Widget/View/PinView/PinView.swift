@@ -245,9 +245,8 @@ public class PinView: UIView {
 }
 extension PinView  {
     
-    public func sessionKey(secureToken: String,baseURL: String) {
+    public func sessionKey(secureToken: String) {
         token = secureToken
-        baseUrl = baseURL
         self.cardType = "activated"
         let data = [
             "token": token,

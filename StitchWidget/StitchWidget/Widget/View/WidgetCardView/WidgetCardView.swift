@@ -299,10 +299,9 @@ public class WidgetCardView: UIView {
         self.validThruLabel.font = UIFont(name:font, size: size)
         self.validThruValue.font = UIFont(name:font, size: size)
     }
-    public func sessionKey(token: String,baseURL: String) {
+    public func sessionKey(token: String) {
         styleType = "Default"
-        baseUrl = baseURL
-        deviceFingerPrint = setDeviceFingerPrint()
+        deviceFingerPrint = setDeviceFingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
