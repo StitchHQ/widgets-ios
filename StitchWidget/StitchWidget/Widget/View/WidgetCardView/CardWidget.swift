@@ -9,7 +9,7 @@ import UIKit
 import PassKit
 
 var deviceFingerPrint = ""
-public class WidgetCardView: UIView {
+public class CardWidget: UIView {
     
     @IBOutlet weak var backStripeView: UIView!
     @IBOutlet weak var backCvvLabel: UILabel!
@@ -430,7 +430,7 @@ public class WidgetCardView: UIView {
     }
     
 }
-extension WidgetCardView  {
+extension CardWidget  {
     
     fileprivate func sessionKeyAPI(token: String,deviceFinger: String){
         let body = [
@@ -553,7 +553,7 @@ extension CAGradientLayer {
         self.type = type
     }
 }
-extension WidgetCardView {
+extension CardWidget {
 /**
      Init enrollment process
      */
@@ -612,7 +612,7 @@ private struct Card {
 }
 
 
-extension WidgetCardView: PKAddPaymentPassViewControllerDelegate {
+extension CardWidget: PKAddPaymentPassViewControllerDelegate {
     public func addPaymentPassViewController(
         _ controller: PKAddPaymentPassViewController,
         generateRequestWithCertificateChain certificates: [Data],

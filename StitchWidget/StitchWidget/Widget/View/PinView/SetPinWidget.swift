@@ -6,8 +6,8 @@
 //
 
 import UIKit
-//import IQKeyboardManagerSwift
-public class PinView: UIView {
+
+public class SetPinWidget: UIView {
     
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var activateView: UIView!
@@ -243,7 +243,7 @@ public class PinView: UIView {
         return true
     }
 }
-extension PinView  {
+extension SetPinWidget  {
     
     public func sessionKey(secureToken: String) {
         token = secureToken
@@ -293,7 +293,7 @@ extension PinView  {
     
 
 }
-extension PinView  {
+extension SetPinWidget  {
     
     fileprivate func setPinAPI(body: [String: Any]){
         let url = baseUrl + servicesURL.setPin.rawValue
@@ -378,7 +378,7 @@ private func changePinAPI(body: [String: Any]){
         }
     }
 }
-extension PinView: UITextFieldDelegate {
+extension SetPinWidget: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return true
