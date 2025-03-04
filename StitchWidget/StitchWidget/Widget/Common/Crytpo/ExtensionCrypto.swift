@@ -57,7 +57,7 @@ func getIPAddress() -> String {
     }
     return address ?? ""
 }
-func setDeviceFingerPrint()-> String{
+public func setDeviceFingerPrint()-> String{
     let strIPAddress : String = getIPAddress()
     let modelName = UIDevice.modelName
     let device = UIDevice.current
