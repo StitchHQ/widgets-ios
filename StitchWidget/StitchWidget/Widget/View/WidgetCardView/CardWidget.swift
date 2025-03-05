@@ -114,7 +114,7 @@ public class CardWidget: UIView {
         }
     }
     
-    public func setUserDefault(widget: [WidgetSettingEntity]){
+    public func setWidgetSetting(widget: [WidgetSettingEntity]){
        
         if widget.count == 0 {
             setDefaultStype()

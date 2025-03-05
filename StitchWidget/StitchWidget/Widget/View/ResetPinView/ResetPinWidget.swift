@@ -48,7 +48,7 @@ public class ResetPinWidget: UIView {
         setTypePin(pintype: "change_pin")
 
     }
-    public func setUserDefault(widget: [WidgetSettingEntity]){
+    public func setWidgetSetting(widget: [WidgetSettingEntity]){
         if widget.count != 0 {
             
             for item in widget {
