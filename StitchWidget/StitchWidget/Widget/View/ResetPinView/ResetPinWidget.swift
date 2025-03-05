@@ -45,38 +45,28 @@ public class ResetPinWidget: UIView {
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         activateLabel.backgroundColor = .clear
-      
+        setTypePin(pintype: "change_pin")
 
     }
-    public func setUserDefault(widget: NSMutableArray){
+    public func setUserDefault(widget: [WidgetSettingEntity]){
         if widget.count != 0 {
             
             for item in widget {
-                let data = item as! [String: Any]
-                let typeVal = data["type"] as! String
-                let backgroundColor = data["backgroundColor"] as! UIColor
-                let fontColor = data["fontColor"] as! UIColor
-                let buttonfontColor = data["buttonfontColor"] as! UIColor
-                let buttonBackgroundColor = data["buttonBackgroundColor"] as! UIColor
-                let font = data["font"] as! String
-                let fontsize = data["fontSize"] as! Float
-                let styleSheetTextField = data["styleSheetType"] as? String ?? "Outlined"
 
-                setfontValue(font: font,fontSize: fontsize)
-                setStyleSheet(styleSheet: styleSheetTextField)
+                setfontValue(font: item.font,fontSize: item.fontSize)
+                setStyleSheet(styleSheet: item.styleSheetType ?? "Outlined")
 
-                if type == typeVal {
+                if type == item.type {
                     
-                    olfPinLabel.textColor = fontColor
-                    newPinLabel.textColor = fontColor
-                    pinRequiredLabel.textColor = fontColor
-                    activateLabel.textColor = fontColor
-                    activateView.backgroundColor = backgroundColor
-                    confirmPinLabel.textColor = fontColor
-                    pinButton.setTitleColor(buttonfontColor, for: .normal)
-                    pinButton.backgroundColor = buttonBackgroundColor
+                    olfPinLabel.textColor = item.fontColor
+                    newPinLabel.textColor = item.fontColor
+                    pinRequiredLabel.textColor = item.fontColor
+                    activateLabel.textColor = item.fontColor
+                    activateView.backgroundColor = item.backgroundColor
+                    confirmPinLabel.textColor = item.fontColor
+                    pinButton.setTitleColor(item.buttonfontColor, for: .normal)
+                    pinButton.backgroundColor = item.buttonBackgroundColor
                     
-
                     return
                 }else{
                     setfontValue(font: "Inter-Medium",fontSize: 16.0)
@@ -130,7 +120,7 @@ public class ResetPinWidget: UIView {
         confirmTextField.font = UIFont(name:font, size: size)
         pinButton.titleLabel?.font = UIFont(name:font, size: size)
     }
-    public func setTypePin(pintype: String){
+    private func setTypePin(pintype: String){
             overView.isHidden = false
             activateView.isHidden = true
         
