@@ -10,41 +10,41 @@ import UIKit
 
 public class WidgetSettingEntity: NSObject, NSCoding {
 
-    let type : String
-    let backgroundColor : UIColor?
-    let backgroundImg : UIImage?
-    let fontColor : UIColor
-    let iscvvMask : Bool?
-    let font : String
-    let fontSize : Float
-    let isCardNoMask : Bool?
-    let cardNoTop : String?
-    let isEyeMask : Bool?
-    let cardNoBottom : String?
-    let cvvLeft : String?
-    let cvvRight : String?
-    let cvvTop : String?
-    let cvvBottom : String?
-    let dateLeft : String?
-    let dateRight : String?
-    let dateTop : String?
-    let dateBottom : String?
-    let cardNoRight : String?
-    let cardNoLeft : String?
-    let buttonfontColor : UIColor
-    let buttonBackgroundColor : UIColor
-    let expLeft : String?
-    let expRight : String?
-    let expTop : String?
-    let expBottom : String?
-    let styleSheetType: String?
+    public let type : String
+    public let backgroundColor : UIColor?
+    public let backgroundImg : UIImage?
+    public let fontColor : UIColor?
+    public let iscvvMask : Bool?
+    public let font : String?
+    public let fontSize : Float?
+    public let isCardNoMask : Bool?
+    public let cardNoTop : String?
+    public let isEyeMask : Bool?
+    public let cardNoBottom : String?
+    public let cvvLeft : String?
+    public let cvvRight : String?
+    public let cvvTop : String?
+    public let cvvBottom : String?
+    public let dateLeft : String?
+    public let dateRight : String?
+    public let dateTop : String?
+    public let dateBottom : String?
+    public let cardNoRight : String?
+    public let cardNoLeft : String?
+    public let buttonfontColor : UIColor?
+    public let buttonBackgroundColor : UIColor?
+    public let expLeft : String?
+    public let expRight : String?
+    public let expTop : String?
+    public let expBottom : String?
+    public let styleSheetType: String?
     
     init(type : String,backgroundColor : UIColor? = nil
          ,backgroundImg : UIImage? = nil
-         ,fontColor : UIColor
+         ,fontColor : UIColor? = nil
          ,iscvvMask : Bool? = nil
-         ,font : String
-         ,fontSize : Float
+         ,font : String? = nil
+         ,fontSize : Float? = nil
          ,isCardNoMask : Bool? = nil
          ,cardNoTop : String? = nil
          ,isEyeMask : Bool? = nil
@@ -59,8 +59,8 @@ public class WidgetSettingEntity: NSObject, NSCoding {
          ,dateBottom : String? = nil
          ,cardNoRight : String? = nil
          ,cardNoLeft : String? = nil
-         ,buttonfontColor : UIColor
-         ,buttonBackgroundColor : UIColor
+         ,buttonfontColor : UIColor? = nil
+         ,buttonBackgroundColor : UIColor? = nil
          ,expLeft : String? = nil
          ,expRight : String? = nil
          ,expTop : String? = nil

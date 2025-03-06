@@ -123,7 +123,7 @@ public class CardWidget: UIView {
             for item in widget {
                 if item.type == "View Card" {
                     
-                    setfontValue(font: item.font,fontSize: item.fontSize)
+                    setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
 
                     backCardView.backgroundColor = backgroundColor
                     isCardMask = item.isCardNoMask ?? false
