@@ -53,7 +53,7 @@ public class ResetPinWidget: UIView {
             
             for item in widget {
 
-                setfontValue(font: item.font,fontSize: item.fontSize)
+                setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
                 setStyleSheet(styleSheet: item.styleSheetType ?? "Outlined")
 
                 if type == item.type {

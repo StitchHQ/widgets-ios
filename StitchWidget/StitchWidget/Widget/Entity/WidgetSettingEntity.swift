@@ -39,7 +39,7 @@ public class WidgetSettingEntity: NSObject, NSCoding {
     public let expBottom : String?
     public let styleSheetType: String?
     
-    init(type : String,backgroundColor : UIColor? = nil
+    public init(type : String,backgroundColor : UIColor? = nil
          ,backgroundImg : UIImage? = nil
          ,fontColor : UIColor? = nil
          ,iscvvMask : Bool? = nil
@@ -97,6 +97,7 @@ public class WidgetSettingEntity: NSObject, NSCoding {
         self.styleSheetType = styleSheetType
     }
     required public init?(coder aDecoder: NSCoder) {
+        
           self.type = aDecoder.decodeObject(forKey: "type")as? String ?? ""
         self.backgroundColor = aDecoder.decodeObject(forKey: "backgroundColor") as? UIColor ?? .blueColor
         self.backgroundImg = aDecoder.decodeObject(forKey: "backgroundImg") as? UIImage ?? nil
