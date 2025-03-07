@@ -82,10 +82,7 @@ public class WidgetSettingEntity: NSObject, NSCoding {
         self.cardNoLeft = cardNoLeft
         self.buttonfontColor = buttonfontColor
         self.buttonBackgroundColor = buttonBackgroundColor
-        self.expLeft = expLeft
-        self.expRight = expRight
-        self.expTop = expTop
-        self.expBottom = expBottom
+   
         self.styleSheetType = styleSheetType
     }
     required public init?(coder aDecoder: NSCoder) {
@@ -129,10 +126,7 @@ public class WidgetSettingEntity: NSObject, NSCoding {
         
         self.buttonfontColor = aDecoder.decodeObject(forKey: "buttonfontColor") as? UIColor ?? .white
         self.buttonBackgroundColor = aDecoder.decodeObject(forKey: "buttonBackgroundColor") as? UIColor ?? .blueColor
-        self.expLeft = aDecoder.decodeObject(forKey: "expLeft") as? String ?? ""
-        self.expRight = aDecoder.decodeObject(forKey: "expRight") as? String ?? ""
-        self.expTop = aDecoder.decodeObject(forKey: "expTop") as? String ?? ""
-        self.expBottom = aDecoder.decodeObject(forKey: "expBottom") as? String ?? ""
+     
         self.styleSheetType = aDecoder.decodeObject(forKey: "styleSheetType") as? String ?? ""
 
       }
@@ -161,10 +155,6 @@ public class WidgetSettingEntity: NSObject, NSCoding {
           aCoder.encode(cardNoLeft, forKey: "cardNoLeft")
           aCoder.encode(buttonfontColor, forKey: "buttonfontColor")
           aCoder.encode(buttonBackgroundColor, forKey: "buttonBackgroundColor")
-          aCoder.encode(expLeft, forKey: "expLeft")
-          aCoder.encode(expRight, forKey: "expRight")
-          aCoder.encode(expTop, forKey: "expTop")
-          aCoder.encode(expBottom, forKey: "expBottom")
           aCoder.encode(styleSheetType, forKey: "styleSheetType")
 
       }

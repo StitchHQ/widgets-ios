@@ -173,7 +173,7 @@ public class CardWidget: UIView {
                         frontImgView.image = item.backgroundImg
                     }
                     
-                    self.setPaddingTextField(bottomDate: item.dateBottom!,topDate: item.dateTop!,leadCvv:item.cvvLeft!,leadDate: item.dateLeft!,BottomCvv: item.cvvBottom!,trailDate: item.dateRight!,TrailCvv: item.cvvRight!,topCardNo: item.cardNoTop!,BottomCardNo: item.cardNoBottom!,cvvTop: item.cvvTop!,cardNoLeft: item.cardNoLeft!,cardNoRight: item.cardNoRight!,validthruLead: item.expLeft!,validthruTrail: item.expRight!,validthrutop: item.expTop!,validthrubottom: item.expBottom!)
+                    self.setPaddingTextField(bottomDate: item.dateBottom!,topDate: item.dateTop!,leadCvv:item.cvvLeft!,leadDate: item.dateLeft!,BottomCvv: item.cvvBottom!,trailDate: item.dateRight!,TrailCvv: item.cvvRight!,topCardNo: item.cardNoTop!,BottomCardNo: item.cardNoBottom!,cvvTop: item.cvvTop!,cardNoLeft: item.cardNoLeft!,cardNoRight: item.cardNoRight!)
                 }else {
                     setDefaultStype()
                 }
@@ -181,7 +181,7 @@ public class CardWidget: UIView {
         }
         
     }
-    fileprivate func setPaddingTextField(bottomDate: String,topDate: String,leadCvv: String,leadDate: String,BottomCvv: String,trailDate: String,TrailCvv: String,topCardNo: String,BottomCardNo: String,cvvTop: String,cardNoLeft: String,cardNoRight: String,validthruLead: String,validthruTrail: String,validthrutop: String,validthrubottom: String){
+    fileprivate func setPaddingTextField(bottomDate: String,topDate: String,leadCvv: String,leadDate: String,BottomCvv: String,trailDate: String,TrailCvv: String,topCardNo: String,BottomCardNo: String,cvvTop: String,cardNoLeft: String,cardNoRight: String){
         if !cardNoLeft.isEmpty && cardNoLeft != "0" {
             self.cardNoLeadConstant.constant = cardNoLeft.CGFloatValue() ?? 0.0
             self.backCardNoLead.constant = cardNoLeft.CGFloatValue() ?? 0.0
@@ -271,7 +271,7 @@ public class CardWidget: UIView {
     }
     public func sessionKey(token: String) {
         styleType = "Default"
-        deviceFingerPrint = setDeviceFingerprint()
+        deviceFingerPrint = getDevicFingingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
