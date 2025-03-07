@@ -33,10 +33,6 @@ public class WidgetSettingEntity: NSObject, NSCoding {
     public let cardNoLeft : String?
     public let buttonfontColor : UIColor?
     public let buttonBackgroundColor : UIColor?
-    public let expLeft : String?
-    public let expRight : String?
-    public let expTop : String?
-    public let expBottom : String?
     public let styleSheetType: String?
     
     public init(type : String,backgroundColor : UIColor? = nil
@@ -61,10 +57,6 @@ public class WidgetSettingEntity: NSObject, NSCoding {
          ,cardNoLeft : String? = nil
          ,buttonfontColor : UIColor? = nil
          ,buttonBackgroundColor : UIColor? = nil
-         ,expLeft : String? = nil
-         ,expRight : String? = nil
-         ,expTop : String? = nil
-         ,expBottom : String? = nil
          , styleSheetType: String? = nil) {
      
         self.type = type

@@ -18,7 +18,6 @@ enum servicesURL :String{
     case secureCard = "secure/card"
     case setPin = "secure/setpin"
     case changePin = "secure/changepin"
-    case activateCard = "stitch-rest-api/v1/widgets/secure/card/activation"
 }
 class ServiceNetworkCall : NSObject{
 
