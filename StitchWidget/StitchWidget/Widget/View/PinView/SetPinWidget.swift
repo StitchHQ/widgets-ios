@@ -6,8 +6,8 @@
 //
 
 import UIKit
-//import IQKeyboardManagerSwift
-public class PinView: UIView {
+
+public class SetPinWidget: UIView {
     
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var activateView: UIView!
@@ -45,36 +45,28 @@ public class PinView: UIView {
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         activateLabel.backgroundColor = .clear
-      
+        setTypePin(pintype: "set_pin")
+
 
     }
-    public func setUserDefault(widget: NSMutableArray){
+    public func setWidgetSetting(widget: [WidgetSettingEntity]){
         if widget.count != 0 {
             
             for item in widget {
-                let data = item as! [String: Any]
-                let typeVal = data["type"] as! String
-                let backgroundColor = data["backgroundColor"] as! UIColor
-                let fontColor = data["fontColor"] as! UIColor
-                let buttonfontColor = data["buttonfontColor"] as! UIColor
-                let buttonBackgroundColor = data["buttonBackgroundColor"] as! UIColor
-                let font = data["font"] as! String
-                let fontsize = data["fontSize"] as! Float
-                let styleSheetTextField = data["styleSheetType"] as? String ?? "Outlined"
 
-                setfontValue(font: font,fontSize: fontsize)
-                setStyleSheet(styleSheet: styleSheetTextField)
+                setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
+                setStyleSheet(styleSheet: item.styleSheetType ?? "Outlined")
 
-                if type == typeVal {
+                if type == item.type {
                     
-                    olfPinLabel.textColor = fontColor
-                    newPinLabel.textColor = fontColor
-                    pinRequiredLabel.textColor = fontColor
-                    activateLabel.textColor = fontColor
+                    olfPinLabel.textColor = item.fontColor
+                    newPinLabel.textColor = item.fontColor
+                    pinRequiredLabel.textColor = item.fontColor
+                    activateLabel.textColor = item.fontColor
                     activateView.backgroundColor = backgroundColor
-                    confirmPinLabel.textColor = fontColor
-                    pinButton.setTitleColor(buttonfontColor, for: .normal)
-                    pinButton.backgroundColor = buttonBackgroundColor
+                    confirmPinLabel.textColor = item.fontColor
+                    pinButton.setTitleColor(item.buttonfontColor, for: .normal)
+                    pinButton.backgroundColor = item.buttonBackgroundColor
                     
 
                     return
@@ -130,7 +122,7 @@ public class PinView: UIView {
         confirmTextField.font = UIFont(name:font, size: size)
         pinButton.titleLabel?.font = UIFont(name:font, size: size)
     }
-    public func setTypePin(pintype: String){
+    private func setTypePin(pintype: String){
             overView.isHidden = false
             activateView.isHidden = true
         
@@ -243,11 +235,10 @@ public class PinView: UIView {
         return true
     }
 }
-extension PinView  {
+extension SetPinWidget  {
     
-    public func sessionKey(secureToken: String,baseURL: String) {
+    public func sessionKey(secureToken: String) {
         token = secureToken
-        baseUrl = baseURL
         self.cardType = "activated"
         let data = [
             "token": token,
@@ -294,7 +285,7 @@ extension PinView  {
     
 
 }
-extension PinView  {
+extension SetPinWidget  {
     
     fileprivate func setPinAPI(body: [String: Any]){
         let url = baseUrl + servicesURL.setPin.rawValue
@@ -379,7 +370,7 @@ private func changePinAPI(body: [String: Any]){
         }
     }
 }
-extension PinView: UITextFieldDelegate {
+extension SetPinWidget: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return true

@@ -9,7 +9,7 @@ import UIKit
 import PassKit
 
 var deviceFingerPrint = ""
-public class WidgetCardView: UIView {
+public class CardWidget: UIView {
     
     @IBOutlet weak var backStripeView: UIView!
     @IBOutlet weak var backCvvLabel: UILabel!
@@ -114,50 +114,23 @@ public class WidgetCardView: UIView {
         }
     }
     
-    public func setUserDefault(widget: NSMutableArray){
+    public func setWidgetSetting(widget: [WidgetSettingEntity]){
        
         if widget.count == 0 {
             setDefaultStype()
         }else{
             
             for item in widget {
-                let data = item as! [String: Any]
-                let type = data["type"] as! String
-                let backgroundColor = data["backgroundColor"] as! UIColor
-                let backgroundImg = data["backgroundImg"] as! UIImage
-                let fontColor = data["fontColor"] as! UIColor
-                let iscvvMask = data["iscvvMask"] as! Bool
-                let iscardNoMask = data["isCardNoMask"] as! Bool
-                let isEyeMask = data["isEyeMask"] as! Bool
-                let font = data["font"] as! String
-                let fontsize = data["fontSize"] as! Float
-                
-                let cardNoTop = data["cardNoTop"] as! String
-                let cardNoBottom = data["cardNoBottom"] as! String
-                let cvvLeft = data["cvvLeft"] as! String
-                let cvvRight = data["cvvRight"] as! String
-                let cvvTop = data["cvvTop"] as! String
-                let cvvBottom = data["cvvBottom"] as! String
-                let dateLeft = data["dateLeft"] as! String
-                let dateRight = data["dateRight"] as! String
-                let dateTop = data["dateTop"] as! String
-                let dateBottom = data["dateBottom"] as! String
-                let cardNoLeft = data["cardNoLeft"] as! String
-                let cardNoRight = data["cardNoRight"] as! String
-                let ValLeft = data["expLeft"] as! String
-                let ValRight = data["expRight"] as! String
-                let ValTop = data["expTop"] as! String
-                let ValBottom = data["expBottom"] as! String
-                if type == "View Card" {
+                if item.type == "View Card" {
                     
-                    setfontValue(font: font,fontSize: fontsize)
+                    setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
 
                     backCardView.backgroundColor = backgroundColor
-                    isCardMask = iscardNoMask
-                    isCvvMask = iscvvMask
-                    self.isCvvEye = isEyeMask
-                    self.isCardNoEye = isEyeMask
-                    if isEyeMask {
+                    isCardMask = item.isCardNoMask ?? false
+                    isCvvMask = item.iscvvMask ?? false
+                    self.isCvvEye = item.isEyeMask ?? false
+                    self.isCardNoEye = item.isEyeMask ?? false
+                    if item.isEyeMask ?? false {
                         cvvEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
                         cardNoEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
                         cvvEyeBtn.isHidden = false
@@ -165,9 +138,6 @@ public class WidgetCardView: UIView {
                     }else{
                         cvvEyeBtn.isHidden = true
                         cardNoEyeBtn.isHidden = true
-                    }
-                    if isEyeMask {
-                        
                     }
                     let date = Date()
 
@@ -180,30 +150,30 @@ public class WidgetCardView: UIView {
                             isCardMask = false
                             isCvvMask = false
                         }else{
-                            isCardMask = iscardNoMask
-                            isCvvMask = iscvvMask
+                            isCardMask = item.isCardNoMask ?? false
+                            isCvvMask = item.iscvvMask ?? false
                         }
                     }
                     
            
                     frontCardView.backgroundColor = backgroundColor
-                    cvvLabel.textColor = fontColor
-                    cardNumberLabel.textColor = fontColor
-                    nameOnCardLabel.textColor = fontColor
-                    backCvvLabel.textColor = fontColor
-                    backDateLabel.textColor = fontColor
-                    backCardNo.textColor = fontColor
-                    cvvTitleLabel.textColor = fontColor
-                    titleCardName.textColor = fontColor
-                    validThruLabel.textColor = fontColor
-                    validThruValue.textColor = fontColor
+                    cvvLabel.textColor = item.fontColor
+                    cardNumberLabel.textColor = item.fontColor
+                    nameOnCardLabel.textColor = item.fontColor
+                    backCvvLabel.textColor = item.fontColor
+                    backDateLabel.textColor = item.fontColor
+                    backCardNo.textColor = item.fontColor
+                    cvvTitleLabel.textColor = item.fontColor
+                    titleCardName.textColor = item.fontColor
+                    validThruLabel.textColor = item.fontColor
+                    validThruValue.textColor = item.fontColor
                     
-                    if backgroundImg != UIImage(named: "imageadd") {
-                        backImg.image = backgroundImg
-                        frontImgView.image = backgroundImg
+                    if item.backgroundImg != UIImage(named: "imageadd") {
+                        backImg.image = item.backgroundImg
+                        frontImgView.image = item.backgroundImg
                     }
                     
-                    self.setPaddingTextField(bottomDate: dateBottom,topDate: dateTop,leadCvv:cvvLeft,leadDate: dateLeft,BottomCvv: cvvBottom,trailDate: dateRight,TrailCvv: cvvRight,topCardNo: cardNoTop,BottomCardNo: cardNoBottom,cvvTop: cvvTop,cardNoLeft: cardNoLeft,cardNoRight: cardNoRight,validthruLead: ValLeft,validthruTrail: ValRight,validthrutop: ValTop,validthrubottom: ValBottom)
+                    self.setPaddingTextField(bottomDate: item.dateBottom!,topDate: item.dateTop!,leadCvv:item.cvvLeft!,leadDate: item.dateLeft!,BottomCvv: item.cvvBottom!,trailDate: item.dateRight!,TrailCvv: item.cvvRight!,topCardNo: item.cardNoTop!,BottomCardNo: item.cardNoBottom!,cvvTop: item.cvvTop!,cardNoLeft: item.cardNoLeft!,cardNoRight: item.cardNoRight!)
                 }else {
                     setDefaultStype()
                 }
@@ -211,7 +181,7 @@ public class WidgetCardView: UIView {
         }
         
     }
-    fileprivate func setPaddingTextField(bottomDate: String,topDate: String,leadCvv: String,leadDate: String,BottomCvv: String,trailDate: String,TrailCvv: String,topCardNo: String,BottomCardNo: String,cvvTop: String,cardNoLeft: String,cardNoRight: String,validthruLead: String,validthruTrail: String,validthrutop: String,validthrubottom: String){
+    fileprivate func setPaddingTextField(bottomDate: String,topDate: String,leadCvv: String,leadDate: String,BottomCvv: String,trailDate: String,TrailCvv: String,topCardNo: String,BottomCardNo: String,cvvTop: String,cardNoLeft: String,cardNoRight: String){
         if !cardNoLeft.isEmpty && cardNoLeft != "0" {
             self.cardNoLeadConstant.constant = cardNoLeft.CGFloatValue() ?? 0.0
             self.backCardNoLead.constant = cardNoLeft.CGFloatValue() ?? 0.0
@@ -299,10 +269,9 @@ public class WidgetCardView: UIView {
         self.validThruLabel.font = UIFont(name:font, size: size)
         self.validThruValue.font = UIFont(name:font, size: size)
     }
-    public func sessionKey(token: String,baseURL: String) {
+    public func sessionKey(token: String) {
         styleType = "Default"
-        baseUrl = baseURL
-        deviceFingerPrint = setDeviceFingerPrint()
+        deviceFingerPrint = getDevicFingingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
@@ -431,7 +400,7 @@ public class WidgetCardView: UIView {
     }
     
 }
-extension WidgetCardView  {
+extension CardWidget  {
     
     fileprivate func sessionKeyAPI(token: String,deviceFinger: String){
         let body = [
@@ -554,7 +523,7 @@ extension CAGradientLayer {
         self.type = type
     }
 }
-extension WidgetCardView {
+extension CardWidget {
 /**
      Init enrollment process
      */
@@ -613,7 +582,7 @@ private struct Card {
 }
 
 
-extension WidgetCardView: PKAddPaymentPassViewControllerDelegate {
+extension CardWidget: PKAddPaymentPassViewControllerDelegate {
     public func addPaymentPassViewController(
         _ controller: PKAddPaymentPassViewController,
         generateRequestWithCertificateChain certificates: [Data],
