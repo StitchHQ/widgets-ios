@@ -6,27 +6,34 @@
 //
 
 import Foundation
-import var CommonCrypto.CC_MD5_DIGEST_LENGTH
-import func CommonCrypto.CC_MD5
-import typealias CommonCrypto.CC_LONG
+//import var CommonCrypto.CC_MD5_DIGEST_LENGTH
+//import func CommonCrypto.CC_MD5
+//import typealias CommonCrypto.CC_LONG
 import UIKit
+import CryptoKit
+import CommonCrypto
 
-func MD5(string: String) -> Data {
-    let length = Int(CC_MD5_DIGEST_LENGTH)
-    let messageData = string.data(using:.utf8)!
-    var digestData = Data(count: length)
-    
-    _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-        messageData.withUnsafeBytes { messageBytes -> UInt8 in
-            if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
-                let messageLength = CC_LONG(messageData.count)
-                CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
-            }
-            return 0
-        }
-    }
-    return digestData
-}
+//func MD5(string: String) -> Data {
+//    let length = Int(CC_MD5_DIGEST_LENGTH)
+//    let messageData = string.data(using:.utf8)!
+//    var digestData = Data(count: length)
+//    
+//    var hash = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
+//        messageData.withUnsafeBytes { messageBytes -> UInt8 in
+//            if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
+//                let messageLength = CC_LONG(messageData.count)
+////                CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
+//        CC_MD5(messageBytes.baseAddress, CC_LONG(digestData.count), &hash)
+//
+//            }
+//            return 0
+//        }
+//    }
+//    return digestData
+//}
+
+
+
 
 
 func getIPAddress() -> String {
@@ -59,9 +66,26 @@ public func getDevicFingingerprint()-> String{
     let iosVersion = device.systemVersion
     let deviceFigerprint = "\(strIPAddress) : \(modelName) : \(device) : \(iosVersion)"
     
-    let md5Data = MD5(string:deviceFigerprint)
+    let md5Str = deviceFigerprint.hash256()
+    let md5Data = Data(md5Str.utf8)
 
     let md5Hex =  md5Data.map { String(format: "%02hhx", $0) }.joined()
     print("md5Hex: \(md5Hex)")
     return md5Hex
+}
+extension String {
+    func hash256() -> String {
+        let inputData = Data(utf8)
+        
+        if #available(iOS 13.0, *) {
+            let hashed = SHA256.hash(data: inputData)
+            return hashed.compactMap { String(format: "%02x", $0) }.joined()
+        } else {
+            var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+            inputData.withUnsafeBytes { bytes in
+                _ = CC_SHA256(bytes.baseAddress, UInt32(inputData.count), &digest)
+            }
+            return digest.makeIterator().compactMap { String(format: "%02x", $0) }.joined()
+        }
+    }
 }
