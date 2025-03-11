@@ -96,7 +96,7 @@ public class WidgetSettingEntity: NSObject, NSCoding {
 
         self.font = aDecoder.decodeObject(forKey: "font") as? String ?? ""
 
-        self.fontSize = aDecoder.decodeFloat(forKey: "fontSize") as? Float ?? ""
+        self.fontSize = aDecoder.decodeFloat(forKey: "fontSize") as? Float ?? 0.0
 
         self.isCardNoMask = aDecoder.decodeObject(forKey: "isCardNoMask") as? Bool ?? false
 
