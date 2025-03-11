@@ -91,10 +91,7 @@ class ServiceNetworkCall : NSObject{
                             self.showErrorMessage()
                         }else if code == 200 {
                             self.activityInstance.hideIndicator()
-                            if self.type == "ActivateCard" {
-                                completion(.failure(error))
-                                
-                            }else if self.type == "SetPin" {
+                            if self.type == "SetPin" {
                                 completion(.failure(error))
                                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Pin setted Successfully",buttonTitle: ConstantData.ok)
                                 

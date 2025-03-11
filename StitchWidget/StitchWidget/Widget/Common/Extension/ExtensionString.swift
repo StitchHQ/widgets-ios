@@ -29,3 +29,8 @@ extension String {
         return CGFloat(doubleValue)
     }
 }
+extension String {
+    func firstWord() -> String? {
+        return self.components(separatedBy: "-").first
+    }
+}

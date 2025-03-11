@@ -443,27 +443,12 @@ extension CardWidget  {
             let accountNumber = try AESUtils().decrypt(encryptedText: accountNo, key: self.generalKey)
             let last4 = accountNumber.suffix(4)
             panLastFour = String(last4)
-//            if isCardMask {
-//                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
-//                self.backCardNo.text = "XXXX XXXX XXXX \(panLastFour)"
-//            }else{
-//                self.cardNumberLabel.text = accountNumber
-//                self.backCardNo.text = accountNumber
-//            }
             self.accountNo = accountNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
-//            if isCvvMask {
-//                self.cvvLabel.text = "XXX"
-//                self.backCvvLabel.text = "XXX"
-//            }else{
-//                self.cvvLabel.text = cvvText
-//                self.backCvvLabel.text = cvvText
-//
-//            }
-//            if isCvvEye {
+
                 self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
                 self.cvvLabel.text = "XXX"
-//            }
+
             self.cvv = cvvText
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
             self.validThruValue.text = expiryText

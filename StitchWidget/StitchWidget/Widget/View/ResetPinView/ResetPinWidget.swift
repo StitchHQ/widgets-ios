@@ -258,14 +258,7 @@ extension ResetPinWidget  {
         
         do {
             let confirmPinEncrypt = try AESUtils().encrypt(pin: newPinTextField.text ?? "", key: generalKey)
-            if type == "set_pin" {
-                let data = [
-                    "pin": confirmPinEncrypt,
-                    "token": token,
-                    "device_fingerprint": deviceFingerPrint
-                ] as [String : Any]
-                setPinAPI(body: data)
-            }else{
+         
                 let newPinEncrypt = try AESUtils().encrypt(pin: oldPinTextField.text ?? "", key: generalKey)
                 let data = [
                     "old_pin": newPinEncrypt,
@@ -274,7 +267,7 @@ extension ResetPinWidget  {
                     "device_fingerprint": deviceFingerPrint
                 ] as [String : Any]
                 changePinAPI(body: data)
-            }
+        
             
         }catch {
             print(error)
