@@ -1,1 +1,1 @@
-# StitchWidget 
+# StitchWidget
