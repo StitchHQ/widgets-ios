@@ -45,7 +45,7 @@ public func isDeviceJailbroken() -> CardSDKError {
 #endif
 }
 
-func hasJailbreak() -> CardSDKError {
+public func hasJailbreak() -> CardSDKError {
     #if arch(i386) || arch(x86_64)
         println("Simulator")
         return CardSDKError.secureEnvironment
