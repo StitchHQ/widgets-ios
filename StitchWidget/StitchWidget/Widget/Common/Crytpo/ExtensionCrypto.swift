@@ -40,26 +40,26 @@ public func getDevicFingingerprint()-> String{
     let iosVersion = device.systemVersion
     let deviceFigerprint = "\(strIPAddress) : \(modelName) : \(device) : \(iosVersion)"
     
-    let md5Str = deviceFigerprint.hash256()
-    let md5Data = Data(md5Str.utf8)
+    let hexDigest = deviceFigerprint.data(using: .ascii)!.sha256
 
-    let md5Hex =  md5Data.map { String(format: "%02hhx", $0) }.joined()
-    print("md5Hex: \(md5Hex)")
-    return md5Hex
+    print("md5Hex: \(hexDigest)")
+    return hexDigest
 }
-extension String {
-    func hash256() -> String {
-        let inputData = Data(utf8)
-        
+private func hexString(_ iterator: Array<UInt8>.Iterator) -> String {
+    return iterator.map { String(format: "%02x", $0) }.joined()
+}
+extension Data {
+
+    public var sha256: String {
         if #available(iOS 13.0, *) {
-            let hashed = SHA256.hash(data: inputData)
-            return hashed.compactMap { String(format: "%x", $0) }.joined()
+            return hexString(SHA256.hash(data: self).makeIterator())
         } else {
             var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-            inputData.withUnsafeBytes { bytes in
-                _ = CC_SHA256(bytes.baseAddress, UInt32(inputData.count), &digest)
+            self.withUnsafeBytes { bytes in
+                _ = CC_SHA256(bytes.baseAddress, CC_LONG(self.count), &digest)
             }
-            return digest.makeIterator().compactMap { String(format: "%x", $0) }.joined()
+            return hexString(digest.makeIterator())
         }
     }
+
 }
