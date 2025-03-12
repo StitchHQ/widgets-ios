@@ -45,6 +45,22 @@ public func isDeviceJailbroken() -> CardSDKError {
 #endif
 }
 
+func hasJailbreak() -> CardSDKError {
+    #if arch(i386) || arch(x86_64)
+        println("Simulator")
+        return CardSDKError.secureEnvironment
+    #else
+    var fileManager = FileManager.default
+    if(fileManager.fileExists(atPath: "/private/var/lib/apt")) {
+            print("Jailbroken Device")
+            return CardSDKError.insecureEnvironment
+        } else {
+            print("Clean Device")
+            return CardSDKError.secureEnvironment
+        }
+    #endif
+}
+
 public enum CardSDKError: Error {
     case insecureEnvironment
     case secureEnvironment
