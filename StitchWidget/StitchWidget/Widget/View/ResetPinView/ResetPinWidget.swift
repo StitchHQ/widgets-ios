@@ -53,19 +53,19 @@ public class ResetPinWidget: UIView {
             
             for item in widget {
 
-                setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.styleSheetType ?? "Outlined")
+                setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
+                setStyleSheet(styleSheet: item.textFieldVariant ?? "Outlined")
 
-                if type == item.type {
+                if type == item.widgetStyle {
                     
                     olfPinLabel.textColor = item.fontColor
                     newPinLabel.textColor = item.fontColor
                     pinRequiredLabel.textColor = item.fontColor
                     activateLabel.textColor = item.fontColor
-                    activateView.backgroundColor = item.backgroundColor
+                    activateView.backgroundColor = item.background
                     confirmPinLabel.textColor = item.fontColor
-                    pinButton.setTitleColor(item.buttonfontColor, for: .normal)
-                    pinButton.backgroundColor = item.buttonBackgroundColor
+                    pinButton.setTitleColor(item.buttonFontColor, for: .normal)
+                    pinButton.backgroundColor = item.buttonBackground
                     
                     return
                 }else{
