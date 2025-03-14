@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00B9EB822D61C60100F87BF8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733DC10A2D6075F6003D9C01 /* Alamofire.framework */; };
-		732895D12D5FA3D800B2E244 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7342FBA72AE0F0A300F82616 /* CryptoSwift.xcframework */; };
 		733DC1062D6074AC003D9C01 /* ExtensionCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DC1052D6074AC003D9C01 /* ExtensionCrypto.swift */; };
 		733DC1092D60752F003D9C01 /* DeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DC1082D60752F003D9C01 /* DeviceExtension.swift */; };
 		7342FBDC2AE0F0F000F82616 /* GetCardDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342FBAC2AE0F0F000F82616 /* GetCardDetailEntity.swift */; };
@@ -51,8 +50,26 @@
 		73B7C3ED2AE0EFD6008953A9 /* StitchWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = 73B7C3EC2AE0EFD6008953A9 /* StitchWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73E0C0562D773F9200204B59 /* ResetPinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E0C0552D773F8600204B59 /* ResetPinWidget.swift */; };
 		73E0C0582D773FE900204B59 /* ResetPinWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E0C0572D773FE900204B59 /* ResetPinWidget.xib */; };
+		73E0C05A2D786B0E00204B59 /* WidgetSettingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E0C0592D786B0E00204B59 /* WidgetSettingEntity.swift */; };
+		73E13D862D81EEC7005EE84D /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7342FBA72AE0F0A300F82616 /* CryptoSwift.xcframework */; };
+		73E13D872D81EEC7005EE84D /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7342FBA72AE0F0A300F82616 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73E13D8B2D846ADB005EE84D /* JailBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E13D8A2D846AD6005EE84D /* JailBreak.swift */; };
 		74891F2EA6D30E4CA3C230ED /* Pods_StitchWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE08375827AB802DF0039F7E /* Pods_StitchWidget.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73E13D882D81EEC7005EE84D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73E13D872D81EEC7005EE84D /* CryptoSwift.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3CE427300DB0E6E7A667E4BF /* Pods-StitchWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.release.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +118,8 @@
 		73B7C3EC2AE0EFD6008953A9 /* StitchWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StitchWidget.h; sourceTree = "<group>"; };
 		73E0C0552D773F8600204B59 /* ResetPinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPinWidget.swift; sourceTree = "<group>"; };
 		73E0C0572D773FE900204B59 /* ResetPinWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPinWidget.xib; sourceTree = "<group>"; };
+		73E0C0592D786B0E00204B59 /* WidgetSettingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingEntity.swift; sourceTree = "<group>"; };
+		73E13D8A2D846AD6005EE84D /* JailBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JailBreak.swift; sourceTree = "<group>"; };
 		B79E089A794C1141FB7666DB /* Pods-StitchWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StitchWidget.debug.xcconfig"; path = "Target Support Files/Pods-StitchWidget/Pods-StitchWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		EE08375827AB802DF0039F7E /* Pods_StitchWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StitchWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,9 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				732895D12D5FA3D800B2E244 /* CryptoSwift.xcframework in Frameworks */,
 				00B9EB822D61C60100F87BF8 /* Alamofire.framework in Frameworks */,
 				74891F2EA6D30E4CA3C230ED /* Pods_StitchWidget.framework in Frameworks */,
+				73E13D862D81EEC7005EE84D /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +179,7 @@
 		7342FBAB2AE0F0F000F82616 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				73E0C0592D786B0E00204B59 /* WidgetSettingEntity.swift */,
 				7342FBAC2AE0F0F000F82616 /* GetCardDetailEntity.swift */,
 				7342FBAD2AE0F0F000F82616 /* SessionKeyEntity.swift */,
 			);
@@ -169,6 +189,7 @@
 		7342FBB12AE0F0F000F82616 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				73E13D892D846ACA005EE84D /* JailBreak */,
 				733DC1072D607522003D9C01 /* Device */,
 				733DC1042D60748C003D9C01 /* Crytpo */,
 				7342FBB22AE0F0F000F82616 /* Extension */,
@@ -340,6 +361,14 @@
 			path = ResetPinView;
 			sourceTree = "<group>";
 		};
+		73E13D892D846ACA005EE84D /* JailBreak */ = {
+			isa = PBXGroup;
+			children = (
+				73E13D8A2D846AD6005EE84D /* JailBreak.swift */,
+			);
+			path = JailBreak;
+			sourceTree = "<group>";
+		};
 		E2538586274C53CB4A373977 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +401,7 @@
 				73B7C3E52AE0EFD6008953A9 /* Sources */,
 				73B7C3E62AE0EFD6008953A9 /* Frameworks */,
 				73B7C3E72AE0EFD6008953A9 /* Resources */,
+				73E13D882D81EEC7005EE84D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -483,9 +513,11 @@
 				7342FBFB2AE0F0F000F82616 /* AESUtils.swift in Sources */,
 				7342FBE32AE0F0F000F82616 /* ExtensionTextField.swift in Sources */,
 				7342FBE02AE0F0F000F82616 /* ApplicationExtension.swift in Sources */,
+				73E0C05A2D786B0E00204B59 /* WidgetSettingEntity.swift in Sources */,
 				733DC1062D6074AC003D9C01 /* ExtensionCrypto.swift in Sources */,
 				7342FBF02AE0F0F000F82616 /* Fonts.swift in Sources */,
 				7342FBE72AE0F0F000F82616 /* NetworkCall.swift in Sources */,
+				73E13D8B2D846ADB005EE84D /* JailBreak.swift in Sources */,
 				7342FBE12AE0F0F000F82616 /* ExtensionButton.swift in Sources */,
 				7342FBDC2AE0F0F000F82616 /* GetCardDetailEntity.swift in Sources */,
 				7342FBFC2AE0F0F000F82616 /* Service.swift in Sources */,

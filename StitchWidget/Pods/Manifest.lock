@@ -1,20 +1,16 @@
 PODS:
   - Alamofire (5.10.2)
-  - CryptoSwift (1.8.4)
 
 DEPENDENCIES:
   - Alamofire
-  - CryptoSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - CryptoSwift
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
-  CryptoSwift: e64e11850ede528a02a0f3e768cec8e9d92ecb90
 
-PODFILE CHECKSUM: 27c4e09f305ff98184936639b5b5c693e42e64a8
+PODFILE CHECKSUM: 6fd9064ef6e872f4b8cbf8331d8412878cd0f41d
 
 COCOAPODS: 1.16.2
