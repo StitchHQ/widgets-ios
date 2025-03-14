@@ -29,6 +29,18 @@ public class SetPinWidget: UIView {
 
     public override func awakeFromNib() {
         super.awakeFromNib()
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+        }
+    }
+    
+    func initializeSDK() throws {
+        if hasJailbreak() == CardSDKError.insecureEnvironment {
+            throw CardSDKError.insecureEnvironment
+        }
+        // Continue with initialization if the device is secure
         initalLoad()
     }
     
@@ -279,7 +291,7 @@ extension SetPinWidget  {
 extension SetPinWidget  {
     
     fileprivate func setPinAPI(body: [String: Any]){
-        let url = baseUrl + servicesURL.setPin.rawValue
+        let url = baseUrl() + servicesURL.setPin.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post,type: "SetPin").executeQuery(){
             (result: Result<setPinSuccess,Error>) in
             switch result{
@@ -312,7 +324,7 @@ extension SetPinWidget  {
 
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
-        let url = baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl() + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{

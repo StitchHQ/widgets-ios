@@ -68,7 +68,23 @@ public class CardWidget: UIView {
     public override func awakeFromNib() {
         
         super.awakeFromNib()
-   
+        
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+        }
+
+    }
+    func initializeSDK() throws {
+        if hasJailbreak() == CardSDKError.insecureEnvironment {
+            throw CardSDKError.insecureEnvironment
+        }
+        // Continue with initialization if the device is secure
+        initalLoad()
+    }
+    
+    private func initalLoad(){
         frontCardView.layer.cornerRadius = 10
         backCardView.layer.cornerRadius = 10
         frontImgView.layer.cornerRadius = 10
@@ -82,7 +98,6 @@ public class CardWidget: UIView {
         validThruLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         cvvEyeBtn.setTitle("", for: .normal)
         cardNoEyeBtn.setTitle("", for: .normal)
-
     }
     
     @IBAction func onCvvEyeAction(_ sender: Any) {
@@ -407,7 +422,7 @@ extension CardWidget  {
             "token": token,
             "deviceFingerprint": deviceFinger
         ] as [String : Any]
-        let url = baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl() + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
@@ -424,7 +439,7 @@ extension CardWidget  {
         }
     }
     fileprivate func getCardDetails(body: [String : Any]) {
-        let url = baseUrl + servicesURL.secureCard.rawValue
+        let url = baseUrl() + servicesURL.secureCard.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<GetCardDetailEntity,Error>) in
             switch result{

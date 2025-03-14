@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 import Alamofire
 
-public var baseUrl = ""
+
+public func baseUrl() -> (String) {
+    if hasJailbreak() == CardSDKError.insecureEnvironment {
+        return CardSDKError.insecureEnvironment.localizedDescription.description
+    }
+    
+    return ""
+}
 
 enum servicesURL :String{
     
