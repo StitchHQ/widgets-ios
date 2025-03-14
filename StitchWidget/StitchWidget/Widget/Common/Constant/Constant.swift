@@ -14,7 +14,6 @@ enum ConstantData {
     static let confirmNewPinEmpty = "Confirm New PIN is required"
 
     static let cvvEmpty = "CVV is required"
-    static let activateCardSuccess = "Card Activated Successfully"
 
     static let pinEmpty = "PIN is required"
     static let confirmPinEmpty = "Confirm PIN is required"

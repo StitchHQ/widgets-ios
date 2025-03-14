@@ -121,16 +121,16 @@ public class CardWidget: UIView {
         }else{
             
             for item in widget {
-                if item.type == "View Card" {
+                if item.widgetStyle == "View Card" {
                     
-                    setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
+                    setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
 
-                    backCardView.backgroundColor = backgroundColor
-                    isCardMask = item.isCardNoMask ?? false
-                    isCvvMask = item.iscvvMask ?? false
-                    self.isCvvEye = item.isEyeMask ?? false
-                    self.isCardNoEye = item.isEyeMask ?? false
-                    if item.isEyeMask ?? false {
+                    backCardView.backgroundColor = item.background
+                    isCardMask = item.maskCardNumber ?? false
+                    isCvvMask = item.maskCvv ?? false
+                    self.isCvvEye = item.showEyeIcon ?? false
+                    self.isCardNoEye = item.showEyeIcon ?? false
+                    if item.showEyeIcon ?? false {
                         cvvEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
                         cardNoEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
                         cvvEyeBtn.isHidden = false
@@ -150,8 +150,8 @@ public class CardWidget: UIView {
                             isCardMask = false
                             isCvvMask = false
                         }else{
-                            isCardMask = item.isCardNoMask ?? false
-                            isCvvMask = item.iscvvMask ?? false
+                            isCardMask = item.maskCardNumber ?? false
+                            isCvvMask = item.maskCvv ?? false
                         }
                     }
                     
@@ -168,12 +168,12 @@ public class CardWidget: UIView {
                     validThruLabel.textColor = item.fontColor
                     validThruValue.textColor = item.fontColor
                     
-                    if item.backgroundImg != UIImage(named: "imageadd") {
-                        backImg.image = item.backgroundImg
-                        frontImgView.image = item.backgroundImg
+                    if item.backgroundImage != UIImage(named: "imageadd") {
+                        backImg.image = item.backgroundImage
+                        frontImgView.image = item.backgroundImage
                     }
                     
-                    self.setPaddingTextField(bottomDate: item.dateBottom!,topDate: item.dateTop!,leadCvv:item.cvvLeft!,leadDate: item.dateLeft!,BottomCvv: item.cvvBottom!,trailDate: item.dateRight!,TrailCvv: item.cvvRight!,topCardNo: item.cardNoTop!,BottomCardNo: item.cardNoBottom!,cvvTop: item.cvvTop!,cardNoLeft: item.cardNoLeft!,cardNoRight: item.cardNoRight!)
+                    self.setPaddingTextField(bottomDate: item.expiryPaddingBottom!,topDate: item.expiryPaddingTop!,leadCvv:item.cvvPaddingLeft!,leadDate: item.expiryPaddingLeft!,BottomCvv: item.cvvPaddingBottom!,trailDate: item.expiryPaddingRight!,TrailCvv: item.cvvPaddingRight!,topCardNo: item.cardNumberPaddingTop!,BottomCardNo: item.cardNumberPaddingBottom!,cvvTop: item.cvvPaddingTop!,cardNoLeft: item.cardNumberPaddingLeft!,cardNoRight: item.cardNumberPaddingRight!)
                 }else {
                     setDefaultStype()
                 }
@@ -443,27 +443,12 @@ extension CardWidget  {
             let accountNumber = try AESUtils().decrypt(encryptedText: accountNo, key: self.generalKey)
             let last4 = accountNumber.suffix(4)
             panLastFour = String(last4)
-//            if isCardMask {
-//                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
-//                self.backCardNo.text = "XXXX XXXX XXXX \(panLastFour)"
-//            }else{
-//                self.cardNumberLabel.text = accountNumber
-//                self.backCardNo.text = accountNumber
-//            }
             self.accountNo = accountNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
-//            if isCvvMask {
-//                self.cvvLabel.text = "XXX"
-//                self.backCvvLabel.text = "XXX"
-//            }else{
-//                self.cvvLabel.text = cvvText
-//                self.backCvvLabel.text = cvvText
-//
-//            }
-//            if isCvvEye {
+
                 self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
                 self.cvvLabel.text = "XXX"
-//            }
+
             self.cvv = cvvText
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
             self.validThruValue.text = expiryText

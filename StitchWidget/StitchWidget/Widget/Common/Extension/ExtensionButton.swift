@@ -26,23 +26,20 @@ extension UIButton {
  
  - returns: bool value for jailbroken device or not
  */
-public func isDeviceJailbroken() -> CardSDKError {
-#if arch(i386) || arch(x86_64)
-    return CardSDKError.secureEnvironment
-#else
-    let fileManager = FileManager.default
-    
-    if (fileManager.fileExists(atPath: "/bin/bash") ||
-        fileManager.fileExists(atPath: "/usr/sbin/sshd") ||
-        fileManager.fileExists(atPath: "/etc/apt") ||
-        fileManager.fileExists(atPath: "/private/var/lib/apt/") ||
-        fileManager.fileExists(atPath: "/Applications/Cydia.app") ||
-        fileManager.fileExists(atPath: "/Library/MobileSubstrate/MobileSubstrate.dylib")) {
-        return CardSDKError.insecureEnvironment
-    } else {
+public func hasJailbreak() -> CardSDKError {
+    #if arch(i386) || arch(x86_64)
+        println("Simulator")
         return CardSDKError.secureEnvironment
-    }
-#endif
+    #else
+    var fileManager = FileManager.default
+    if(fileManager.fileExists(atPath: "/private/var/lib/apt")) {
+            print("Jailbroken Device")
+            return CardSDKError.insecureEnvironment
+        } else {
+            print("Clean Device")
+            return CardSDKError.secureEnvironment
+        }
+    #endif
 }
 
 public enum CardSDKError: Error {

@@ -54,19 +54,19 @@ public class SetPinWidget: UIView {
             
             for item in widget {
 
-                setfontValue(font: item.font ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.styleSheetType ?? "Outlined")
+                setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
+                setStyleSheet(styleSheet: item.textFieldVariant ?? "Outlined")
 
-                if type == item.type {
+                if type == item.widgetStyle {
                     
                     olfPinLabel.textColor = item.fontColor
                     newPinLabel.textColor = item.fontColor
                     pinRequiredLabel.textColor = item.fontColor
                     activateLabel.textColor = item.fontColor
-                    activateView.backgroundColor = backgroundColor
+                    activateView.backgroundColor = item.background
                     confirmPinLabel.textColor = item.fontColor
-                    pinButton.setTitleColor(item.buttonfontColor, for: .normal)
-                    pinButton.backgroundColor = item.buttonBackgroundColor
+                    pinButton.setTitleColor(item.buttonFontColor, for: .normal)
+                    pinButton.backgroundColor = item.buttonBackground
                     
 
                     return
@@ -267,15 +267,6 @@ extension SetPinWidget  {
                     "device_fingerprint": deviceFingerPrint
                 ] as [String : Any]
                 setPinAPI(body: data)
-            }else{
-                let newPinEncrypt = try AESUtils().encrypt(pin: oldPinTextField.text ?? "", key: generalKey)
-                let data = [
-                    "old_pin": newPinEncrypt,
-                    "new_pin": confirmPinEncrypt,
-                    "token": token,
-                    "device_fingerprint": deviceFingerPrint
-                ] as [String : Any]
-                changePinAPI(body: data)
             }
             
         }catch {
@@ -317,34 +308,7 @@ extension SetPinWidget  {
     }
 
 
-private func changePinAPI(body: [String: Any]){
-    let url = baseUrl + servicesURL.changePin.rawValue
-    ServiceNetworkCall(data: body, url: url, method: .post,type: "ResetPin").executeQuery(){
-        (result: Result<setPinSuccess,Error>) in
-        switch result{
-        case .success(let session):
-            print(session)
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Card Pin is Changed Sucessfully", buttonTitle: "OK")
-            onTapAlert = { [weak self] tag in
-                guard let self = self else {
-                    return
-                }
-                if tag == 1 {
-                    oldPinTextField.text = ""
-                    newPinTextField.text = ""
-                    confirmTextField.text = ""
-                    UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
-                }
-            }
-        case .failure(let error):
-            print(error)
-            self.overView.isHidden = true
-            self.activateView.isHidden = true
-            self.removeFromSuperview()
 
-        }
-    }
-}
 
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
@@ -392,8 +356,4 @@ extension SetPinWidget: UITextFieldDelegate {
         }
     }
 }
-extension String {
-    func firstWord() -> String? {
-        return self.components(separatedBy: "-").first
-    }
-}
+
