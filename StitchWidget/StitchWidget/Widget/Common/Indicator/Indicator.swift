@@ -12,7 +12,7 @@ public class Indicator {
 
     public static let sharedInstance = Indicator()
     var blurImg = UIImageView()
-    var indicator = UIActivityIndicatorView()
+    var activityIndicator = UIActivityIndicatorView()
 
     init()
     {
@@ -20,17 +20,22 @@ public class Indicator {
         blurImg.backgroundColor = UIColor.black
         blurImg.isUserInteractionEnabled = true
         blurImg.alpha = 0.5
-        indicator.style = .large
-        indicator.center = blurImg.center
-        indicator.startAnimating()
-        indicator.color = UIColor.blueColor
+        activityIndicator.style = .large
+        activityIndicator.center = blurImg.center
+        activityIndicator.startAnimating()
+        activityIndicator.color = UIColor.blueColor
     }
 
     func showIndicator(){
+        let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .compactMap({$0 as? UIWindowScene})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
         DispatchQueue.main.async( execute: {
 
-            UIApplication.shared.keyWindow?.addSubview(self.blurImg)
-            UIApplication.shared.keyWindow?.addSubview(self.indicator)
+            keyWindow?.addSubview(self.blurImg)
+            keyWindow?.addSubview(self.activityIndicator)
         })
     }
     func hideIndicator(){
@@ -38,7 +43,7 @@ public class Indicator {
         DispatchQueue.main.async( execute:
             {
                 self.blurImg.removeFromSuperview()
-                self.indicator.removeFromSuperview()
+                self.activityIndicator.removeFromSuperview()
         })
     }
 }

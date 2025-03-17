@@ -21,7 +21,11 @@ extension String {
         return ""
     }
     
-    func CGFloatValue() -> CGFloat? {
+    func firstWord() -> String? {
+        return self.components(separatedBy: "-").first
+    }
+    
+    func cgFloatValue() -> CGFloat? {
         guard let doubleValue = Double(self) else {
             return nil
         }
@@ -29,8 +33,4 @@ extension String {
         return CGFloat(doubleValue)
     }
 }
-extension String {
-    func firstWord() -> String? {
-        return self.components(separatedBy: "-").first
-    }
-}
+
