@@ -140,14 +140,14 @@ public class ResetPinWidget: UIView {
         confirmStackView.isHidden = false
         pinRequiredLabel.isHidden = true
         confirmPinLabel.text = "Confirm New PIN"
-        newPinLabel.text = (type == "set_pin") ? "Confirm PIN*" : "New PIN"
-        olfPinLabel.text = (type == "set_pin") ? "4 Digit PIN*" : "Current PIN"
-        pinButton.setTitle((type == "set_pin") ? "Set Pin" : "Change Pin", for: .normal)
+        newPinLabel.text = "New PIN"
+        olfPinLabel.text = "Current PIN"
+        pinButton.setTitle("Change Pin", for: .normal)
         self.oldPinTextField.attributedPlaceholder = NSAttributedString(
             string: "Enter 4-Digit PIN",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.newPinTextField.attributedPlaceholder = NSAttributedString(
-            string: (type == "set_pin") ? "Re-enter 4-Digit PIN" : "Enter 4-Digit PIN",
+            string: "Enter 4-Digit PIN",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.confirmTextField.attributedPlaceholder = NSAttributedString(
             string: "Re-enter 4-Digit PIN",
@@ -155,14 +155,14 @@ public class ResetPinWidget: UIView {
     }
     
     public func setStyleSheet(styleSheet: String){
-        if styleSheet == "Outlined" {
+        if styleSheet == ConstantData.outlined {
             newPinTextField.layer.borderWidth = 1
             oldPinTextField.layer.borderWidth = 1
             newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             confirmTextField.layer.borderWidth = 1
             confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
-        }else if styleSheet == "Filled" {
+        }else if styleSheet == ConstantData.filled {
             newPinTextField.backgroundColor = UIColor.lightGrayColor
             oldPinTextField.backgroundColor = UIColor.lightGrayColor
             confirmTextField.backgroundColor = UIColor.lightGrayColor
@@ -239,15 +239,15 @@ extension ResetPinWidget  {
     
     public func sessionKey(secureToken: String) {
         token = secureToken
-        self.cardType = "activated"
+        self.cardType = ConstantData.activated
         let data = [
-            "token": token,
-            "device_fingerprint": deviceFingerPrint
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
         ] as [String : Any]
         sessionKeyAPI(body: data)
-        if self.cardType != "activated" {
+        if self.cardType != ConstantData.activated {
             self.activateView.isHidden = false
-            self.activateLabel.text = "Card not in Activated State"
+            self.activateLabel.text = ConstantData.cardInActivate
             self.overView.isHidden = true
         }else{
             self.overView.isHidden = false
@@ -263,10 +263,10 @@ extension ResetPinWidget  {
          
                 let newPinEncrypt = try AESUtils().encrypt(pin: oldPinTextField.text ?? "", key: generalKey)
                 let data = [
-                    "old_pin": newPinEncrypt,
-                    "new_pin": confirmPinEncrypt,
-                    "token": token,
-                    "device_fingerprint": deviceFingerPrint
+                    APIConstant.oldPin: newPinEncrypt,
+                    APIConstant.newPin: confirmPinEncrypt,
+                    APIConstant.token: token,
+                    APIConstant.devicePrint: deviceFingerPrint
                 ] as [String : Any]
                 changePinAPI(body: data)
         
@@ -287,7 +287,7 @@ private func changePinAPI(body: [String: Any]){
         switch result{
         case .success(let session):
             print(session)
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Card Pin is Changed Sucessfully", buttonTitle: "OK")
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.cardPinChangeSuccess, buttonTitle:  ConstantData.ok)
             onTapAlert = { [weak self] tag in
                 guard let self = self else {
                     return
@@ -318,9 +318,9 @@ private func changePinAPI(body: [String: Any]){
             case .success(let session):
                 self.generalKey = session.key ?? ""
                 self.token = session.token ?? ""
-                if self.cardType != "activated" {
+                if self.cardType != ConstantData.activated {
                     self.activateView.isHidden = false
-                    self.activateLabel.text = "Card not in Activated State"
+                    self.activateLabel.text = ConstantData.cardInActivate
                     self.overView.isHidden = true
                 }else{
                     self.overView.isHidden = false

@@ -28,6 +28,7 @@ enum ConstantData {
     static let oldPinlength = "Old PIN Must be Valid"
     static let ok = "OK"
     static let cardPinSuccess = "Card Pin is Set Sucessfully"
+    static let cardPinChangeSuccess = "Card Pin is Changed Sucessfully"
     
     static let exmapleApp = "com.example.app"
     static let encryptionTextNil = "Encrypted text is nil"
@@ -45,7 +46,7 @@ enum ConstantData {
     static let viewCard = "View Card"
     static let outlined = "Outlined"
     static let filled = "Filled"
-    static let cardActivate = "Card not in Activated State"
+    static let cardInActivate = "Card not in Activated State"
     static let activated = "activated"
 }
 
@@ -66,6 +67,12 @@ enum FontConstant {
 enum APIConstant {
     static let token = "token"
     static let deviceFingerprint = "deviceFingerprint"
-    static let deviceFingerPrint = "device_fingerprint"
+    static let devicePrint = "device_fingerprint"
     static let pin = "pin"
+    static let oldPin = "old_pin"
+    static let newPin = "new_pin"
+}
+
+enum JailBreakUrl {
+    static let uri = "/private/var/lib/apt"
 }

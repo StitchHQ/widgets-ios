@@ -223,15 +223,15 @@ extension SetPinWidget  {
     
     public func sessionKey(secureToken: String) {
         token = secureToken
-        self.cardType = "activated"
+        self.cardType = ConstantData.activated
         let data = [
             APIConstant.token: token,
-            APIConstant.deviceFingerPrint: deviceFingerPrint
+            APIConstant.devicePrint: deviceFingerPrint
         ] as [String : Any]
         sessionKeyAPI(body: data)
-        if self.cardType != "activated" {
+        if self.cardType != ConstantData.activated {
             self.activateView.isHidden = false
-            self.activateLabel.text = "Card not in Activated State"
+            self.activateLabel.text = ConstantData.cardInActivate
             self.overView.isHidden = true
         }else{
             self.overView.isHidden = false
@@ -247,7 +247,7 @@ extension SetPinWidget  {
                 let data = [
                     APIConstant.pin: confirmPinEncrypt,
                     APIConstant.token: token,
-                    APIConstant.deviceFingerPrint: deviceFingerPrint
+                    APIConstant.devicePrint: deviceFingerPrint
                 ] as [String : Any]
                 setPinAPI(body: data)
             
@@ -300,7 +300,7 @@ extension SetPinWidget  {
                 self.token = session.token ?? ""
                 if self.cardType != ConstantData.activated {
                     self.activateView.isHidden = false
-                    self.activateLabel.text = ConstantData.cardActivate
+                    self.activateLabel.text = ConstantData.cardInActivate
                     self.overView.isHidden = true
                 }else{
                     self.overView.isHidden = false
