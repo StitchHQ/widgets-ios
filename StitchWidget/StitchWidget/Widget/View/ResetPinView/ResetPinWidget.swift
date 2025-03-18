@@ -282,7 +282,7 @@ extension ResetPinWidget  {
 
 private func changePinAPI(body: [String: Any]){
     let url = baseUrl() + servicesURL.changePin.rawValue
-    ServiceNetworkCall(data: body, url: url, method: .post,type: "ResetPin").executeQuery(){
+    ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
         (result: Result<setPinSuccess,Error>) in
         switch result{
         case .success(let session):
@@ -304,6 +304,7 @@ private func changePinAPI(body: [String: Any]){
             self.overView.isHidden = true
             self.activateView.isHidden = true
             self.removeFromSuperview()
+        
 
         }
     }

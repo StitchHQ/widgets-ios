@@ -28,3 +28,6 @@ extension UIApplication {
     }
     
 }
+func showAlertMessage(str: String){
+    simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: str,buttonTitle: ConstantData.ok)
+}

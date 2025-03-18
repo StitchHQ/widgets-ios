@@ -375,6 +375,9 @@ extension CardWidget  {
             }
         }
     }
+    
+    
+    
     fileprivate func getCardDetails(body: [String : Any]) {
         let url = baseUrl() + servicesURL.secureCard.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){

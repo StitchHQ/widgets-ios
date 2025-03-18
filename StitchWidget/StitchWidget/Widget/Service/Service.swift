@@ -32,10 +32,9 @@ class ServiceNetworkCall : NSObject{
     var method: HTTPMethod!
     var url :String? = ""
     var encoding: ParameterEncoding! = JSONEncoding.default
-    var type = ""
     let activityInstance = Indicator()
 
-    init(data: [String:Any],url :String?, method: HTTPMethod = .post, isJSONRequest: Bool = true,type: String = ""){
+    init(data: [String:Any],url :String?, method: HTTPMethod = .post, isJSONRequest: Bool = true){
         super.init()
        
         data.forEach{parameters.updateValue($0.value, forKey: $0.key)}
@@ -44,7 +43,6 @@ class ServiceNetworkCall : NSObject{
         }
         self.url = url
         self.method = method
-        self.type = type
 
     }
 
@@ -58,72 +56,46 @@ class ServiceNetworkCall : NSObject{
             AF.request(url!,method: method,parameters: parameters,encoding: encoding, headers: head).responseData(completionHandler: {response in
                 switch response.result{
                 case .success(let res):
+                    self.activityInstance.hideIndicator()
                     if let code = response.response?.statusCode{
                         switch code {
                         case 200...299:
                             do {
-                                self.activityInstance.hideIndicator()
                                 completion(.success(try JSONDecoder().decode(T.self, from: res)))
                             } catch let error {
-                                self.activityInstance.hideIndicator()
-                                print(String(data: res, encoding: .utf8) ?? "nothing received")
                                 completion(.failure(error))
                             }
                         default:
+                            self.activityInstance.hideIndicator()
+
                             let error = NSError(domain: response.debugDescription, code: code, userInfo: response.response?.allHeaderFields as? [String: Any])
-                            print(error)
-                            var errorString: String?
                             if let data = response.data {
                                 if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                                    errorString = json["message"]
+                                    if let errorString = json["message"] {
+                                        showAlertMessage(str: errorString)
+                                    }
                                 }
                             }
-                            if errorString == "Invalid credential." || errorString == "Token expired." {
-                                self.activityInstance.hideIndicator()
-                                self.showErrorMessage()
-                            }else{
-                                self.activityInstance.hideIndicator()
-                                if let error = errorString {
-                                    simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: error,buttonTitle: ConstantData.ok)
-                                }
+                     
                                 completion(.failure(error))
-                            }
+                            
                             
                         }
                     }
                 case .failure(let error):
                     if let code = response.response?.statusCode{
-                        if code == 401 {
-                            self.activityInstance.hideIndicator()
-                            self.showErrorMessage()
-                        }else if code == 200 {
-                            self.activityInstance.hideIndicator()
-                            if self.type == "SetPin" {
-                                completion(.failure(error))
-                                simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Pin setted Successfully",buttonTitle: ConstantData.ok)
-                                
-                            }else if self.type == "ResetPin" {
-                                completion(.failure(error))
-                                simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Pin Changed Successfully",buttonTitle: ConstantData.ok)
-                                
-                            }
-                        }else{
-                            self.activityInstance.hideIndicator()
-                            completion(.failure(error))
-                            
-                        }
+                        self.activityInstance.hideIndicator()
+                        completion(.failure(error))
                     }
                 }
             })
         }else{
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Please check your Internet connection",buttonTitle: ConstantData.ok)
+            showAlertMessage(str: "Please check your Internet connection")
+
         }
     }
     
-    fileprivate func showErrorMessage(){
-        UserDefaults.standard.set(nil, forKey: "Headers")
-        UserDefaults.standard.set(nil, forKey: "token")
-    }
+  
 }
 extension Error {
     var errorCode:Int? {
