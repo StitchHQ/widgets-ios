@@ -48,6 +48,7 @@ enum ConstantData {
     static let filled = "Filled"
     static let cardInActivate = "Card not in Activated State"
     static let activated = "activated"
+    static let internetConnection = "Please check your Internet connection"
 }
 
 enum ColorConstant {
@@ -71,6 +72,7 @@ enum APIConstant {
     static let pin = "pin"
     static let oldPin = "old_pin"
     static let newPin = "new_pin"
+    static let correlationId = "X-Correlation-ID"
 }
 
 enum JailBreakUrl {

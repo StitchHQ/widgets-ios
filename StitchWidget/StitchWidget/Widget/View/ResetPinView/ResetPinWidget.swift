@@ -281,7 +281,7 @@ extension ResetPinWidget  {
 extension ResetPinWidget  {
 
 private func changePinAPI(body: [String: Any]){
-    let url = baseUrl() + servicesURL.changePin.rawValue
+    let url = baseUrlService + servicesURL.changePin.rawValue
     ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
         (result: Result<setPinSuccess,Error>) in
         switch result{
@@ -312,7 +312,7 @@ private func changePinAPI(body: [String: Any]){
 
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
-        let url = baseUrl() + servicesURL.sessionKey.rawValue
+        let url = baseUrlService + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{

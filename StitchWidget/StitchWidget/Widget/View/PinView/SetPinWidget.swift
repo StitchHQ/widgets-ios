@@ -262,7 +262,7 @@ extension SetPinWidget  {
 extension SetPinWidget  {
     
     fileprivate func setPinAPI(body: [String: Any]){
-        let url = baseUrl() + servicesURL.setPin.rawValue
+        let url = baseUrlService + servicesURL.setPin.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<setPinSuccess,Error>) in
             switch result{
@@ -291,7 +291,7 @@ extension SetPinWidget  {
     }
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
-        let url = baseUrl() + servicesURL.sessionKey.rawValue
+        let url = baseUrlService + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{

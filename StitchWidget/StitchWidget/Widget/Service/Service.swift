@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 import Alamofire
 
+var baseUrlService = ""
 
-public func baseUrl() -> (String) {
+public func baseUrl(uri: String) {
     if hasJailbreak() == CardSDKError.insecureEnvironment {
-        return CardSDKError.insecureEnvironment.localizedDescription.description
+        print(CardSDKError.insecureEnvironment.localizedDescription.description)
     }
     
-    return ""
+    baseUrlService = uri
 }
 
 enum servicesURL :String{
@@ -51,7 +52,7 @@ class ServiceNetworkCall : NSObject{
             let number = arc4random()
             self.activityInstance.showIndicator()
         
-            let head: HTTPHeaders = ["X-Correlation-ID": "\(number)"]
+            let head: HTTPHeaders = [APIConstant.correlationId: "\(number)"]
             
             AF.request(url!,method: method,parameters: parameters,encoding: encoding, headers: head).responseData(completionHandler: {response in
                 switch response.result{
@@ -83,14 +84,12 @@ class ServiceNetworkCall : NSObject{
                         }
                     }
                 case .failure(let error):
-                    if let code = response.response?.statusCode{
                         self.activityInstance.hideIndicator()
                         completion(.failure(error))
-                    }
                 }
             })
         }else{
-            showAlertMessage(str: "Please check your Internet connection")
+            showAlertMessage(str: ConstantData.internetConnection)
 
         }
     }
