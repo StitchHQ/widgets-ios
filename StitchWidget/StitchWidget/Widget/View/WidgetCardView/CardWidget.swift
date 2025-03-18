@@ -56,7 +56,6 @@ public class CardWidget: UIView {
     @IBOutlet weak var cardNoEyeBtn: UIButton!
     var generalKey = ""
     let activityInstance = Indicator()
-    var styleType = ""
     var accountNo = ""
     var cvv = ""
     var isCvvMask = false
@@ -68,13 +67,29 @@ public class CardWidget: UIView {
     public override func awakeFromNib() {
         
         super.awakeFromNib()
-   
+        
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+        }
+
+    }
+    func initializeSDK() throws {
+        if hasJailbreak() == CardSDKError.insecureEnvironment {
+            throw CardSDKError.insecureEnvironment
+        }
+        // Continue with initialization if the device is secure
+        initalLoad()
+    }
+    
+    private func initalLoad(){
         frontCardView.layer.cornerRadius = 10
         backCardView.layer.cornerRadius = 10
         frontImgView.layer.cornerRadius = 10
         backCardImg.layer.cornerRadius = 10
         overView.layer.cornerRadius = 10
-        cardImg.image = UIImage(named: "Vector.png")
+        cardImg.image = UIImage(named: "visa.png")
         backCardView.isHidden = true
         cardNumberLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x14)
         titleCardName.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
@@ -82,33 +97,30 @@ public class CardWidget: UIView {
         validThruLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         cvvEyeBtn.setTitle("", for: .normal)
         cardNoEyeBtn.setTitle("", for: .normal)
-
     }
     
     @IBAction func onCvvEyeAction(_ sender: Any) {
         if isCvvEye {
-            if cvvLabel.text == "XXX" {
+            if cvvLabel.text == ConstantData.xxx {
                 cvvLabel.text = cvv
-                cvvEyeBtn.setImage(UIImage(named: "eye.png"), for: .normal)
+                cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
             }else{
-                cvvLabel.text = "XXX"
-                cvvEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
-
+                cvvLabel.text = ConstantData.xxx
+                cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
             }
         }
     }
     
-    
     @IBAction func onCardNoEyeAction(_ sender: Any) {
         if isCardNoEye {
-            if cardNumberLabel.text == "XXXX XXXX XXXX \(panLastFour)" {
+            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 cardNumberLabel.text = accountNo
-                cardNoEyeBtn.setImage(UIImage(named: "eye.png"), for: .normal)
+                cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
             }else{
-                cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
-                cardNoEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
+                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
+                cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
 
             }
         }
@@ -119,116 +131,129 @@ public class CardWidget: UIView {
         if widget.count == 0 {
             setDefaultStype()
         }else{
-            
-            for item in widget {
-                if item.widgetStyle == "View Card" {
-                    
-                    setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
+            setWidgetData(widget: widget)
+        }
+    }
+    
+    private  func setWidgetData(widget: [WidgetSettingEntity]){
+        for item in widget {
+            if item.widgetStyle == ConstantData.viewCard {
+                
+                setfontValue(font: item.fontFamily ?? FontConstant.euclidFlexMediumFont,fontSize: item.fontSize ?? 14.0)
 
-                    backCardView.backgroundColor = item.background
-                    isCardMask = item.maskCardNumber ?? false
-                    isCvvMask = item.maskCvv ?? false
-                    self.isCvvEye = item.showEyeIcon ?? false
-                    self.isCardNoEye = item.showEyeIcon ?? false
-                    if item.showEyeIcon ?? false {
-                        cvvEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
-                        cardNoEyeBtn.setImage(UIImage(named: "eye-off.png"), for: .normal)
-                        cvvEyeBtn.isHidden = false
-                        cardNoEyeBtn.isHidden = false
-                    }else{
-                        cvvEyeBtn.isHidden = true
-                        cardNoEyeBtn.isHidden = true
-                    }
-                    let date = Date()
-
-                    if let time = UserDefaults.standard.value(forKey: "MaskTime") as? Date{
-                        print(time)
-                        let diffComponents = Calendar.current.dateComponents([.second], from: time, to: date)
-                        
-                        print(diffComponents)
-                        if diffComponents.second! <= 30 {
-                            isCardMask = false
-                            isCvvMask = false
-                        }else{
-                            isCardMask = item.maskCardNumber ?? false
-                            isCvvMask = item.maskCvv ?? false
-                        }
-                    }
-                    
-           
-                    frontCardView.backgroundColor = backgroundColor
-                    cvvLabel.textColor = item.fontColor
-                    cardNumberLabel.textColor = item.fontColor
-                    nameOnCardLabel.textColor = item.fontColor
-                    backCvvLabel.textColor = item.fontColor
-                    backDateLabel.textColor = item.fontColor
-                    backCardNo.textColor = item.fontColor
-                    cvvTitleLabel.textColor = item.fontColor
-                    titleCardName.textColor = item.fontColor
-                    validThruLabel.textColor = item.fontColor
-                    validThruValue.textColor = item.fontColor
-                    
-                    if item.backgroundImage != UIImage(named: "imageadd") {
-                        backImg.image = item.backgroundImage
-                        frontImgView.image = item.backgroundImage
-                    }
-                    
-                    self.setPaddingTextField(bottomDate: item.expiryPaddingBottom!,topDate: item.expiryPaddingTop!,leadCvv:item.cvvPaddingLeft!,leadDate: item.expiryPaddingLeft!,BottomCvv: item.cvvPaddingBottom!,trailDate: item.expiryPaddingRight!,TrailCvv: item.cvvPaddingRight!,topCardNo: item.cardNumberPaddingTop!,BottomCardNo: item.cardNumberPaddingBottom!,cvvTop: item.cvvPaddingTop!,cardNoLeft: item.cardNumberPaddingLeft!,cardNoRight: item.cardNumberPaddingRight!)
-                }else {
-                    setDefaultStype()
+                backCardView.backgroundColor = item.background
+                showEyeButton(isEyeIcon: item.showEyeIcon ?? false)
+               
+                setTimer(maskCardNo: item.maskCardNumber ?? false, maskCvv: item.maskCvv ?? false)
+       
+                frontCardView.backgroundColor = item.background
+                setFontColor(fontColor: item.fontColor!)
+                
+                if item.backgroundImage != UIImage(named: "imageadd") {
+                    backImg.image = item.backgroundImage
+                    frontImgView.image = item.backgroundImage
                 }
+                
+                setCvvPadding(leadCvv: item.cvvPaddingLeft!, bottomCvv: item.cvvPaddingBottom!, trailCvv: item.cvvPaddingRight!, cvvTop: item.cvvPaddingTop!)
+                
+                setDatePadding(bottomDate: item.expiryPaddingBottom!, topDate: item.expiryPaddingTop!, trailDate: item.expiryPaddingRight!, leadDate: item.expiryPaddingLeft!)
+                
+                setCardNumberPadding(topCardNo: item.cardNumberPaddingTop!, bottomCardNo: item.cardNumberPaddingBottom!, cardNoLeft: item.cardNumberPaddingLeft!, cardNoRight: item.cardNumberPaddingRight!)
+                
+                return
+            }else {
+                setDefaultStype()
+                return
             }
         }
-        
     }
-    fileprivate func setPaddingTextField(bottomDate: String,topDate: String,leadCvv: String,leadDate: String,BottomCvv: String,trailDate: String,TrailCvv: String,topCardNo: String,BottomCardNo: String,cvvTop: String,cardNoLeft: String,cardNoRight: String){
-        if !cardNoLeft.isEmpty && cardNoLeft != "0" {
-            self.cardNoLeadConstant.constant = cardNoLeft.CGFloatValue() ?? 0.0
-            self.backCardNoLead.constant = cardNoLeft.CGFloatValue() ?? 0.0
-
+    private func showEyeButton(isEyeIcon: Bool){
+        self.isCvvEye = isEyeIcon
+        self.isCardNoEye = isEyeIcon
+        if isEyeIcon {
+            cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+            cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+            cvvEyeBtn.isHidden = false
+            cardNoEyeBtn.isHidden = false
+        }else{
+            cvvEyeBtn.isHidden = true
+            cardNoEyeBtn.isHidden = true
         }
-        if !cardNoRight.isEmpty && cardNoRight != "0" {
-            self.cardNoLeadConstant.constant = ((cardNoLeft.CGFloatValue() ?? 0.0) - (cardNoRight.CGFloatValue() ?? 0.0))
-            self.backCardNoLead.constant = ((cardNoLeft.CGFloatValue() ?? 0.0) - (cardNoRight.CGFloatValue() ?? 0.0))
-
-        }
+    }
+    
+    private func setTimer(maskCardNo : Bool,maskCvv: Bool){
+        isCardMask = maskCardNo
+        isCvvMask = maskCvv
+    }
+    
+    private func setFontColor(fontColor: UIColor){
+        cvvLabel.textColor = fontColor
+        cardNumberLabel.textColor = fontColor
+        nameOnCardLabel.textColor = fontColor
+        backCvvLabel.textColor = fontColor
+        backDateLabel.textColor = fontColor
+        backCardNo.textColor = fontColor
+        cvvTitleLabel.textColor = fontColor
+        titleCardName.textColor = fontColor
+        validThruLabel.textColor = fontColor
+        validThruValue.textColor = fontColor
+    }
+    private func setDatePadding(bottomDate: String,topDate: String,trailDate: String,leadDate: String){
         if !bottomDate.isEmpty && bottomDate != "0"  {
-            self.bottomValidThruConstant.constant =  (bottomDate.CGFloatValue() ?? 0.0)
+            self.bottomValidThruConstant.constant =  (bottomDate.cgFloatValue() ?? 0.0)
         }
         if !leadDate.isEmpty && leadDate != "0" {
-            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) -  (leadDate.CGFloatValue() ?? 0.0)
+            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) -  (leadDate.cgFloatValue() ?? 0.0)
         }
         
         if !trailDate.isEmpty && trailDate != "0" {
-            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) +  (leadDate.CGFloatValue() ?? 0.0)
+            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) +  (leadDate.cgFloatValue() ?? 0.0)
         }
         
         if !topDate.isEmpty && topDate != "0" {
-            self.bottomValidThruConstant.constant = (self.validThStackView.frame.size.height) - (topDate.CGFloatValue() ?? 0.0)
+            self.bottomValidThruConstant.constant = (self.validThStackView.frame.size.height) - (topDate.cgFloatValue() ?? 0.0)
         }
+        self.frontCardView.layoutIfNeeded()
+
+    }
+    
+    private func setCvvPadding(leadCvv: String,bottomCvv: String,trailCvv: String,cvvTop: String) {
         if !leadCvv.isEmpty && leadCvv != "0" {
-            self.cvvLeadConstant.constant = leadCvv.CGFloatValue() ?? 0.0
-            backCvvLeadConstant.constant = leadCvv.CGFloatValue() ?? 0.0
+            self.cvvLeadConstant.constant = leadCvv.cgFloatValue() ?? 0.0
+            backCvvLeadConstant.constant = leadCvv.cgFloatValue() ?? 0.0
         }
-        if !TrailCvv.isEmpty && TrailCvv != "0" {
-            self.cvvTrailConstant.constant = TrailCvv.CGFloatValue() ?? 0.0
-            backCvvTrailConstant.constant = TrailCvv.CGFloatValue() ?? 0.0
+        if !trailCvv.isEmpty && trailCvv != "0" {
+            self.cvvTrailConstant.constant = trailCvv.cgFloatValue() ?? 0.0
+            backCvvTrailConstant.constant = trailCvv.cgFloatValue() ?? 0.0
         }
        
-        if !BottomCvv.isEmpty && BottomCvv != "0" {
-            self.bottomCVV.constant =  (BottomCvv.CGFloatValue() ?? 0.0)
+        if !bottomCvv.isEmpty && bottomCvv != "0" {
+            self.bottomCVV.constant =  (bottomCvv.cgFloatValue() ?? 0.0)
         }
         if !cvvTop.isEmpty && cvvTop != "0" {
-            self.bottomCVV.constant =  (self.cvvStackView.frame.size.height) - (cvvTop.CGFloatValue() ?? 0.0)
+            self.bottomCVV.constant =  (self.cvvStackView.frame.size.height) - (cvvTop.cgFloatValue() ?? 0.0)
+        }
+        self.frontCardView.layoutIfNeeded()
+
+    }
+    fileprivate func setCardNumberPadding(topCardNo: String,bottomCardNo: String,cardNoLeft: String,cardNoRight: String){
+        if !cardNoLeft.isEmpty && cardNoLeft != "0" {
+            self.cardNoLeadConstant.constant = cardNoLeft.cgFloatValue() ?? 0.0
+            self.backCardNoLead.constant = cardNoLeft.cgFloatValue() ?? 0.0
+
+        }
+        if !cardNoRight.isEmpty && cardNoRight != "0" {
+            self.cardNoLeadConstant.constant = ((cardNoLeft.cgFloatValue() ?? 0.0) - (cardNoRight.cgFloatValue() ?? 0.0))
+            self.backCardNoLead.constant = ((cardNoLeft.cgFloatValue() ?? 0.0) - (cardNoRight.cgFloatValue() ?? 0.0))
         }
      
-        if !BottomCardNo.isEmpty && BottomCardNo != "0" {
-            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) + (BottomCardNo.CGFloatValue() ?? 0.0)
-            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (BottomCardNo.CGFloatValue() ?? 0.0)
+        if !bottomCardNo.isEmpty && bottomCardNo != "0" {
+            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) + (bottomCardNo.cgFloatValue() ?? 0.0)
+            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (bottomCardNo.cgFloatValue() ?? 0.0)
         }
         if !topCardNo.isEmpty && topCardNo != "0" {
-            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) - (topCardNo.CGFloatValue() ?? 0.0)
-            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (topCardNo.CGFloatValue() ?? 0.0)
+            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) - (topCardNo.cgFloatValue() ?? 0.0)
+            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (topCardNo.cgFloatValue() ?? 0.0)
         }
         self.frontCardView.layoutIfNeeded()
     }
@@ -244,15 +269,15 @@ public class CardWidget: UIView {
         backCardNo.textColor = .white
         validThruLabel.textColor = .white
         validThruValue.textColor = .white
-        setfontValue(font: "EuclidFlex-Medium",fontSize: 12.0)
+        setfontValue(font: FontConstant.euclidFlexMediumFont,fontSize: 12.0)
         backImg = nil
         frontImgView = nil
         isCardMask = true
         isCvvMask = true
         isCardNoEye = true
         isCvvEye = true
-        cvvEyeBtn.setImage(UIImage(named: "eye.png"), for: .normal)
-        cardNoEyeBtn.setImage(UIImage(named: "eye.png"), for: .normal)
+        cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+        cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
     }
     fileprivate func setfontValue(font: String,fontSize: Float){
@@ -270,62 +295,16 @@ public class CardWidget: UIView {
         self.validThruValue.font = UIFont(name:font, size: size)
     }
     public func sessionKey(token: String) {
-        styleType = "Default"
         deviceFingerPrint = getDevicFingingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
-    
-    fileprivate func setData(){
-        if styleType == "Default" {
-            cardNumberLabel.isHidden = false
-            cvvLabel.isHidden = false
-        }else if styleType == "Horizontal" {
-            backStripeView.backgroundColor = .black
-            cardImg.isHidden = true
-            cardNumberLabel.isHidden = false
-            cvvLabel.isHidden = false
-            backCardImg.isHidden = true
-        }else if styleType == "Horizontal Flippable 1" {
-            cardImg.isHidden = true
-            cardNumberLabel.isHidden = true
-            cvvLabel.isHidden = true
-            backCvvLabel.isHidden = false
-            backDateLabel.isHidden = false
-            backCardNo.isHidden = false
-            backCardImg.isHidden = false
-          //  nameCardTop.constant = 20
-        }else if styleType == "Vertical Flippable" {
-            backStripeView.backgroundColor = .lightGray
-            cardImg.isHidden = false
-            cardNumberLabel.isHidden = false
-            cvvLabel.isHidden = false
-            backCvvLabel.isHidden = true
-            backDateLabel.isHidden = true
-            backCardNo.isHidden = true
-            backCardImg.isHidden = true
-        }else if styleType == "Horizontal Flippable 2" {
-            backStripeView.backgroundColor = .lightGray
-            cardImg.isHidden = true
-            cardNumberLabel.isHidden = true
-            cvvLabel.isHidden = true
-            backCvvLabel.isHidden = false
-            backDateLabel.isHidden = false
-            backCardNo.isHidden = false
-            backCardImg.isHidden = false
-        }
-    }
     @IBAction func onBackCardNoAction(_ sender: Any) {
         if isCardMask {
-            if backCardNo.text == "XXXX XXXX XXXX \(panLastFour)" {
+            if backCardNo.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 backCardNo.text = accountNo
-                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
-                }else{
-                    let date = Date()
-                    UserDefaults.standard.set(date, forKey: "MaskTime")
-                }
             }else{
-                backCardNo.text = "XXXX XXXX XXXX \(panLastFour)"
+                backCardNo.text = "\(ConstantData.cardXDigit) \(panLastFour)"
             }
         }
     }
@@ -333,15 +312,10 @@ public class CardWidget: UIView {
     
     @IBAction func onCvvAction(_ sender: Any) {
         if isCvvMask {
-            if backCvvLabel.text == "XXX" {
+            if backCvvLabel.text == ConstantData.xxx {
                 backCvvLabel.text = cvv
-                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
-                }else{
-                    let date = Date()
-                    UserDefaults.standard.set(date, forKey: "MaskTime")
-                }
             }else{
-                backCvvLabel.text = "XXX"
+                backCvvLabel.text = ConstantData.xxx
             }
         }
     }
@@ -349,32 +323,20 @@ public class CardWidget: UIView {
     @IBAction func onCardNoAction(_ sender: Any) {
   
         if isCardMask {
-            if cardNumberLabel.text == "XXXX XXXX XXXX \(panLastFour)" {
+            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 cardNumberLabel.text = accountNo
-                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
-                }else{
-                    let date = Date()
-                    
-                    UserDefaults.standard.set(date, forKey: "MaskTime")
-                }
             }else{
-                cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
+                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
             }
         }
     }
     @IBAction func onFrontCvvAction(_ sender: Any) {
         if isCvvMask {
             
-            if cvvLabel.text == "XXX" {
+            if cvvLabel.text == ConstantData.xxx {
                 cvvLabel.text = cvv
-                if UserDefaults.standard.value(forKey: "MaskTime") is Date{
-                }else{
-                    let date = Date()
-                    
-                    UserDefaults.standard.set(date, forKey: "MaskTime")
-                }
             }else{
-                cvvLabel.text = "XXX"
+                cvvLabel.text = ConstantData.xxx
             }
         }
     }
@@ -389,33 +351,23 @@ public class CardWidget: UIView {
         }
     }
     
-    public func callAppleWallet(){
-        // 1
-             guard isPassKitAvailable() else {
-                 showPassKitUnavailable(message: "InApp enrollment not available for this device")
-                 return
-             }
-             // 2
-             initEnrollProcess()
-    }
-    
 }
 extension CardWidget  {
     
     fileprivate func sessionKeyAPI(token: String,deviceFinger: String){
         let body = [
-            "token": token,
-            "deviceFingerprint": deviceFinger
+            APIConstant.token: token,
+            APIConstant.deviceFingerprint: deviceFinger
         ] as [String : Any]
-        let url = baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl() + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
                 self.generalKey = session.key ?? ""
                 let data = [
-                    "token": session.token ?? "",
-                    "deviceFingerprint": deviceFinger
+                    APIConstant.token: session.token ?? "",
+                    APIConstant.deviceFingerprint: deviceFinger
                 ] as [String : Any]
                 self.getCardDetails(body: data)
             case .failure(let error):
@@ -424,7 +376,7 @@ extension CardWidget  {
         }
     }
     fileprivate func getCardDetails(body: [String : Any]) {
-        let url = baseUrl + servicesURL.secureCard.rawValue
+        let url = baseUrl() + servicesURL.secureCard.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<GetCardDetailEntity,Error>) in
             switch result{
@@ -446,14 +398,15 @@ extension CardWidget  {
             self.accountNo = accountNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 
-                self.cardNumberLabel.text = "XXXX XXXX XXXX \(panLastFour)"
-                self.cvvLabel.text = "XXX"
+                self.cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
+            self.cvvLabel.text = ConstantData.xxx
 
             self.cvv = cvvText
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
+            cardNumberLabel.isHidden = false
+            cvvLabel.isHidden = false
             self.validThruValue.text = expiryText
             self.backDateLabel.text = expiryText
-            setData()
             activityInstance.hideIndicator()
             
         } catch {
@@ -465,164 +418,3 @@ extension CardWidget  {
 
 
 
-extension CAGradientLayer {
-    enum Point {
-        case topLeft
-        case centerLeft
-        case bottomLeft
-        case topCenter
-        case center
-        case bottomCenter
-        case topRight
-        case centerRight
-        case bottomRight
-        var point: CGPoint {
-            switch self {
-            case .topLeft:
-                return CGPoint(x: 0, y: 0)
-            case .centerLeft:
-                return CGPoint(x: 0, y: 0.5)
-            case .bottomLeft:
-                return CGPoint(x: 0, y: 1.0)
-            case .topCenter:
-                return CGPoint(x: 0.5, y: 0)
-            case .center:
-                return CGPoint(x: 0.5, y: 0.5)
-            case .bottomCenter:
-                return CGPoint(x: 0.5, y: 1.0)
-            case .topRight:
-                return CGPoint(x: 1.0, y: 0.0)
-            case .centerRight:
-                return CGPoint(x: 1.0, y: 0.5)
-            case .bottomRight:
-                return CGPoint(x: 1.0, y: 1.0)
-            }
-        }
-    }
-    convenience init(start: Point, end: Point, colors: [CGColor], type: CAGradientLayerType) {
-        self.init()
-        self.startPoint = start.point
-        self.endPoint = end.point
-        self.colors = colors
-        self.locations = (0..<colors.count).map(NSNumber.init)
-        self.type = type
-    }
-}
-extension CardWidget {
-/**
-     Init enrollment process
-     */
-    fileprivate func initEnrollProcess() {
-        // 3
-        let card = cardInformation()
-        // 4
-        guard let configuration = PKAddPaymentPassRequestConfiguration(encryptionScheme: .ECC_V2) else {
-            showPassKitUnavailable(message: "InApp enrollment configuraton fails")
-            return
-        }
-        configuration.cardholderName = card.holder
-        configuration.primaryAccountSuffix = card.panTokenSuffix
-        
-        guard let enrollViewController = PKAddPaymentPassViewController(requestConfiguration: configuration, delegate: self) else {
-            showPassKitUnavailable(message: "InApp enrollment controller configuration fails")
-            return
-        }
-        
-        // 5
-        UIApplication.topViewController()?.present(enrollViewController, animated: true, completion: nil)
-    }
-    
-    /**
-     Define if PassKit will be available for this device
-     */
-    fileprivate func isPassKitAvailable() -> Bool {
-        return PKAddPaymentPassViewController.canAddPaymentPass()
-    }
-    
-    /**
-     Show an alert that indicates that PassKit isn't available for this device
-     */
-    fileprivate func showPassKitUnavailable(message: String) {
-        let alert = UIAlertController(title: "InApp Error",
-                                      message: message,
-                                      preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
-        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
-    }
-    
-    /**
-     Return the card information that Apple will display into enrollment screen
-     */
-    fileprivate func cardInformation() -> Card {
-        return Card(panTokenSuffix: "1234", holder: "Carl Jonshon")
-    }
-}
-
-private struct Card {
-    /// Last four digits of the `pan token` numeration for the card (****-****-****-0000)
-    let panTokenSuffix: String
-    /// Holder for the card
-    let holder: String
-}
-
-
-extension CardWidget: PKAddPaymentPassViewControllerDelegate {
-    public func addPaymentPassViewController(
-        _ controller: PKAddPaymentPassViewController,
-        generateRequestWithCertificateChain certificates: [Data],
-        nonce: Data, nonceSignature: Data,
-        completionHandler handler: @escaping (PKAddPaymentPassRequest) -> Void) {
-        
-        // 1
-        let request = IssuerRequest(certificates: certificates, nonce: nonce, nonceSignature: nonceSignature)
-        
-        // 2
-        let interactor = GetPassKitDataIssuerHostInteractor()
-        interactor.execute(request: request) { response in
-            // 3
-            let request = PKAddPaymentPassRequest()
-            request.activationData = response.activationData
-            request.ephemeralPublicKey = response.ephemeralPublicKey
-            request.encryptedPassData = response.encryptedPassData
-            handler(request)
-        }
-    }
-    
-    public func addPaymentPassViewController(
-        _ controller: PKAddPaymentPassViewController,
-        didFinishAdding pass: PKPaymentPass?,
-        error: Error?) {
-        
-        // 4
-        if let _ = pass {
-            print("Everything it's ok!")
-        } else {
-            print("Oops, something fails!")
-        }
-    }
-}
-
-struct IssuerRequest {
-    let certificates: [Data]
-    let nonce: Data
-    let nonceSignature: Data
-    
-    // todo: Another data that your IssuerHost needs
-}
-
-struct IssuerResponse {
-    let activationData: Data
-    let ephemeralPublicKey: Data
-    let encryptedPassData: Data
-}
-
-private class GetPassKitDataIssuerHostInteractor {
-    func execute(request: IssuerRequest, onFinish: (IssuerResponse) -> ()) {
-        // todo: Here goes your implementation thar connect with your IssuerHost
-        let response = IssuerResponse(activationData: Data(),
-                                      ephemeralPublicKey: Data(),
-                                      encryptedPassData: Data())
-        onFinish(response)
-    }
-}

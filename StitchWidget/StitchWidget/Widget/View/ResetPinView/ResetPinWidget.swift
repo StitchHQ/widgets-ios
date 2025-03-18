@@ -29,6 +29,18 @@ public class ResetPinWidget: UIView {
 
     public override func awakeFromNib() {
         super.awakeFromNib()
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+        }
+    }
+    
+    func initializeSDK() throws {
+        if hasJailbreak() == CardSDKError.insecureEnvironment {
+            throw CardSDKError.insecureEnvironment
+        }
+        // Continue with initialization if the device is secure
         initalLoad()
     }
     
@@ -125,8 +137,8 @@ public class ResetPinWidget: UIView {
             activateView.isHidden = true
         
         type = pintype
-        confirmStackView.isHidden = (type == "set_pin") ? true : false
-        pinRequiredLabel.isHidden = (type == "set_pin") ? false : true
+        confirmStackView.isHidden = false
+        pinRequiredLabel.isHidden = true
         confirmPinLabel.text = "Confirm New PIN"
         newPinLabel.text = (type == "set_pin") ? "Confirm PIN*" : "New PIN"
         olfPinLabel.text = (type == "set_pin") ? "4 Digit PIN*" : "Current PIN"
@@ -146,10 +158,10 @@ public class ResetPinWidget: UIView {
         if styleSheet == "Outlined" {
             newPinTextField.layer.borderWidth = 1
             oldPinTextField.layer.borderWidth = 1
-            newPinTextField.layer.borderColor = UIColor(hexString: "#D0D5DD").cgColor
-            oldPinTextField.layer.borderColor = UIColor(hexString: "#D0D5DD").cgColor
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             confirmTextField.layer.borderWidth = 1
-            confirmTextField.layer.borderColor = UIColor(hexString: "#D0D5DD").cgColor
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
         }else if styleSheet == "Filled" {
             newPinTextField.backgroundColor = UIColor.lightGrayColor
             oldPinTextField.backgroundColor = UIColor.lightGrayColor
@@ -171,31 +183,30 @@ public class ResetPinWidget: UIView {
     fileprivate func validate() -> Bool {
         guard let pinStr = oldPinTextField.text, !pinStr.isEmpty else {
             oldPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "set_pin") ? ConstantData.pinEmpty : ConstantData.oldPinEmpty,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.oldPinEmpty,buttonTitle: ConstantData.ok)
             return false
         }
         
         guard pinStr.isValid4Password else {
             oldPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "set_pin") ? ConstantData.pinlength : ConstantData.oldPinlength,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.oldPinlength,buttonTitle: ConstantData.ok)
 
             return false
         }
         
         guard let confirmPinStr = newPinTextField.text, !confirmPinStr.isEmpty else {
             newPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "set_pin") ? ConstantData.confirmPinEmpty : ConstantData.newPinEmpty,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.newPinEmpty,buttonTitle: ConstantData.ok)
             return false
         }
         
         guard confirmPinStr.isValid4Password else {
             newPinTextField.becomeFirstResponder()
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: (type == "set_pin") ? ConstantData.confirmPinlength : ConstantData.newPinlength,buttonTitle: ConstantData.ok)
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.newPinlength,buttonTitle: ConstantData.ok)
 
             return false
         }
         
-        if type != "set_pin" {
             guard let confirmchangePinStr = confirmTextField.text, !confirmchangePinStr.isEmpty else {
                 confirmTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message:  ConstantData.confirmNewPinEmpty,buttonTitle: ConstantData.ok)
@@ -208,15 +219,6 @@ public class ResetPinWidget: UIView {
 
                 return false
             }
-        }
-        
-        if type == "set_pin" {
-            if pinStr != confirmPinStr {
-                newPinTextField.becomeFirstResponder()
-                simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinMismatch,buttonTitle: ConstantData.ok)
-                return false
-            }
-        }else{
             
             if pinStr == confirmPinStr {
                 newPinTextField.becomeFirstResponder()
@@ -228,7 +230,7 @@ public class ResetPinWidget: UIView {
                 return false
             }
             
-        }
+    
         
         return true
     }
@@ -277,39 +279,9 @@ extension ResetPinWidget  {
 
 }
 extension ResetPinWidget  {
-    
-    fileprivate func setPinAPI(body: [String: Any]){
-        let url = baseUrl + servicesURL.setPin.rawValue
-        ServiceNetworkCall(data: body, url: url, method: .post,type: "SetPin").executeQuery(){
-            (result: Result<setPinSuccess,Error>) in
-            switch result{
-            case .success(let session):
-                print(session)
-                
-                simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: "Card Pin is Set Sucessfully", buttonTitle: "OK")
-                onTapAlert = { [weak self] tag in
-                    guard let self = self else {
-                        return
-                    }
-                    if tag == 1 {
-                        oldPinTextField.text = ""
-                        newPinTextField.text = ""
-                        UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
-
-                    }
-                }
-            case .failure(let error):
-                print(error)
-                self.overView.isHidden = true
-                self.activateView.isHidden = true
-                self.removeFromSuperview()
-            }
-        }
-    }
-
 
 private func changePinAPI(body: [String: Any]){
-    let url = baseUrl + servicesURL.changePin.rawValue
+    let url = baseUrl() + servicesURL.changePin.rawValue
     ServiceNetworkCall(data: body, url: url, method: .post,type: "ResetPin").executeQuery(){
         (result: Result<setPinSuccess,Error>) in
         switch result{
@@ -339,7 +311,7 @@ private func changePinAPI(body: [String: Any]){
 
     
     fileprivate func sessionKeyAPI(body: [String: Any]){
-        let url = baseUrl + servicesURL.sessionKey.rawValue
+        let url = baseUrl() + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
