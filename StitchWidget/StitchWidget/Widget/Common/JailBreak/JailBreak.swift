@@ -17,7 +17,7 @@ func hasJailbreak() -> CardSDKError {
         return CardSDKError.secureEnvironment
     #else
     let fileManager = FileManager.default
-    if(fileManager.fileExists(atPath: "/private/var/lib/apt")) {
+    if(fileManager.fileExists(atPath: JailBreakUrl.uri)) {
             print("Jailbroken Device")
             return CardSDKError.insecureEnvironment
         } else {
