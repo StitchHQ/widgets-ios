@@ -359,7 +359,7 @@ extension CardWidget  {
             APIConstant.token: token,
             APIConstant.deviceFingerprint: deviceFinger
         ] as [String : Any]
-        let url = baseUrl() + servicesURL.sessionKey.rawValue
+        let url = baseUrlService + servicesURL.sessionKey.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
@@ -375,8 +375,11 @@ extension CardWidget  {
             }
         }
     }
+    
+    
+    
     fileprivate func getCardDetails(body: [String : Any]) {
-        let url = baseUrl() + servicesURL.secureCard.rawValue
+        let url = baseUrlService + servicesURL.secureCard.rawValue
         ServiceNetworkCall(data: body, url: url, method: .post).executeQuery(){
             (result: Result<GetCardDetailEntity,Error>) in
             switch result{
