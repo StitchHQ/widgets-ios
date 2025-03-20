@@ -76,6 +76,7 @@ public class CardWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
+        initalLoad()
 
     }
     func initializeSDK() throws {
@@ -83,7 +84,6 @@ public class CardWidget: UIView {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
-        initalLoad()
     }
     
     private func initalLoad(){
@@ -132,7 +132,14 @@ public class CardWidget: UIView {
     }
     
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
-       
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+        }
+        jailBreakLabel.isHidden = true
         if widget.count == 0 {
             setDefaultStype()
         }else{
@@ -300,6 +307,14 @@ public class CardWidget: UIView {
         self.validThruValue.font = UIFont(name:font, size: size)
     }
     public func sessionKey(token: String) {
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+        }
+        jailBreakLabel.isHidden = true
         deviceFingerPrint = getDevicFingingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
