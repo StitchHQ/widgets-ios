@@ -52,7 +52,7 @@ public class ResetPinWidget: UIView {
         pinButton.setTitleColor(.white, for: .normal)
         pinButton.setCornerRadiusButton(size: 10)
         activateView.layer.cornerRadius = 10
-        pinRequiredLabel.text = "PIN (required)*"
+        pinRequiredLabel.text = ConstantData.pinRequired
         pinButton.backgroundColor = UIColor.lightGrayColor
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -65,8 +65,8 @@ public class ResetPinWidget: UIView {
             
             for item in widget {
 
-                setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.textFieldVariant ?? "Outlined")
+                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
+                setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
 
                 if type == item.widgetStyle {
                     
@@ -81,7 +81,7 @@ public class ResetPinWidget: UIView {
                     
                     return
                 }else{
-                    setfontValue(font: "Inter-Medium",fontSize: 16.0)
+                    setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
                     olfPinLabel.textColor = .darkblueColor
                     newPinLabel.textColor = .darkblueColor
                     newPinTextField.textColor = .black
@@ -101,7 +101,7 @@ public class ResetPinWidget: UIView {
            
         }else{
           
-            setfontValue(font: "Inter-Medium",fontSize: 16.0)
+            setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
             pinButton.setTitleColor(.white, for: .normal)
             olfPinLabel.textColor = .darkblueColor
             newPinLabel.textColor = .darkblueColor
@@ -122,7 +122,7 @@ public class ResetPinWidget: UIView {
     fileprivate func setfontValue(font: String,fontSize: Float){
         let size = CGFloat(fontSize)
         let fontName = font.firstWord()
-        pinRequiredLabel.font = UIFont(name:"\(fontName ?? "")-SemiBold", size: size)
+        pinRequiredLabel.font = UIFont(name:"\(fontName ?? String.Empty)-SemiBold", size: size)
         olfPinLabel.font = UIFont(name:font, size: size)
         oldPinTextField.font = UIFont(name:font, size: size)
         newPinLabel.font = UIFont(name:font, size: size)
@@ -139,18 +139,18 @@ public class ResetPinWidget: UIView {
         type = pintype
         confirmStackView.isHidden = false
         pinRequiredLabel.isHidden = true
-        confirmPinLabel.text = "Confirm New PIN"
-        newPinLabel.text = "New PIN"
-        olfPinLabel.text = "Current PIN"
-        pinButton.setTitle("Change Pin", for: .normal)
+        confirmPinLabel.text = ConstantData.confirmNewPin
+        newPinLabel.text = ConstantData.newPin
+        olfPinLabel.text = ConstantData.currentPin
+        pinButton.setTitle(ConstantData.changePin, for: .normal)
         self.oldPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter 4-Digit PIN",
+            string: ConstantData.enterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.newPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter 4-Digit PIN",
+            string: ConstantData.enterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.confirmTextField.attributedPlaceholder = NSAttributedString(
-            string: "Re-enter 4-Digit PIN",
+            string: ConstantData.reenterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
@@ -224,7 +224,7 @@ public class ResetPinWidget: UIView {
                 newPinTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDifferent,buttonTitle: ConstantData.ok)
                 return false
-            }else if confirmPinStr != (confirmTextField.text ?? "") {
+            }else if confirmPinStr != (confirmTextField.text ?? String.Empty) {
                 newPinTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.newpinMismatch,buttonTitle: ConstantData.ok)
                 return false
@@ -293,9 +293,9 @@ private func changePinAPI(body: [String: Any]){
                     return
                 }
                 if tag == 1 {
-                    oldPinTextField.text = ""
-                    newPinTextField.text = ""
-                    confirmTextField.text = ""
+                    oldPinTextField.text = String.Empty
+                    newPinTextField.text = String.Empty
+                    confirmTextField.text = String.Empty
                     UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -342,13 +342,13 @@ extension ResetPinWidget: UITextFieldDelegate {
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
-        let currentText = textField.text ?? ""
+        let currentText = textField.text ?? String.Empty
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= 4
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if oldPinTextField.text != "" && newPinTextField.text != "" {
+        if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
             pinButton.backgroundColor = UIColor.blueColor
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor

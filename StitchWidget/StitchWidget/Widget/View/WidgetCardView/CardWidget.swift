@@ -62,6 +62,7 @@ public class CardWidget: UIView {
     var isCardMask = false
     var panLastFour = ""
     
+    @IBOutlet weak var jailBreakLabel: UILabel!
     var isCvvEye = false
     var isCardNoEye = false
     public override func awakeFromNib() {
@@ -72,11 +73,13 @@ public class CardWidget: UIView {
             try initializeSDK()
         }catch {
             print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
         }
 
     }
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if hasJailbreak() != CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
@@ -84,6 +87,8 @@ public class CardWidget: UIView {
     }
     
     private func initalLoad(){
+        jailBreakLabel.isHidden = true
+
         frontCardView.layer.cornerRadius = 10
         backCardView.layer.cornerRadius = 10
         frontImgView.layer.cornerRadius = 10
@@ -364,9 +369,9 @@ extension CardWidget  {
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
-                self.generalKey = session.key ?? ""
+                self.generalKey = session.key ?? String.Empty
                 let data = [
-                    APIConstant.token: session.token ?? "",
+                    APIConstant.token: session.token ?? String.Empty,
                     APIConstant.deviceFingerprint: deviceFinger
                 ] as [String : Any]
                 self.getCardDetails(body: data)

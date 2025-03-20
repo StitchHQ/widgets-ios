@@ -124,7 +124,7 @@ public class SetPinWidget: UIView {
     fileprivate func setfontValue(font: String,fontSize: Float){
         let size = CGFloat(fontSize)
         let fontName = font.firstWord()
-        pinRequiredLabel.font = UIFont(name:"\(fontName ?? "")-SemiBold", size: size)
+        pinRequiredLabel.font = UIFont(name:"\(fontName ?? String.Empty)-SemiBold", size: size)
         olfPinLabel.font = UIFont(name:font, size: size)
         oldPinTextField.font = UIFont(name:font, size: size)
         newPinLabel.font = UIFont(name:font, size: size)
@@ -141,18 +141,18 @@ public class SetPinWidget: UIView {
         type = pintype
         confirmStackView.isHidden = true
         pinRequiredLabel.isHidden = false
-        confirmPinLabel.text = "Confirm New PIN"
-        newPinLabel.text = "Confirm PIN*"
-        olfPinLabel.text = "4 Digit PIN*"
-        pinButton.setTitle("Set Pin", for: .normal)
+        confirmPinLabel.text = ConstantData.confirmNewPin
+        newPinLabel.text = ConstantData.confirmPin
+        olfPinLabel.text = ConstantData.fourDigitPin
+        pinButton.setTitle(ConstantData.setPin, for: .normal)
         self.oldPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter 4-Digit PIN",
+            string: ConstantData.enterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.newPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Re-enter 4-Digit PIN" ,
+            string: ConstantData.reenterDigitPin ,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.confirmTextField.attributedPlaceholder = NSAttributedString(
-            string: "Re-enter 4-Digit PIN",
+            string: ConstantData.reenterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
@@ -275,8 +275,8 @@ extension SetPinWidget  {
                         return
                     }
                     if tag == 1 {
-                        oldPinTextField.text = ""
-                        newPinTextField.text = ""
+                        oldPinTextField.text = String.Empty
+                        newPinTextField.text = String.Empty
                         UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
 
                     }
@@ -296,8 +296,8 @@ extension SetPinWidget  {
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
-                self.generalKey = session.key ?? ""
-                self.token = session.token ?? ""
+                self.generalKey = session.key ?? String.Empty
+                self.token = session.token ?? String.Empty
                 if self.cardType != ConstantData.activated {
                     self.activateView.isHidden = false
                     self.activateLabel.text = ConstantData.cardInActivate
@@ -327,7 +327,7 @@ extension SetPinWidget: UITextFieldDelegate {
         return updatedText.count <= 4
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if oldPinTextField.text != "" && newPinTextField.text != "" {
+        if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
             pinButton.backgroundColor = UIColor.blueColor
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor
