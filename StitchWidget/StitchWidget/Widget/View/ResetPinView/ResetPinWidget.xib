@@ -102,11 +102,21 @@
                         <constraint firstItem="VB3-ep-u49" firstAttribute="height" secondItem="jU1-5t-bPM" secondAttribute="width" multiplier="0.12" id="rI6-uX-ble"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-fv-E1a">
+                    <rect key="frame" x="15" y="216.33333333333334" width="376" height="20.333333333333343"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="bT7-OL-fCm"/>
             <constraints>
+                <constraint firstItem="V9B-fv-E1a" firstAttribute="leading" secondItem="bT7-OL-fCm" secondAttribute="leading" constant="15" id="4Hd-zX-Jpc"/>
                 <constraint firstAttribute="bottom" secondItem="jU1-5t-bPM" secondAttribute="bottom" constant="10" id="9wB-rZ-tIY"/>
+                <constraint firstItem="V9B-fv-E1a" firstAttribute="centerX" secondItem="bT7-OL-fCm" secondAttribute="centerX" id="S7C-IL-tPJ"/>
                 <constraint firstItem="jU1-5t-bPM" firstAttribute="leading" secondItem="bT7-OL-fCm" secondAttribute="leading" constant="10" id="ehE-N0-ZcJ"/>
+                <constraint firstItem="bT7-OL-fCm" firstAttribute="trailing" secondItem="V9B-fv-E1a" secondAttribute="trailing" constant="15" id="fZZ-Tz-TnM"/>
+                <constraint firstItem="V9B-fv-E1a" firstAttribute="centerY" secondItem="bT7-OL-fCm" secondAttribute="centerY" id="fkX-vC-XAz"/>
                 <constraint firstItem="bT7-OL-fCm" firstAttribute="trailing" secondItem="jU1-5t-bPM" secondAttribute="trailing" constant="10" id="jnP-Er-mtg"/>
                 <constraint firstItem="X2w-a3-l2Y" firstAttribute="height" secondItem="f9W-9L-mRk" secondAttribute="height" multiplier="0.06" id="m15-lz-2NP"/>
                 <constraint firstItem="jU1-5t-bPM" firstAttribute="top" secondItem="f9W-9L-mRk" secondAttribute="top" constant="10" id="wpH-wW-c6a"/>
@@ -116,6 +126,7 @@
                 <outlet property="confirmPinLabel" destination="cxo-sn-30j" id="JOn-yq-Xa8"/>
                 <outlet property="confirmStackView" destination="PC4-gA-QQI" id="YG6-Iz-VmF"/>
                 <outlet property="confirmTextField" destination="eBz-A4-eMx" id="e52-Z9-Non"/>
+                <outlet property="jailBreakLabel" destination="V9B-fv-E1a" id="Rj1-Bx-0Ia"/>
                 <outlet property="newPinLabel" destination="Foi-2X-Mpx" id="fhh-Iy-BqB"/>
                 <outlet property="newPinTextField" destination="tkN-GA-Caz" id="bxG-tU-Eri"/>
                 <outlet property="oldPinTextField" destination="VB3-ep-u49" id="plJ-fp-i9q"/>

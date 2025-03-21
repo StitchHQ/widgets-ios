@@ -10,8 +10,6 @@ import UIKit
 public class SetPinWidget: UIView {
     
     @IBOutlet weak var overView: UIView!
-    @IBOutlet weak var activateView: UIView!
-    @IBOutlet weak var activateLabel: UILabel!
     @IBOutlet weak var newPinLabel: UILabel!
     @IBOutlet weak var olfPinLabel: UILabel!
     @IBOutlet weak var newPinTextField: UITextField!
@@ -21,11 +19,13 @@ public class SetPinWidget: UIView {
     @IBOutlet weak var confirmStackView: UIStackView!
     @IBOutlet weak var confirmPinLabel: UILabel!
     @IBOutlet weak var confirmTextField: UITextField!
-    
+    @IBOutlet weak var jailBreakLabel: UILabel!
+
     public var token = ""
     var generalKey = ""
     public var cardType = ""
     public var type = ""
+    var widget:[WidgetSettingEntity] = []
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +33,9 @@ public class SetPinWidget: UIView {
             try initializeSDK()
         }catch {
             print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+            overView.isHidden = true
         }
     }
     
@@ -42,27 +45,44 @@ public class SetPinWidget: UIView {
         }
         // Continue with initialization if the device is secure
         initalLoad()
+        self.cardType = ConstantData.activated
+        let data = [
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
+        ] as [String : Any]
+        sessionKeyAPI(body: data)
+            self.overView.isHidden = false
     }
     
     private func initalLoad(){
+        jailBreakLabel.isHidden = true
+        overView.isHidden = false
         newPinTextField.delegate = self
         oldPinTextField.delegate = self
         newPinTextField.keyboardType = .numberPad
         oldPinTextField.keyboardType = .numberPad
         pinButton.setTitleColor(.white, for: .normal)
         pinButton.setCornerRadiusButton(size: 10)
-        activateView.layer.cornerRadius = 10
         pinRequiredLabel.text = ConstantData.pinRequired
         pinButton.backgroundColor = UIColor.lightGrayColor
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        activateLabel.backgroundColor = .clear
         setTypePin(pintype: "set_pin")
 
 
     }
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
-        if widget.count != 0 {
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+        }
+        self.widget = widget
+    }
+    
+    private  func setWidgetData(widget: [WidgetSettingEntity]){        if widget.count != 0 {
             
             for item in widget {
 
@@ -74,8 +94,6 @@ public class SetPinWidget: UIView {
                     olfPinLabel.textColor = item.fontColor
                     newPinLabel.textColor = item.fontColor
                     pinRequiredLabel.textColor = item.fontColor
-                    activateLabel.textColor = item.fontColor
-                    activateView.backgroundColor = item.background
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
                     pinButton.backgroundColor = item.buttonBackground
@@ -93,10 +111,8 @@ public class SetPinWidget: UIView {
                     confirmTextField.textColor = .black
                     newPinTextField.backgroundColor = .clear
                     oldPinTextField.backgroundColor = .clear
-                    activateLabel.textColor = .red
                     pinButton.backgroundColor = UIColor.lightGrayColor
                     pinButton.setTitleColor(.white, for: .normal)
-                    activateView.backgroundColor = .redColor
                 }
 
             }
@@ -114,9 +130,7 @@ public class SetPinWidget: UIView {
             confirmTextField.textColor = .black
             newPinTextField.backgroundColor = .clear
             oldPinTextField.backgroundColor = .clear
-            activateLabel.textColor = .red
             pinButton.backgroundColor = UIColor.lightGrayColor
-            activateView.backgroundColor = .redColor
         }
         
     }
@@ -129,15 +143,12 @@ public class SetPinWidget: UIView {
         oldPinTextField.font = UIFont(name:font, size: size)
         newPinLabel.font = UIFont(name:font, size: size)
         newPinTextField.font = UIFont(name:font, size: size)
-        activateLabel.font = UIFont(name:font, size: size)
         confirmPinLabel.font = UIFont(name:font, size: size)
         confirmTextField.font = UIFont(name:font, size: size)
         pinButton.titleLabel?.font = UIFont(name:font, size: size)
     }
     private func setTypePin(pintype: String){
             overView.isHidden = false
-            activateView.isHidden = true
-        
         type = pintype
         confirmStackView.isHidden = true
         pinRequiredLabel.isHidden = false
@@ -222,22 +233,15 @@ public class SetPinWidget: UIView {
 extension SetPinWidget  {
     
     public func sessionKey(secureToken: String) {
-        token = secureToken
-        self.cardType = ConstantData.activated
-        let data = [
-            APIConstant.token: token,
-            APIConstant.devicePrint: deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
-        if self.cardType != ConstantData.activated {
-            self.activateView.isHidden = false
-            self.activateLabel.text = ConstantData.cardInActivate
-            self.overView.isHidden = true
-        }else{
-            self.overView.isHidden = false
-            self.activateView.isHidden = true
-
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
         }
+        
+        self.token = secureToken
     }
     
     fileprivate func setPin() {
@@ -284,7 +288,6 @@ extension SetPinWidget  {
             case .failure(let error):
                 print(error)
                 self.overView.isHidden = true
-                self.activateView.isHidden = true
                 self.removeFromSuperview()
             }
         }
@@ -298,15 +301,9 @@ extension SetPinWidget  {
             case .success(let session):
                 self.generalKey = session.key ?? String.Empty
                 self.token = session.token ?? String.Empty
-                if self.cardType != ConstantData.activated {
-                    self.activateView.isHidden = false
-                    self.activateLabel.text = ConstantData.cardInActivate
-                    self.overView.isHidden = true
-                }else{
-                    self.overView.isHidden = false
-                    self.activateView.isHidden = true
 
-                }
+                    self.overView.isHidden = false
+            
             case .failure(let error):
                 print(error)
             }

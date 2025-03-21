@@ -51,9 +51,12 @@ public class CardWidget: UIView {
     @IBOutlet weak var validThruLabel: UILabel!
     @IBOutlet weak var cvvTitleLabel: UILabel!
     @IBOutlet weak var titleCardName: UILabel!
-    
     @IBOutlet weak var cvvEyeBtn: UIButton!
     @IBOutlet weak var cardNoEyeBtn: UIButton!
+    @IBOutlet weak var jailBreakLabel: UILabel!
+    
+    var isCvvEye = false
+    var isCardNoEye = false
     var generalKey = ""
     let activityInstance = Indicator()
     var accountNo = ""
@@ -64,9 +67,6 @@ public class CardWidget: UIView {
     var token = ""
     var widget:[WidgetSettingEntity] = []
     
-    @IBOutlet weak var jailBreakLabel: UILabel!
-    var isCvvEye = false
-    var isCardNoEye = false
     public override func awakeFromNib() {
         
         super.awakeFromNib()
