@@ -40,7 +40,7 @@ public class SetPinWidget: UIView {
     }
     
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if hasJailbreak() != CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
