@@ -61,6 +61,8 @@ public class CardWidget: UIView {
     var isCvvMask = false
     var isCardMask = false
     var panLastFour = ""
+    var token = ""
+    var widget:[WidgetSettingEntity] = []
     
     @IBOutlet weak var jailBreakLabel: UILabel!
     var isCvvEye = false
@@ -75,8 +77,8 @@ public class CardWidget: UIView {
             print(error)
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
+            overView.isHidden = true
         }
-        initalLoad()
 
     }
     func initializeSDK() throws {
@@ -84,10 +86,20 @@ public class CardWidget: UIView {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
+        initalLoad()
+        if widget.count == 0 {
+            setDefaultStype()
+        }else{
+            setWidgetData(widget: widget)
+        }
+        
+        deviceFingerPrint = getDevicFingingerprint()
+        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
     private func initalLoad(){
         jailBreakLabel.isHidden = true
+        overView.isHidden = false
 
         frontCardView.layer.cornerRadius = 10
         backCardView.layer.cornerRadius = 10
@@ -139,12 +151,7 @@ public class CardWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        jailBreakLabel.isHidden = true
-        if widget.count == 0 {
-            setDefaultStype()
-        }else{
-            setWidgetData(widget: widget)
-        }
+        self.widget = widget
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){
@@ -314,9 +321,9 @@ public class CardWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        jailBreakLabel.isHidden = true
-        deviceFingerPrint = getDevicFingingerprint()
-        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
+        
+        self.token = token
+       
     }
     
     @IBAction func onBackCardNoAction(_ sender: Any) {
