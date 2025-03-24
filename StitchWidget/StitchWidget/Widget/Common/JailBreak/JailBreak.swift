@@ -13,15 +13,12 @@
  */
 func hasJailbreak() -> CardSDKError {
     #if arch(i386) || arch(x86_64)
-        println("Simulator")
         return CardSDKError.secureEnvironment
     #else
     let fileManager = FileManager.default
     if(fileManager.fileExists(atPath: JailBreakUrl.uri)) {
-            print("Jailbroken Device")
             return CardSDKError.insecureEnvironment
         } else {
-            print("Clean Device")
             return CardSDKError.secureEnvironment
         }
     #endif
