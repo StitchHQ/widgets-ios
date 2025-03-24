@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -103,48 +102,31 @@
                         <constraint firstItem="JLf-hW-us4" firstAttribute="height" secondItem="Rt2-lE-sFC" secondAttribute="width" multiplier="0.12" id="uw5-Re-Lho"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-qw-87j">
-                    <rect key="frame" x="10" y="10" width="386" height="61"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cre-zH-OdR">
-                            <rect key="frame" x="10" y="10" width="366" height="41"/>
-                            <color key="backgroundColor" name="voilet"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" name="voilet"/>
-                    <constraints>
-                        <constraint firstItem="Cre-zH-OdR" firstAttribute="top" secondItem="sSF-qw-87j" secondAttribute="top" constant="10" id="A6Q-5f-g8e"/>
-                        <constraint firstItem="Cre-zH-OdR" firstAttribute="leading" secondItem="sSF-qw-87j" secondAttribute="leading" constant="10" id="Jd6-Nc-UAa"/>
-                        <constraint firstItem="Cre-zH-OdR" firstAttribute="leading" secondItem="sSF-qw-87j" secondAttribute="leading" constant="10" id="Lfs-NK-1kS"/>
-                        <constraint firstItem="Cre-zH-OdR" firstAttribute="centerY" secondItem="sSF-qw-87j" secondAttribute="centerY" id="bwU-eY-id6"/>
-                        <constraint firstAttribute="trailing" secondItem="Cre-zH-OdR" secondAttribute="trailing" constant="10" id="gbL-CV-IwU"/>
-                        <constraint firstAttribute="bottom" secondItem="Cre-zH-OdR" secondAttribute="bottom" constant="10" id="p8Z-ga-1bY"/>
-                        <constraint firstItem="Cre-zH-OdR" firstAttribute="centerX" secondItem="sSF-qw-87j" secondAttribute="centerX" id="wN3-ej-bSO"/>
-                    </constraints>
-                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZX-61-Y0q">
+                    <rect key="frame" x="15" y="216.33333333333334" width="376" height="20.333333333333343"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="YUh-C6-xq3"/>
             <constraints>
-                <constraint firstItem="sSF-qw-87j" firstAttribute="trailing" secondItem="Rt2-lE-sFC" secondAttribute="trailing" id="59j-tA-5Iq"/>
-                <constraint firstItem="sSF-qw-87j" firstAttribute="top" secondItem="Rt2-lE-sFC" secondAttribute="top" id="6jC-Eb-exo"/>
                 <constraint firstItem="0E2-4f-lLS" firstAttribute="height" secondItem="nbY-9F-ZmO" secondAttribute="height" multiplier="0.06" id="7Jd-ht-1D1"/>
                 <constraint firstItem="YUh-C6-xq3" firstAttribute="trailing" secondItem="Rt2-lE-sFC" secondAttribute="trailing" constant="10" id="9yG-fQ-XAl"/>
-                <constraint firstItem="sSF-qw-87j" firstAttribute="leading" secondItem="Rt2-lE-sFC" secondAttribute="leading" id="BWR-G5-vWC"/>
                 <constraint firstItem="Rt2-lE-sFC" firstAttribute="leading" secondItem="YUh-C6-xq3" secondAttribute="leading" constant="10" id="BvT-Tz-11g"/>
                 <constraint firstItem="Rt2-lE-sFC" firstAttribute="top" secondItem="nbY-9F-ZmO" secondAttribute="top" constant="10" id="K8m-PB-oao"/>
+                <constraint firstItem="qZX-61-Y0q" firstAttribute="centerY" secondItem="YUh-C6-xq3" secondAttribute="centerY" id="OC4-KP-5CS"/>
+                <constraint firstItem="YUh-C6-xq3" firstAttribute="trailing" secondItem="qZX-61-Y0q" secondAttribute="trailing" constant="15" id="Ptb-TC-8G5"/>
                 <constraint firstAttribute="bottom" secondItem="Rt2-lE-sFC" secondAttribute="bottom" constant="10" id="Wpl-eg-0DO"/>
-                <constraint firstItem="sSF-qw-87j" firstAttribute="height" secondItem="nbY-9F-ZmO" secondAttribute="width" multiplier="0.15" id="ker-EO-M1F"/>
+                <constraint firstItem="qZX-61-Y0q" firstAttribute="centerX" secondItem="YUh-C6-xq3" secondAttribute="centerX" id="r2p-RX-uYq"/>
+                <constraint firstItem="qZX-61-Y0q" firstAttribute="leading" secondItem="YUh-C6-xq3" secondAttribute="leading" constant="15" id="vWO-FJ-taN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="activateLabel" destination="Cre-zH-OdR" id="gkH-qy-zqU"/>
-                <outlet property="activateView" destination="sSF-qw-87j" id="4zJ-BU-5mG"/>
                 <outlet property="confirmPinLabel" destination="5YX-OZ-IEt" id="AaY-h6-AmF"/>
                 <outlet property="confirmStackView" destination="A7F-qq-HEk" id="dng-eD-ViF"/>
                 <outlet property="confirmTextField" destination="rfN-gf-BMj" id="hDl-fl-G6o"/>
+                <outlet property="jailBreakLabel" destination="qZX-61-Y0q" id="sGY-XN-f4q"/>
                 <outlet property="newPinLabel" destination="eaR-nd-xO5" id="Nxv-PE-Yaj"/>
                 <outlet property="newPinTextField" destination="zwX-rG-a23" id="oXZ-D2-74T"/>
                 <outlet property="oldPinTextField" destination="pb4-3D-rPC" id="YsR-sr-nPp"/>
@@ -157,9 +139,6 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="voilet">
-            <color red="0.89800000190734863" green="0.90200001001358032" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

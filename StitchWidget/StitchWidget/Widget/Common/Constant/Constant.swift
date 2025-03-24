@@ -49,6 +49,16 @@ enum ConstantData {
     static let cardInActivate = "Card not in Activated State"
     static let activated = "activated"
     static let internetConnection = "Please check your Internet connection"
+    static let confirmNewPin = "Confirm New PIN"
+    static let newPin = "New PIN"
+    static let currentPin = "Current PIN"
+    static let changePin = "Change Pin"
+    static let enterDigitPin = "Enter 4-Digit PIN"
+    static let reenterDigitPin = "Re-enter 4-Digit PIN"
+    static let setPin = "Set Pin"
+    static let confirmPin = "Confirm PIN*"
+    static let fourDigitPin = "4 Digit PIN*"
+
 }
 
 enum ColorConstant {

@@ -51,9 +51,12 @@ public class CardWidget: UIView {
     @IBOutlet weak var validThruLabel: UILabel!
     @IBOutlet weak var cvvTitleLabel: UILabel!
     @IBOutlet weak var titleCardName: UILabel!
-    
     @IBOutlet weak var cvvEyeBtn: UIButton!
     @IBOutlet weak var cardNoEyeBtn: UIButton!
+    @IBOutlet weak var jailBreakLabel: UILabel!
+    
+    var isCvvEye = false
+    var isCardNoEye = false
     var generalKey = ""
     let activityInstance = Indicator()
     var accountNo = ""
@@ -61,9 +64,9 @@ public class CardWidget: UIView {
     var isCvvMask = false
     var isCardMask = false
     var panLastFour = ""
+    var token = ""
+    var widget:[WidgetSettingEntity] = []
     
-    var isCvvEye = false
-    var isCardNoEye = false
     public override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -72,6 +75,9 @@ public class CardWidget: UIView {
             try initializeSDK()
         }catch {
             print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+            overView.isHidden = true
         }
 
     }
@@ -81,9 +87,20 @@ public class CardWidget: UIView {
         }
         // Continue with initialization if the device is secure
         initalLoad()
+        if widget.count == 0 {
+            setDefaultStype()
+        }else{
+            setWidgetData(widget: widget)
+        }
+        
+        deviceFingerPrint = getDevicFingingerprint()
+        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
     private func initalLoad(){
+        jailBreakLabel.isHidden = true
+        overView.isHidden = false
+
         frontCardView.layer.cornerRadius = 10
         backCardView.layer.cornerRadius = 10
         frontImgView.layer.cornerRadius = 10
@@ -127,12 +144,14 @@ public class CardWidget: UIView {
     }
     
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
-       
-        if widget.count == 0 {
-            setDefaultStype()
-        }else{
-            setWidgetData(widget: widget)
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
         }
+        self.widget = widget
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){
@@ -295,8 +314,16 @@ public class CardWidget: UIView {
         self.validThruValue.font = UIFont(name:font, size: size)
     }
     public func sessionKey(token: String) {
-        deviceFingerPrint = getDevicFingingerprint()
-        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+        }
+        
+        self.token = token
+       
     }
     
     @IBAction func onBackCardNoAction(_ sender: Any) {
@@ -364,9 +391,9 @@ extension CardWidget  {
             (result: Result<SessionKeyEntity,Error>) in
             switch result{
             case .success(let session):
-                self.generalKey = session.key ?? ""
+                self.generalKey = session.key ?? String.Empty
                 let data = [
-                    APIConstant.token: session.token ?? "",
+                    APIConstant.token: session.token ?? String.Empty,
                     APIConstant.deviceFingerprint: deviceFinger
                 ] as [String : Any]
                 self.getCardDetails(body: data)

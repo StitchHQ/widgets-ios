@@ -10,8 +10,6 @@ import UIKit
 public class ResetPinWidget: UIView {
     
     @IBOutlet weak var overView: UIView!
-    @IBOutlet weak var activateView: UIView!
-    @IBOutlet weak var activateLabel: UILabel!
     @IBOutlet weak var newPinLabel: UILabel!
     @IBOutlet weak var olfPinLabel: UILabel!
     @IBOutlet weak var newPinTextField: UITextField!
@@ -21,11 +19,13 @@ public class ResetPinWidget: UIView {
     @IBOutlet weak var confirmStackView: UIStackView!
     @IBOutlet weak var confirmPinLabel: UILabel!
     @IBOutlet weak var confirmTextField: UITextField!
-    
+    @IBOutlet weak var jailBreakLabel: UILabel!
+
     public var token = ""
     var generalKey = ""
     public var cardType = ""
     public var type = ""
+    var widget:[WidgetSettingEntity] = []
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +33,9 @@ public class ResetPinWidget: UIView {
             try initializeSDK()
         }catch {
             print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+            overView.isHidden = true
         }
     }
     
@@ -42,46 +45,63 @@ public class ResetPinWidget: UIView {
         }
         // Continue with initialization if the device is secure
         initalLoad()
+        self.cardType = ConstantData.activated
+        let data = [
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
+        ] as [String : Any]
+        sessionKeyAPI(body: data)
+
+            self.overView.isHidden = false
+
     }
     
     private func initalLoad(){
+        jailBreakLabel.isHidden = true
+        overView.isHidden = false
         newPinTextField.delegate = self
         oldPinTextField.delegate = self
         newPinTextField.keyboardType = .numberPad
         oldPinTextField.keyboardType = .numberPad
         pinButton.setTitleColor(.white, for: .normal)
         pinButton.setCornerRadiusButton(size: 10)
-        activateView.layer.cornerRadius = 10
-        pinRequiredLabel.text = "PIN (required)*"
+        pinRequiredLabel.text = ConstantData.pinRequired
         pinButton.backgroundColor = UIColor.lightGrayColor
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        activateLabel.backgroundColor = .clear
         setTypePin(pintype: "change_pin")
 
     }
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
-        if widget.count != 0 {
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
+        }
+        self.widget = widget
+    }
+    
+    private  func setWidgetData(widget: [WidgetSettingEntity]){        if widget.count != 0 {
             
             for item in widget {
 
-                setfontValue(font: item.fontFamily ?? "EuclidFlex-Medium",fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.textFieldVariant ?? "Outlined")
+                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
+                setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
 
                 if type == item.widgetStyle {
                     
                     olfPinLabel.textColor = item.fontColor
                     newPinLabel.textColor = item.fontColor
                     pinRequiredLabel.textColor = item.fontColor
-                    activateLabel.textColor = item.fontColor
-                    activateView.backgroundColor = item.background
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
                     pinButton.backgroundColor = item.buttonBackground
                     
                     return
                 }else{
-                    setfontValue(font: "Inter-Medium",fontSize: 16.0)
+                    setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
                     olfPinLabel.textColor = .darkblueColor
                     newPinLabel.textColor = .darkblueColor
                     newPinTextField.textColor = .black
@@ -91,17 +111,15 @@ public class ResetPinWidget: UIView {
                     confirmTextField.textColor = .black
                     newPinTextField.backgroundColor = .clear
                     oldPinTextField.backgroundColor = .clear
-                    activateLabel.textColor = .red
                     pinButton.backgroundColor = UIColor.lightGrayColor
                     pinButton.setTitleColor(.white, for: .normal)
-                    activateView.backgroundColor = .redColor
                 }
 
             }
            
         }else{
           
-            setfontValue(font: "Inter-Medium",fontSize: 16.0)
+            setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
             pinButton.setTitleColor(.white, for: .normal)
             olfPinLabel.textColor = .darkblueColor
             newPinLabel.textColor = .darkblueColor
@@ -112,9 +130,7 @@ public class ResetPinWidget: UIView {
             confirmTextField.textColor = .black
             newPinTextField.backgroundColor = .clear
             oldPinTextField.backgroundColor = .clear
-            activateLabel.textColor = .red
             pinButton.backgroundColor = UIColor.lightGrayColor
-            activateView.backgroundColor = .redColor
         }
         
     }
@@ -122,35 +138,33 @@ public class ResetPinWidget: UIView {
     fileprivate func setfontValue(font: String,fontSize: Float){
         let size = CGFloat(fontSize)
         let fontName = font.firstWord()
-        pinRequiredLabel.font = UIFont(name:"\(fontName ?? "")-SemiBold", size: size)
+        pinRequiredLabel.font = UIFont(name:"\(fontName ?? String.Empty)-SemiBold", size: size)
         olfPinLabel.font = UIFont(name:font, size: size)
         oldPinTextField.font = UIFont(name:font, size: size)
         newPinLabel.font = UIFont(name:font, size: size)
         newPinTextField.font = UIFont(name:font, size: size)
-        activateLabel.font = UIFont(name:font, size: size)
         confirmPinLabel.font = UIFont(name:font, size: size)
         confirmTextField.font = UIFont(name:font, size: size)
         pinButton.titleLabel?.font = UIFont(name:font, size: size)
     }
     private func setTypePin(pintype: String){
             overView.isHidden = false
-            activateView.isHidden = true
         
         type = pintype
         confirmStackView.isHidden = false
         pinRequiredLabel.isHidden = true
-        confirmPinLabel.text = "Confirm New PIN"
-        newPinLabel.text = "New PIN"
-        olfPinLabel.text = "Current PIN"
-        pinButton.setTitle("Change Pin", for: .normal)
+        confirmPinLabel.text = ConstantData.confirmNewPin
+        newPinLabel.text = ConstantData.newPin
+        olfPinLabel.text = ConstantData.currentPin
+        pinButton.setTitle(ConstantData.changePin, for: .normal)
         self.oldPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter 4-Digit PIN",
+            string: ConstantData.enterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.newPinTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter 4-Digit PIN",
+            string: ConstantData.enterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         self.confirmTextField.attributedPlaceholder = NSAttributedString(
-            string: "Re-enter 4-Digit PIN",
+            string: ConstantData.reenterDigitPin,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
@@ -224,7 +238,7 @@ public class ResetPinWidget: UIView {
                 newPinTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDifferent,buttonTitle: ConstantData.ok)
                 return false
-            }else if confirmPinStr != (confirmTextField.text ?? "") {
+            }else if confirmPinStr != (confirmTextField.text ?? String.Empty) {
                 newPinTextField.becomeFirstResponder()
                 simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.newpinMismatch,buttonTitle: ConstantData.ok)
                 return false
@@ -238,22 +252,15 @@ public class ResetPinWidget: UIView {
 extension ResetPinWidget  {
     
     public func sessionKey(secureToken: String) {
-        token = secureToken
-        self.cardType = ConstantData.activated
-        let data = [
-            APIConstant.token: token,
-            APIConstant.devicePrint: deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
-        if self.cardType != ConstantData.activated {
-            self.activateView.isHidden = false
-            self.activateLabel.text = ConstantData.cardInActivate
-            self.overView.isHidden = true
-        }else{
-            self.overView.isHidden = false
-            self.activateView.isHidden = true
-
+        do {
+            try initializeSDK()
+        }catch {
+            print(error)
+            jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
+            jailBreakLabel.isHidden = false
         }
+        token = secureToken
+        
     }
     
     fileprivate func setPin() {
@@ -293,16 +300,15 @@ private func changePinAPI(body: [String: Any]){
                     return
                 }
                 if tag == 1 {
-                    oldPinTextField.text = ""
-                    newPinTextField.text = ""
-                    confirmTextField.text = ""
+                    oldPinTextField.text = String.Empty
+                    newPinTextField.text = String.Empty
+                    confirmTextField.text = String.Empty
                     UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
                 }
             }
         case .failure(let error):
             print(error)
             self.overView.isHidden = true
-            self.activateView.isHidden = true
             self.removeFromSuperview()
         
 
@@ -319,15 +325,9 @@ private func changePinAPI(body: [String: Any]){
             case .success(let session):
                 self.generalKey = session.key ?? ""
                 self.token = session.token ?? ""
-                if self.cardType != ConstantData.activated {
-                    self.activateView.isHidden = false
-                    self.activateLabel.text = ConstantData.cardInActivate
-                    self.overView.isHidden = true
-                }else{
+      
                     self.overView.isHidden = false
-                    self.activateView.isHidden = true
-
-                }
+                
             case .failure(let error):
                 print(error)
             }
@@ -342,13 +342,13 @@ extension ResetPinWidget: UITextFieldDelegate {
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
-        let currentText = textField.text ?? ""
+        let currentText = textField.text ?? String.Empty
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= 4
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if oldPinTextField.text != "" && newPinTextField.text != "" {
+        if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
             pinButton.backgroundColor = UIColor.blueColor
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor
