@@ -74,7 +74,7 @@ public class CardWidget: UIView {
         do {
             try initializeSDK()
         }catch {
-            print(error)
+            print(error.errorCode)
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
             overView.isHidden = true
