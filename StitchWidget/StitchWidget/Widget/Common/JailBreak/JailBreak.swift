@@ -24,7 +24,8 @@ func hasJailbreak() -> CardSDKError {
     #endif
 }
 
-enum CardSDKError: Error {
+
+public enum CardSDKError: Error {
     case insecureEnvironment
     case secureEnvironment
     
