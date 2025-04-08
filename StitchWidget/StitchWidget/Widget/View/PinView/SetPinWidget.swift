@@ -40,7 +40,7 @@ public class SetPinWidget: UIView {
     }
     
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
@@ -79,7 +79,9 @@ public class SetPinWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        self.widget = widget
+       
+            setWidgetData(widget: widget)
+        
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){        if widget.count != 0 {

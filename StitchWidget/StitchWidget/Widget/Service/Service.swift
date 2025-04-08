@@ -12,7 +12,7 @@ import Alamofire
 var baseUrlService = ""
 
 public func baseUrl(uri: String) {
-    if hasJailbreak() == CardSDKError.insecureEnvironment {
+    if isJailbroken() == CardSDKError.insecureEnvironment {
         print(CardSDKError.insecureEnvironment.localizedDescription.description)
     }
     

@@ -65,7 +65,6 @@ public class CardWidget: UIView {
     var isCardMask = false
     var panLastFour = ""
     var token = ""
-    var widget:[WidgetSettingEntity] = []
     
     public override func awakeFromNib() {
         
@@ -82,16 +81,12 @@ public class CardWidget: UIView {
 
     }
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
         initalLoad()
-        if widget.count == 0 {
-            setDefaultStype()
-        }else{
-            setWidgetData(widget: widget)
-        }
+      
         
         deviceFingerPrint = getDevicFingingerprint()
         sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
@@ -151,7 +146,11 @@ public class CardWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        self.widget = widget
+        if widget.count == 0 {
+            setDefaultStype()
+        }else{
+            setWidgetData(widget: widget)
+        }
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){
@@ -290,7 +289,6 @@ public class CardWidget: UIView {
         validThruValue.textColor = .white
         setfontValue(font: FontConstant.euclidFlexMediumFont,fontSize: 12.0)
         backImg = nil
-        frontImgView = nil
         isCardMask = true
         isCvvMask = true
         isCardNoEye = true

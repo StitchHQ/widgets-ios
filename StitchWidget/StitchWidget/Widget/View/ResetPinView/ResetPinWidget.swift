@@ -25,7 +25,6 @@ public class ResetPinWidget: UIView {
     var generalKey = ""
     public var cardType = ""
     public var type = ""
-    var widget:[WidgetSettingEntity] = []
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,7 +39,7 @@ public class ResetPinWidget: UIView {
     }
     
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
@@ -80,7 +79,7 @@ public class ResetPinWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        self.widget = widget
+        setWidgetData(widget: widget)
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){        if widget.count != 0 {
