@@ -51,6 +51,9 @@ public class CardWidget: UIView {
         }
 
     }
+    public override func layoutSubviews() {
+        setupCardUI()
+    }
     private func initializeSDK() throws {
         if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
