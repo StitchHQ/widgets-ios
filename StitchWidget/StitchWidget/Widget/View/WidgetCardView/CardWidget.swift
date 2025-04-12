@@ -285,51 +285,51 @@ public class CardWidget: UIView {
     private func setDatePadding(bottomDate: String,topDate: String,trailDate: String,leadDate: String){
         
         //Set padding for date
-        self.validThruTitle.transform = CGAffineTransform(translationX: (trailDate.cgFloatValue() ?? 0.0), y: -(topDate.cgFloatValue() ?? 0.0))
-        self.validThruValue.transform = CGAffineTransform(translationX: (trailDate.cgFloatValue() ?? 0.0), y: -(topDate.cgFloatValue() ?? 0.0))
+        self.validThruTitle.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0), y: (topDate.cgFloatValue() ?? 0.0))
+        self.validThruValue.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0), y: (topDate.cgFloatValue() ?? 0.0))
         if(bottomDate != "0") {
-            self.validThruTitle.transform = CGAffineTransform(translationX: self.validThruTitle.transform.tx, y: -(topDate.cgFloatValue() ?? 0.0) + (bottomDate.cgFloatValue() ?? 0.0))
-            self.validThruValue.transform = CGAffineTransform(translationX: self.validThruValue.transform.tx, y: -(topDate.cgFloatValue() ?? 0.0) + (bottomDate.cgFloatValue() ?? 0.0))
+            self.validThruTitle.transform = CGAffineTransform(translationX: self.validThruTitle.transform.tx, y: -(bottomDate.cgFloatValue() ?? 0.0) + (topDate.cgFloatValue() ?? 0.0))
+            self.validThruValue.transform = CGAffineTransform(translationX: self.validThruValue.transform.tx, y: -(bottomDate.cgFloatValue() ?? 0.0) + (topDate.cgFloatValue() ?? 0.0))
         }
         if(leadDate != "0") {
-            self.validThruTitle.transform = CGAffineTransform(translationX: -(leadDate.cgFloatValue() ?? 0.0) + (trailDate.cgFloatValue() ?? 0.0) , y: self.validThruTitle.transform.ty)
-            self.validThruValue.transform = CGAffineTransform(translationX: -(leadDate.cgFloatValue() ?? 0.0) + (trailDate.cgFloatValue() ?? 0.0) , y: self.validThruValue.transform.ty)
+            self.validThruTitle.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0) + (leadDate.cgFloatValue() ?? 0.0) , y: self.validThruTitle.transform.ty)
+            self.validThruValue.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0) + (leadDate.cgFloatValue() ?? 0.0) , y: self.validThruValue.transform.ty)
         }
-        
 
     }
     
     private func setCvvPadding(leadCvv: String,bottomCvv: String,trailCvv: String,cvvTop: String) {
-        self.cvvTitle.transform = CGAffineTransform(translationX: (trailCvv.cgFloatValue() ?? 0.0), y: -(cvvTop.cgFloatValue() ?? 0.0))
-        self.cvvValue.transform = CGAffineTransform(translationX: (trailCvv.cgFloatValue() ?? 0.0), y: -(cvvTop.cgFloatValue() ?? 0.0))
-        self.eyeIconCvv.transform = CGAffineTransform(translationX: (trailCvv.cgFloatValue() ?? 0.0), y: -(cvvTop.cgFloatValue() ?? 0.0))
+        
+        self.cvvTitle.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
+        self.cvvValue.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
+        self.eyeIconCvv.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
      
         if(bottomCvv != "0") {
-            self.cvvTitle.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(cvvTop.cgFloatValue() ?? 0.0) + (bottomCvv.cgFloatValue() ?? 0.0))
-            self.cvvValue.transform = CGAffineTransform(translationX: self.cvvValue.transform.tx, y: -(cvvTop.cgFloatValue() ?? 0.0) + (bottomCvv.cgFloatValue() ?? 0.0))
-            self.eyeIconCvv.transform = CGAffineTransform(translationX: self.eyeIconCvv.transform.tx, y: -(cvvTop.cgFloatValue() ?? 0.0) + (bottomCvv.cgFloatValue() ?? 0.0))
+            self.cvvTitle.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
+            self.cvvValue.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
+            self.eyeIconCvv.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
         }
         if(leadCvv != "0") {
             
-            self.cvvTitle.transform = CGAffineTransform(translationX: -(leadCvv.cgFloatValue() ?? 0.0) + (trailCvv.cgFloatValue() ?? 0.0) , y: self.cvvTitle.transform.ty)
-            self.cvvValue.transform = CGAffineTransform(translationX: -(leadCvv.cgFloatValue() ?? 0.0) + (trailCvv.cgFloatValue() ?? 0.0) , y: self.cvvValue.transform.ty)
-            self.eyeIconCvv.transform = CGAffineTransform(translationX: -(leadCvv.cgFloatValue() ?? 0.0) + (trailCvv.cgFloatValue() ?? 0.0) , y: self.eyeIconCvv.transform.ty)
+            self.cvvTitle.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.cvvTitle.transform.ty)
+            self.cvvValue.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.cvvValue.transform.ty)
+            self.eyeIconCvv.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.eyeIconCvv.transform.ty)
         }
 
 
     }
     fileprivate func setCardNumberPadding(topCardNo: String,bottomCardNo: String,cardNoLeft: String,cardNoRight: String){
-        self.cardNumberLabel.transform = CGAffineTransform(translationX: (cardNoRight.cgFloatValue() ?? 0.0), y: -(topCardNo.cgFloatValue() ?? 0.0))
-        self.eyeIcon.transform = CGAffineTransform(translationX: (cardNoRight.cgFloatValue() ?? 0.0), y: -(topCardNo.cgFloatValue() ?? 0.0))
+        self.cardNumberLabel.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0), y: (topCardNo.cgFloatValue() ?? 0.0))
+        self.eyeIcon.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0), y: (topCardNo.cgFloatValue() ?? 0.0))
 
                     if(bottomCardNo != "0") {
-                        self.cardNumberLabel.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y: -(topCardNo.cgFloatValue() ?? 0.0) + (bottomCardNo.cgFloatValue() ?? 0.0))
-                        self.eyeIcon.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y: -(topCardNo.cgFloatValue() ?? 0.0) + (bottomCardNo.cgFloatValue() ?? 0.0))
+                        self.cardNumberLabel.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y:  -(bottomCardNo.cgFloatValue() ?? 0.0) + (topCardNo.cgFloatValue() ?? 0.0))
+                        self.eyeIcon.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y:  -(bottomCardNo.cgFloatValue() ?? 0.0) + (topCardNo.cgFloatValue() ?? 0.0))
                     }
         
                     if(cardNoLeft != "0") {
-                        self.cardNumberLabel.transform = CGAffineTransform(translationX: -(cardNoLeft.cgFloatValue() ?? 0.0) + (cardNoRight.cgFloatValue() ?? 0.0) , y: self.cardNumberLabel.transform.ty)
-                        self.eyeIcon.transform = CGAffineTransform(translationX: -(cardNoLeft.cgFloatValue() ?? 0.0) + (cardNoRight.cgFloatValue() ?? 0.0), y: self.cardNumberLabel.transform.ty)
+                        self.cardNumberLabel.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0) + (cardNoLeft.cgFloatValue() ?? 0.0) , y: self.cardNumberLabel.transform.ty)
+                        self.eyeIcon.transform = CGAffineTransform(translationX:  -(cardNoRight.cgFloatValue() ?? 0.0) + (cardNoLeft.cgFloatValue() ?? 0.0), y: self.cardNumberLabel.transform.ty)
                     }
     }
     
