@@ -307,8 +307,7 @@ private func changePinAPI(body: [String: Any]){
             }
         case .failure(let error):
             print(error)
-            self.overView.isHidden = true
-            self.removeFromSuperview()
+            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDontMatch, buttonTitle:  ConstantData.ok)
         
 
         }

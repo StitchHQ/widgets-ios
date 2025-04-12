@@ -26,14 +26,15 @@ public class CardWidget: UIView {
     var isCardMask = false
     var panLastFour = ""
     var token = ""
+    var showEyeIcon = false
     
     let visaLabel = UIImageView()
-    let cardNumberLabel = UILabel()
+    let cardNumberLabel = UIButton()
     let nameLabel = UILabel()
     let validThruTitle = UILabel()
     let validThruValue = UILabel()
     let cvvTitle = UILabel()
-    let cvvValue = UILabel()
+    let cvvValue = UIButton()
     let eyeIconCvv = UIButton()
     let eyeIcon = UIButton()
     
@@ -74,37 +75,31 @@ public class CardWidget: UIView {
         overView.addSubview(visaLabel)
         
         // Card Number
-//        cardNumberLabel.text = "2345  7654  8899  2548"
-        cardNumberLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 20, weight: .medium)
-        cardNumberLabel.textColor = .white
+        cardNumberLabel.setTitleColor(.white, for: .normal)
         cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        cardNumberLabel.addTarget(self, action: #selector(self.onShowCardNoAction), for: .touchUpInside)
+
         overView.addSubview(cardNumberLabel)
         
         // Eye Icon
         
         eyeIcon.addTarget(self, action: #selector(self.onCardNoEyeAction), for: .touchUpInside)
-        
         eyeIcon.translatesAutoresizingMaskIntoConstraints = false
         eyeIcon.setImage(UIImage(named: "eye"), for: .normal)
-        
         overView.addSubview(eyeIcon)
         
         // Name Label
         nameLabel.text = "Elon Musk"
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         nameLabel.textColor = .white
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(nameLabel)
         
         // Valid Thru
         validThruTitle.text = "VALID THRU"
-        validThruTitle.font = UIFont.systemFont(ofSize: 12)
         validThruTitle.textColor = .white
         validThruTitle.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(validThruTitle)
         
-//        validThruValue.text = "01/25"
-        validThruValue.font = UIFont.boldSystemFont(ofSize: 16)
         validThruValue.textColor = .white
         validThruValue.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(validThruValue)
@@ -112,14 +107,12 @@ public class CardWidget: UIView {
         // CVV
         
         cvvTitle.text = "CVV"
-        cvvTitle.font = UIFont.systemFont(ofSize: 12)
         cvvTitle.textColor = .white
         cvvTitle.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(cvvTitle)
-        
-//        cvvValue.text = "986"
-        cvvValue.font = UIFont.boldSystemFont(ofSize: 16)
-        cvvValue.textColor = .white
+        cvvValue.addTarget(self, action: #selector(self.onCvvAction), for: .touchUpInside)
+
+        cvvValue.setTitleColor(.white, for: .normal)
         cvvValue.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(cvvValue)
         
@@ -176,7 +169,7 @@ public class CardWidget: UIView {
         frontImgView.layer.cornerRadius = 10
         overView.layer.cornerRadius = 10
         visaLabel.image = UIImage(named: "visa.png")
-        cardNumberLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x14)
+        cardNumberLabel.titleLabel?.font = UIFont.setCustomFont(name: .semiBold, size: .x14)
         cvvTitle.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         validThruTitle.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
         eyeIcon.setTitle("", for: .normal)
@@ -185,12 +178,12 @@ public class CardWidget: UIView {
     
     @IBAction func onCvvEyeAction(_ sender: Any) {
         if isCvvEye {
-            if cvvValue.text == ConstantData.xxx {
-                cvvValue.text = cvv
+            if cvvValue.titleLabel?.text == ConstantData.xxx {
+                cvvValue.setTitle(cvv, for: .normal)
                 eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
             }else{
-                cvvValue.text = ConstantData.xxx
+                cvvValue.setTitle(ConstantData.xxx, for: .normal)
                 eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
             }
         }
@@ -198,12 +191,12 @@ public class CardWidget: UIView {
     
     @IBAction func onCardNoEyeAction(_ sender: Any) {
         if isCardNoEye {
-            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                cardNumberLabel.text = accountNo
+            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                cardNumberLabel.setTitle(accountNo, for: .normal)
                 eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
             }else{
-                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
+                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
                 eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
 
             }
@@ -232,6 +225,7 @@ public class CardWidget: UIView {
                 setfontValue(font: item.fontFamily ?? FontConstant.euclidFlexMediumFont,fontSize: item.fontSize ?? 14.0)
 
                 showEyeButton(isEyeIcon: item.showEyeIcon ?? false)
+                showEyeIcon = item.showEyeIcon ?? false
                
                 setTimer(maskCardNo: item.maskCardNumber ?? false, maskCvv: item.maskCvv ?? false)
        
@@ -275,8 +269,8 @@ public class CardWidget: UIView {
     }
     
     private func setFontColor(fontColor: UIColor){
-        cvvValue.textColor = fontColor
-        cardNumberLabel.textColor = fontColor
+        cvvValue.setTitleColor(fontColor, for: .normal)
+        cardNumberLabel.setTitleColor(fontColor, for: .normal)
         nameLabel.textColor = fontColor
         cvvTitle.textColor = fontColor
         validThruTitle.textColor = fontColor
@@ -336,7 +330,7 @@ public class CardWidget: UIView {
     fileprivate func setDefaultStype(){
         frontCardView.backgroundColor = .darkblueColor
         cvvTitle.textColor = .white
-        cardNumberLabel.textColor = .white
+        cardNumberLabel.setTitleColor(.white, for: .normal)
         nameLabel.textColor = .white
         validThruTitle.textColor = .white
         validThruValue.textColor = .white
@@ -352,9 +346,9 @@ public class CardWidget: UIView {
     fileprivate func setfontValue(font: String,fontSize: Float){
         let size = CGFloat(fontSize)
         self.cvvTitle.font = UIFont(name:font, size: size)
-        self.cvvValue.font = UIFont(name:font, size: size)
+        self.cvvValue.titleLabel?.font = UIFont(name:font, size: size)
         self.nameLabel.font = UIFont(name:font, size: size)
-        self.cardNumberLabel.font = UIFont(name:font, size: size)
+        self.cardNumberLabel.titleLabel?.font = UIFont(name:font, size: size)
        
         self.validThruTitle.font = UIFont(name:font, size: size)
         self.validThruValue.font = UIFont(name:font, size: size)
@@ -375,20 +369,20 @@ public class CardWidget: UIView {
     @IBAction func onCardNoAction(_ sender: Any) {
   
         if isCardMask {
-            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                cardNumberLabel.text = accountNo
+            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                cardNumberLabel.setTitle(accountNo, for: .normal)
             }else{
-                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
+                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
             }
         }
     }
     @IBAction func onFrontCvvAction(_ sender: Any) {
         if isCvvMask {
             
-            if cvvValue.text == ConstantData.xxx {
-                cvvValue.text = cvv
+            if cvvValue.titleLabel?.text == ConstantData.xxx {
+                cvvValue.setTitle(cvv, for: .normal)
             }else{
-                cvvValue.text = ConstantData.xxx
+                cvvValue.setTitle(ConstantData.xxx, for: .normal)
             }
         }
     }
@@ -418,7 +412,29 @@ extension CardWidget  {
         }
     }
     
+    @objc func onShowCardNoAction(){
+        if !showEyeIcon {
+            
+            if cardNumberLabel.titleLabel?.text == "XXXX XXXX XXXX XXXX" {
+                cardNumberLabel.setTitle("1234 1234 1234 1234", for: .normal)
+                
+            }else{
+                
+                cardNumberLabel.setTitle("XXXX XXXX XXXX XXXX", for: .normal)
+            }
+        }
+    }
     
+    @objc func onCvvAction(){
+        if !showEyeIcon {
+            
+            if cvvValue.titleLabel?.text == "XXX" {
+                cvvValue.setTitle("123", for: .normal)
+            }else{
+                cvvValue.setTitle("XXX", for: .normal)
+            }
+        }
+    }
     
     fileprivate func getCardDetails(body: [String : Any]) {
         let url = baseUrlService + servicesURL.secureCard.rawValue
@@ -445,8 +461,8 @@ extension CardWidget  {
             self.accountNo = formattedCreditCardNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 
-                self.cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
-            self.cvvValue.text = ConstantData.xxx
+                self.cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
+            self.cvvValue.setTitle(ConstantData.xxx, for: .normal)
 
             self.cvv = cvvText
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)

@@ -29,7 +29,7 @@ enum ConstantData {
     static let ok = "OK"
     static let cardPinSuccess = "Card Pin is Set Sucessfully"
     static let cardPinChangeSuccess = "Card Pin is Changed Sucessfully"
-    
+    static let pinDontMatch = "Pin does not match"
     static let exmapleApp = "com.example.app"
     static let encryptionTextNil = "Encrypted text is nil"
     static let  invalidKey = "Invalid key format"
