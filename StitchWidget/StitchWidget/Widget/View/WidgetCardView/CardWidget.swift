@@ -135,7 +135,7 @@ public class CardWidget: UIView {
             visaLabel.topAnchor.constraint(equalTo: overView.topAnchor, constant: 16),
             visaLabel.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -16),
             
-            cardNumberLabel.topAnchor.constraint(equalTo: visaLabel.bottomAnchor, constant: 28),
+            cardNumberLabel.topAnchor.constraint(equalTo: visaLabel.bottomAnchor, constant: 50),
             cardNumberLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
             
             eyeIcon.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
