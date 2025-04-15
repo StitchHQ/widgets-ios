@@ -73,7 +73,7 @@ public class CardWidget: UIView {
             
             // Card Number
             cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-            cardNumberLabel.addTarget(self, action: #selector(self.onCardNoAction), for: .touchUpInside)
+            cardNumberLabel.addTarget(self, action: #selector(self.onShowCardNoAction), for: .touchUpInside)
             
         overView.addSubview(cardNumberLabel)
             
