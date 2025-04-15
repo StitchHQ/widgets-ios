@@ -413,10 +413,10 @@ extension CardWidget  {
     }
     
     @objc func onShowCardNoAction(){
-        if !showEyeIcon {
+        if showEyeIcon {
             
             if cardNumberLabel.titleLabel?.text == "XXXX XXXX XXXX XXXX" {
-                cardNumberLabel.setTitle("1234 1234 1234 1234", for: .normal)
+                cardNumberLabel.setTitle(self.accountNo, for: .normal)
                 
             }else{
                 
@@ -426,10 +426,10 @@ extension CardWidget  {
     }
     
     @objc func onCvvAction(){
-        if !showEyeIcon {
+        if showEyeIcon {
             
             if cvvValue.titleLabel?.text == "XXX" {
-                cvvValue.setTitle("123", for: .normal)
+                cvvValue.setTitle(self.cvv, for: .normal)
             }else{
                 cvvValue.setTitle("XXX", for: .normal)
             }
