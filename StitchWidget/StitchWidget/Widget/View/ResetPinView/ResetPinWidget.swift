@@ -45,11 +45,7 @@ public class ResetPinWidget: UIView {
         // Continue with initialization if the device is secure
         initalLoad()
         self.cardType = ConstantData.activated
-        let data = [
-            APIConstant.token: token,
-            APIConstant.devicePrint: deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
+       
 
             self.overView.isHidden = false
 
@@ -259,6 +255,11 @@ extension ResetPinWidget  {
             jailBreakLabel.isHidden = false
         }
         token = secureToken
+        let data = [
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
+        ] as [String : Any]
+        sessionKeyAPI(body: data)
         
     }
     
@@ -307,7 +308,7 @@ private func changePinAPI(body: [String: Any]){
             }
         case .failure(let error):
             print(error)
-            simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDontMatch, buttonTitle:  ConstantData.ok)
+            //simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDontMatch, buttonTitle:  ConstantData.ok)
         
 
         }

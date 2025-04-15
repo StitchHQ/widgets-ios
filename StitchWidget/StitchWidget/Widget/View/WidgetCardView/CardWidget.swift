@@ -64,7 +64,6 @@ public class CardWidget: UIView {
       
         
         deviceFingerPrint = getDevicFingingerprint()
-        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
     }
     
     private func setupCardUI() {
@@ -363,7 +362,8 @@ public class CardWidget: UIView {
         }
         
         self.token = token
-       
+        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
+
     }
     
     @IBAction func onCardNoAction(_ sender: Any) {

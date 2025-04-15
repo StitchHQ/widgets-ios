@@ -46,11 +46,7 @@ public class SetPinWidget: UIView {
         // Continue with initialization if the device is secure
         initalLoad()
         self.cardType = ConstantData.activated
-        let data = [
-            APIConstant.token: token,
-            APIConstant.devicePrint: deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
+    
             self.overView.isHidden = false
     }
     
@@ -244,6 +240,11 @@ extension SetPinWidget  {
         }
         
         self.token = secureToken
+        let data = [
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
+        ] as [String : Any]
+        sessionKeyAPI(body: data)
     }
     
     fileprivate func setPin() {

@@ -71,9 +71,11 @@ class ServiceNetworkCall : NSObject{
 
                             let error = NSError(domain: response.debugDescription, code: code, userInfo: response.response?.allHeaderFields as? [String: Any])
                             if let data = response.data {
-                                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                                    if let errorString = json["message"] {
-                                        showAlertMessage(str: errorString)
+                                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                                    if let dictionary = json["responseStatus"] as? [String: AnyObject] {
+                                        if let errorString = dictionary["constant"] {
+                                            showAlertMessage(str: errorString as! String)
+                                        }
                                     }
                                 }
                             }
