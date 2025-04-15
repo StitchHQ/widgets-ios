@@ -73,8 +73,13 @@ class ServiceNetworkCall : NSObject{
                             if let data = response.data {
                                 if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                                     if let dictionary = json["responseStatus"] as? [String: AnyObject] {
-                                        if let errorString = dictionary["constant"] {
-                                            showAlertMessage(str: errorString as! String)
+                                        if let errorString = dictionary["constant"] as? String{
+                                            if errorString == "UNAUTHORIZED" {
+                                                UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
+
+                                            }else{
+                                                showAlertMessage(str: errorString as! String)
+                                            }
                                         }
                                     }
                                 }

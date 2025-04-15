@@ -56,14 +56,17 @@ public class ResetPinWidget: UIView {
         overView.isHidden = false
         newPinTextField.delegate = self
         oldPinTextField.delegate = self
+        confirmTextField.delegate = self
         newPinTextField.keyboardType = .numberPad
         oldPinTextField.keyboardType = .numberPad
+        confirmTextField.keyboardType = .numberPad
         pinButton.setTitleColor(.white, for: .normal)
         pinButton.setCornerRadiusButton(size: 10)
         pinRequiredLabel.text = ConstantData.pinRequired
         pinButton.backgroundColor = UIColor.lightGrayColor
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        confirmTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setTypePin(pintype: "change_pin")
 
     }
