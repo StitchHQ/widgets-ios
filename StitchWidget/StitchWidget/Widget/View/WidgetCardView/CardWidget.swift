@@ -67,97 +67,86 @@ public class CardWidget: UIView {
     }
     
     private func setupCardUI() {
-        
-        // VISA Label
-        visaLabel.image = UIImage(named: "visa")
-        visaLabel.translatesAutoresizingMaskIntoConstraints = false
+            
+            visaLabel.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(visaLabel)
-        
-        // Card Number
-        cardNumberLabel.setTitleColor(.white, for: .normal)
-        cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-        cardNumberLabel.addTarget(self, action: #selector(self.onShowCardNoAction), for: .touchUpInside)
-
+            
+            // Card Number
+            cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+            cardNumberLabel.addTarget(self, action: #selector(self.onCardNoAction), for: .touchUpInside)
+            
         overView.addSubview(cardNumberLabel)
-        
-        // Eye Icon
-        
-        eyeIcon.addTarget(self, action: #selector(self.onCardNoEyeAction), for: .touchUpInside)
-        eyeIcon.translatesAutoresizingMaskIntoConstraints = false
-        eyeIcon.setImage(UIImage(named: "eye"), for: .normal)
+            
+            // Eye Icon
+            
+            eyeIcon.addTarget(self, action: #selector(self.onCardNoEyeAction), for: .touchUpInside)
+            
+            eyeIcon.translatesAutoresizingMaskIntoConstraints = false
+            eyeIcon.setImage(UIImage(named: "eye"), for: .normal)
+            
         overView.addSubview(eyeIcon)
-        
-        // Name Label
-        nameLabel.text = "Elon Musk"
-        nameLabel.textColor = .white
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Name Label
+            nameLabel.text = "Elon Musk"
+            nameLabel.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(nameLabel)
-        
-        // Valid Thru
-        validThruTitle.text = "VALID THRU"
-        validThruTitle.textColor = .white
-        validThruTitle.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Valid Thru
+            validThruTitle.text = "VALID THRU"
+            validThruTitle.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(validThruTitle)
-        
-        validThruValue.textColor = .white
-        validThruValue.translatesAutoresizingMaskIntoConstraints = false
+            
+            validThruValue.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(validThruValue)
-        
-        // CVV
-        
-        cvvTitle.text = "CVV"
-        cvvTitle.textColor = .white
-        cvvTitle.translatesAutoresizingMaskIntoConstraints = false
+            
+            // CVV
+            
+            cvvTitle.text = "CVV"
+            cvvTitle.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(cvvTitle)
-        cvvValue.addTarget(self, action: #selector(self.onCvvAction), for: .touchUpInside)
-
-        cvvValue.setTitleColor(.white, for: .normal)
-        cvvValue.translatesAutoresizingMaskIntoConstraints = false
+            cvvValue.addTarget(self, action: #selector(self.onCvvAction), for: .touchUpInside)
+            
+            cvvValue.translatesAutoresizingMaskIntoConstraints = false
         overView.addSubview(cvvValue)
-        
-        eyeIconCvv.translatesAutoresizingMaskIntoConstraints = false
-        eyeIconCvv.addTarget(self, action: #selector(onCvvEyeAction), for: .touchUpInside)
-        
-        eyeIconCvv.setImage(UIImage(named: "eye"), for: .normal)
+            
+            eyeIconCvv.translatesAutoresizingMaskIntoConstraints = false
+            eyeIconCvv.addTarget(self, action: #selector(onCvvEyeAction), for: .touchUpInside)
+            
+            eyeIconCvv.setImage(UIImage(named: "eye"), for: .normal)
         overView.addSubview(eyeIconCvv)
-        
-        // Constraints
-        NSLayoutConstraint.activate([
             
-            visaLabel.topAnchor.constraint(equalTo: overView.topAnchor, constant: 16),
-            visaLabel.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -16),
-            
-            cardNumberLabel.topAnchor.constraint(equalTo: visaLabel.bottomAnchor, constant: 50),
-            cardNumberLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
-            
-            eyeIcon.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
-            eyeIcon.leadingAnchor.constraint(equalTo: cardNumberLabel.trailingAnchor, constant: 10),
-            
-            nameLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
-            nameLabel.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
-            
-            
-            validThruTitle.bottomAnchor.constraint(equalTo: validThruValue.topAnchor, constant: -2),
-            validThruTitle.trailingAnchor.constraint(equalTo: cvvTitle.leadingAnchor, constant: -15),
-            
-            validThruValue.leadingAnchor.constraint(equalTo: validThruTitle.leadingAnchor),
-            validThruValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
-            validThruValue.trailingAnchor.constraint(equalTo: cvvValue.leadingAnchor, constant: -15),
-            cvvTitle.leadingAnchor.constraint(equalTo: validThruValue.trailingAnchor, constant: 30),
-            cvvTitle.bottomAnchor.constraint(equalTo: cvvValue.topAnchor, constant: -2),
-            cvvTitle.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
-            
-            
-            cvvValue.leadingAnchor.constraint(equalTo: cvvTitle.leadingAnchor),
-            cvvValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
-            cvvValue.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
-            
-            eyeIconCvv.centerYAnchor.constraint(equalTo: cvvValue.centerYAnchor),
-            eyeIconCvv.leadingAnchor.constraint(equalTo: cvvValue.trailingAnchor, constant: 8),
-            eyeIconCvv.widthAnchor.constraint(equalToConstant: 25),
-            
-            eyeIconCvv.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -25),
-        ])
+            // Constraints
+            NSLayoutConstraint.activate([
+                
+                visaLabel.topAnchor.constraint(equalTo: overView.topAnchor, constant: 16),
+                visaLabel.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -16),
+                
+                cardNumberLabel.topAnchor.constraint(equalTo: visaLabel.bottomAnchor, constant: 50),
+                cardNumberLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
+                
+                eyeIcon.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
+                eyeIcon.leadingAnchor.constraint(equalTo: cardNumberLabel.trailingAnchor, constant: 10),
+                
+                nameLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
+                nameLabel.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
+                validThruTitle.bottomAnchor.constraint(equalTo: validThruValue.topAnchor, constant: -2),
+                validThruTitle.trailingAnchor.constraint(equalTo: cvvTitle.leadingAnchor, constant: -15),
+                validThruValue.leadingAnchor.constraint(equalTo: validThruTitle.leadingAnchor),
+                validThruValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
+                validThruValue.trailingAnchor.constraint(equalTo: cvvValue.leadingAnchor, constant: -15),
+                cvvTitle.leadingAnchor.constraint(equalTo: validThruValue.trailingAnchor, constant: 30),
+                cvvTitle.bottomAnchor.constraint(equalTo: cvvValue.topAnchor, constant: 2),
+                cvvTitle.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
+                
+                cvvValue.leadingAnchor.constraint(equalTo: cvvTitle.leadingAnchor),
+                cvvValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -8),
+                cvvValue.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
+                
+                eyeIconCvv.centerYAnchor.constraint(equalTo: cvvValue.centerYAnchor),
+                eyeIconCvv.leadingAnchor.constraint(equalTo: cvvValue.trailingAnchor, constant: 8),
+                
+                eyeIconCvv.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -25),
+            ])
     }
     
     private func initalLoad(){
@@ -413,7 +402,7 @@ extension CardWidget  {
     }
     
     @objc func onShowCardNoAction(){
-        if showEyeIcon {
+        if !showEyeIcon {
             
             if cardNumberLabel.titleLabel?.text == "XXXX XXXX XXXX XXXX" {
                 cardNumberLabel.setTitle(self.accountNo, for: .normal)
@@ -426,7 +415,7 @@ extension CardWidget  {
     }
     
     @objc func onCvvAction(){
-        if showEyeIcon {
+        if !showEyeIcon {
             
             if cvvValue.titleLabel?.text == "XXX" {
                 cvvValue.setTitle(self.cvv, for: .normal)
