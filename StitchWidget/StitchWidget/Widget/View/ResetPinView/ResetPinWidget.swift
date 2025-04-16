@@ -311,7 +311,15 @@ private func changePinAPI(body: [String: Any]){
             }
         case .failure(let error):
             print(error)
-            //simpleAlert(view: UIApplication.topViewController()!.self, title: String.Empty, message: ConstantData.pinDontMatch, buttonTitle:  ConstantData.ok)
+            if errorString == "UNAUTHORIZED" {
+                let data = [
+                    APIConstant.token: self.token,
+                    APIConstant.devicePrint: deviceFingerPrint
+                ] as [String : Any]
+                self.sessionKeyAPI(body: data)
+            }else{
+                showAlertMessage(str: errorString)
+            }
         
 
         }
