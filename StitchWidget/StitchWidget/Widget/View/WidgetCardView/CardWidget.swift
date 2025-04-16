@@ -182,11 +182,11 @@ public class CardWidget: UIView {
         if isCardNoEye {
             if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 cardNumberLabel.setTitle(accountNo, for: .normal)
-                eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+                eyeIcon.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
             }else{
                 cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
-                eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+                eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
 
             }
         }
