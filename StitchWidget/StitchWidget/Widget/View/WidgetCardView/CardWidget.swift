@@ -446,8 +446,7 @@ extension CardWidget  {
             let accountNumber = try AESUtils().decrypt(encryptedText: accountNo, key: self.generalKey)
             let last4 = accountNumber.suffix(4)
             panLastFour = String(last4)
-            let formattedCreditCardNumber = accountNumber.replacingOccurrences(of: "(\\d{4})(\\d{4})(\\d{4})(\\d+)", with: "$1 $2 $3 $4", options: .regularExpression, range: nil)
-
+            let formattedCreditCardNumber = String(accountNumber).separate(every: 4, with: " ")
             self.accountNo = formattedCreditCardNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 

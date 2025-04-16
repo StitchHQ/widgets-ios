@@ -73,8 +73,16 @@ class ServiceNetworkCall : NSObject{
                                 if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                                     if let dictionary = json["responseStatus"] as? [String: AnyObject] {
                                         if let errorString = dictionary["constant"] as? String{
-                                            showAlertMessage(str: errorString)
+                                            
+                                            let alert = UIAlertController(title: "", message: errorString, preferredStyle: UIAlertController.Style.alert)
+
+                                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                                                    print("Action")
                                                 UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
+
+                                                }))
+                                            UIApplication.topViewController()!.present(alert, animated: true, completion: nil)
+
 
                                         }
                                     }
