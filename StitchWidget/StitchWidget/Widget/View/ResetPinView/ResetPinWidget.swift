@@ -311,17 +311,6 @@ private func changePinAPI(body: [String: Any]){
             }
         case .failure(let error):
             print(error)
-            if errorString == "UNAUTHORIZED" {
-                let data = [
-                    APIConstant.token: self.token,
-                    APIConstant.devicePrint: deviceFingerPrint
-                ] as [String : Any]
-                self.sessionKeyAPI(body: data)
-            }else{
-                showAlertMessage(str: errorString)
-            }
-        
-
         }
     }
 }
