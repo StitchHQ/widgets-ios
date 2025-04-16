@@ -82,7 +82,7 @@ public class CardWidget: UIView {
             eyeIcon.addTarget(self, action: #selector(self.onCardNoEyeAction), for: .touchUpInside)
             
             eyeIcon.translatesAutoresizingMaskIntoConstraints = false
-            eyeIcon.setImage(UIImage(named: "eye"), for: .normal)
+            eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
             
         overView.addSubview(eyeIcon)
             
@@ -112,7 +112,7 @@ public class CardWidget: UIView {
             eyeIconCvv.translatesAutoresizingMaskIntoConstraints = false
             eyeIconCvv.addTarget(self, action: #selector(onCvvEyeAction), for: .touchUpInside)
             
-            eyeIconCvv.setImage(UIImage(named: "eye"), for: .normal)
+            eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
         overView.addSubview(eyeIconCvv)
             
             // Constraints
@@ -128,20 +128,21 @@ public class CardWidget: UIView {
                 eyeIcon.leadingAnchor.constraint(equalTo: cardNumberLabel.trailingAnchor, constant: 10),
                 
                 nameLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
-                nameLabel.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
+                nameLabel.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -20),
                 validThruTitle.bottomAnchor.constraint(equalTo: validThruValue.topAnchor, constant: -2),
                 validThruTitle.trailingAnchor.constraint(equalTo: cvvTitle.leadingAnchor, constant: -15),
                 validThruValue.leadingAnchor.constraint(equalTo: validThruTitle.leadingAnchor),
                 validThruValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
                 validThruValue.trailingAnchor.constraint(equalTo: cvvValue.leadingAnchor, constant: -15),
                 cvvTitle.leadingAnchor.constraint(equalTo: validThruValue.trailingAnchor, constant: 30),
+                validThruValue.heightAnchor.constraint(equalToConstant: 18),
                 cvvTitle.bottomAnchor.constraint(equalTo: cvvValue.topAnchor, constant: 2),
                 cvvTitle.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
                 
                 cvvValue.leadingAnchor.constraint(equalTo: cvvTitle.leadingAnchor),
-                cvvValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -8),
+                cvvValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -7),
                 cvvValue.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
-                
+
                 eyeIconCvv.centerYAnchor.constraint(equalTo: cvvValue.centerYAnchor),
                 eyeIconCvv.leadingAnchor.constraint(equalTo: cvvValue.trailingAnchor, constant: 8),
                 
@@ -404,12 +405,12 @@ extension CardWidget  {
     @objc func onShowCardNoAction(){
         if !showEyeIcon {
             
-            if cardNumberLabel.titleLabel?.text == "XXXX XXXX XXXX XXXX" {
+            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 cardNumberLabel.setTitle(self.accountNo, for: .normal)
                 
             }else{
                 
-                cardNumberLabel.setTitle("XXXX XXXX XXXX XXXX", for: .normal)
+                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
             }
         }
     }
