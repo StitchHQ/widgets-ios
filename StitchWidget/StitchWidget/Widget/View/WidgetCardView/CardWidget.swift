@@ -449,7 +449,7 @@ extension CardWidget  {
             self.accountNo = formattedCreditCardNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 
-            self.cardNumberLabel.setTitle(isCardMask ? "\(ConstantData.cardXDigit) \(panLastFour)" : accountNo, for: .normal)
+            self.cardNumberLabel.setTitle(isCardMask ? "\(ConstantData.cardXDigit) \(panLastFour)" : self.accountNo, for: .normal)
 
             self.cvv = cvvText
             self.cvvValue.setTitle(isCvvMask ? ConstantData.xxx : self.cvv, for: .normal)
