@@ -166,28 +166,33 @@ public class CardWidget: UIView {
     }
     
     @IBAction func onCvvEyeAction(_ sender: Any) {
-        if isCvvEye {
-            if cvvValue.titleLabel?.text == ConstantData.xxx {
-                cvvValue.setTitle(cvv, for: .normal)
-                eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
-
-            }else{
-                cvvValue.setTitle(ConstantData.xxx, for: .normal)
-                eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+        if isCvvMask {
+            if isCvvEye {
+                if cvvValue.titleLabel?.text == ConstantData.xxx {
+                    cvvValue.setTitle(cvv, for: .normal)
+                    eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+                    
+                }else{
+                    cvvValue.setTitle(ConstantData.xxx, for: .normal)
+                    eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+                }
             }
         }
     }
     
     @IBAction func onCardNoEyeAction(_ sender: Any) {
-        if isCardNoEye {
-            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                cardNumberLabel.setTitle(accountNo, for: .normal)
-                eyeIcon.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
-
-            }else{
-                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
-                eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
-
+        if isCardMask {
+            
+            if isCardNoEye  {
+                if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                    cardNumberLabel.setTitle(accountNo, for: .normal)
+                    eyeIcon.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+                    
+                }else{
+                    cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
+                    eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+                    
+                }
             }
         }
     }
@@ -211,7 +216,7 @@ public class CardWidget: UIView {
         for item in widget {
             if item.widgetStyle == ConstantData.viewCard {
                 
-                setfontValue(font: item.fontFamily ?? FontConstant.euclidFlexMediumFont,fontSize: item.fontSize ?? 14.0)
+                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
 
                 showEyeButton(isEyeIcon: item.showEyeIcon ?? false)
                 showEyeIcon = item.showEyeIcon ?? false

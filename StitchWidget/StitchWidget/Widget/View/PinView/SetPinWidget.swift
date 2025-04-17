@@ -26,7 +26,7 @@ public class SetPinWidget: UIView {
     public var cardType = ""
     public var type = ""
     var widget:[WidgetSettingEntity] = []
-
+    var background = UIColor.blueColor
     public override func awakeFromNib() {
         super.awakeFromNib()
         do {
@@ -95,7 +95,7 @@ public class SetPinWidget: UIView {
                     pinButton.backgroundColor = item.buttonBackground
                     setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
                     setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
-
+                    background = item.buttonBackground ?? UIColor.blueColor
 
                     return
                 }else{
@@ -113,6 +113,7 @@ public class SetPinWidget: UIView {
                     pinButton.setTitleColor(.white, for: .normal)
                     setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
                     setStyleSheet(styleSheet: ConstantData.outlined)
+                    background = UIColor.blueColor
 
                 }
 
@@ -132,6 +133,8 @@ public class SetPinWidget: UIView {
             newPinTextField.backgroundColor = .clear
             oldPinTextField.backgroundColor = .clear
             pinButton.backgroundColor = UIColor.lightGrayColor
+            background = UIColor.blueColor
+
         }
         
     }
@@ -331,7 +334,7 @@ extension SetPinWidget: UITextFieldDelegate {
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
-            pinButton.backgroundColor = UIColor.blueColor
+            pinButton.backgroundColor = background
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor
             
