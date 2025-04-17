@@ -78,7 +78,9 @@ class ServiceNetworkCall : NSObject{
 
                                             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
                                                     print("Action")
+                                                if errorString == "PIN_NOT_MATCH" || errorString == ""{
                                                 UIApplication.topViewController()!.self.navigationController?.popViewController(animated: true)
+                                                }
 
                                                 }))
                                             UIApplication.topViewController()!.present(alert, animated: true, completion: nil)

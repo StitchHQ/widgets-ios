@@ -85,9 +85,6 @@ public class ResetPinWidget: UIView {
             
             for item in widget {
 
-                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
-
                 if type == item.widgetStyle {
                     
                     olfPinLabel.textColor = item.fontColor
@@ -96,7 +93,8 @@ public class ResetPinWidget: UIView {
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
                     pinButton.backgroundColor = item.buttonBackground
-                    
+                    setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
+                    setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
                     return
                 }else{
                     setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
@@ -111,6 +109,8 @@ public class ResetPinWidget: UIView {
                     oldPinTextField.backgroundColor = .clear
                     pinButton.backgroundColor = UIColor.lightGrayColor
                     pinButton.setTitleColor(.white, for: .normal)
+                    setfontValue(font: FontConstant.interMedium,fontSize: 14.0)
+                    setStyleSheet(styleSheet: ConstantData.outlined)
                 }
 
             }

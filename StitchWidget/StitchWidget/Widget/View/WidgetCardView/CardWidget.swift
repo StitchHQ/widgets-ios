@@ -216,7 +216,10 @@ public class CardWidget: UIView {
                 showEyeButton(isEyeIcon: item.showEyeIcon ?? false)
                 showEyeIcon = item.showEyeIcon ?? false
                
-                setTimer(maskCardNo: item.maskCardNumber ?? false, maskCvv: item.maskCvv ?? false)
+             
+                isCardMask = item.maskCardNumber ?? false
+                isCvvMask = item.maskCvv ?? false
+          
        
                 frontCardView.backgroundColor = item.background
                 setFontColor(fontColor: item.fontColor!)
@@ -252,10 +255,6 @@ public class CardWidget: UIView {
         }
     }
     
-    private func setTimer(maskCardNo : Bool,maskCvv: Bool){
-        isCardMask = maskCardNo
-        isCvvMask = maskCvv
-    }
     
     private func setFontColor(fontColor: UIColor){
         cvvValue.setTitleColor(fontColor, for: .normal)
@@ -324,8 +323,8 @@ public class CardWidget: UIView {
         validThruTitle.textColor = .white
         validThruValue.textColor = .white
         setfontValue(font: FontConstant.euclidFlexMediumFont,fontSize: 12.0)
-        isCardMask = true
-        isCvvMask = true
+        isCardMask = false
+        isCvvMask = false
         isCardNoEye = true
         isCvvEye = true
         eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
@@ -450,10 +449,11 @@ extension CardWidget  {
             self.accountNo = formattedCreditCardNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 
-                self.cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
-            self.cvvValue.setTitle(ConstantData.xxx, for: .normal)
+            self.cardNumberLabel.setTitle(isCardMask ? "\(ConstantData.cardXDigit) \(panLastFour)" : accountNo, for: .normal)
 
             self.cvv = cvvText
+            self.cvvValue.setTitle(isCvvMask ? ConstantData.xxx : self.cvv, for: .normal)
+
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
             cardNumberLabel.isHidden = false
             cvvValue.isHidden = false
