@@ -402,7 +402,7 @@ extension CardWidget  {
     }
     
     @objc func onShowCardNoAction(){
-        if !showEyeIcon {
+        if !showEyeIcon && isCardMask {
             
             if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
                 cardNumberLabel.setTitle(self.accountNo, for: .normal)
@@ -415,8 +415,8 @@ extension CardWidget  {
     }
     
     @objc func onCvvAction(){
-        if !showEyeIcon {
-            
+        if !showEyeIcon && isCvvMask {
+
             if cvvValue.titleLabel?.text == "XXX" {
                 cvvValue.setTitle(self.cvv, for: .normal)
             }else{
