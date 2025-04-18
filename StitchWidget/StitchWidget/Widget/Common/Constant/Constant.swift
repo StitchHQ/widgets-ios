@@ -17,9 +17,9 @@ enum ConstantData {
 
     static let pinEmpty = "PIN is required"
     static let confirmPinEmpty = "Confirm PIN is required"
-    static let pinMismatch = "PIN and New PIN must be same"
+    static let pinMismatch = "The new pin and confirm pin must be same"
     static let pinDifferent = "Old PIN and New PIN must be different"
-    static let newpinMismatch = "New PIN and Confirm New PIN must be same"
+    static let newpinMismatch = "The new pin and confirm new pin must be same"
     static let pinRequired = "PIN (required)*"
     static let pinlength = "PIN Must be Valid"
     static let newPinlength = "New PIN Must be Valid"
@@ -29,7 +29,7 @@ enum ConstantData {
     static let ok = "OK"
     static let cardPinSuccess = "Card Pin is Set Sucessfully"
     static let cardPinChangeSuccess = "Card Pin is Changed Sucessfully"
-    
+    static let pinDontMatch = "Pin does not match"
     static let exmapleApp = "com.example.app"
     static let encryptionTextNil = "Encrypted text is nil"
     static let  invalidKey = "Invalid key format"
@@ -63,6 +63,7 @@ enum ConstantData {
 
 enum ColorConstant {
     static let lightGrayColor = "#D0D5DD"
+    static let clearColor = "#00000000"
 }
 
 enum ImageConstant {

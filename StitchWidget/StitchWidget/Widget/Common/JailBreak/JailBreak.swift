@@ -11,7 +11,7 @@
  
  - returns: bool value for jailbroken device or not
  */
-public func hasJailbreak() -> CardSDKError {
+public func isJailbroken() -> CardSDKError {
     #if arch(i386) || arch(x86_64)
         return CardSDKError.secureEnvironment
     #else

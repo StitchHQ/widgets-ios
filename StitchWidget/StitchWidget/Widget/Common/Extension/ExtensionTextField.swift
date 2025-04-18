@@ -16,4 +16,16 @@ extension UITextField {
         borderStyle = .none
         layer.addSublayer(bottomLine)
     }
+    func removeBottomBorder() {
+            let removebottomline = CALayer()
+            removebottomline.frame = CGRect(x: 0,y:self.frame.size.height - 1, width: self.frame.size.width,height: 0)
+        removebottomline.backgroundColor = UIColor.clear.cgColor
+            borderStyle = .none
+            self.layer.addSublayer(removebottomline)
+            self.layer.masksToBounds = true
+        }
 }
+func placeholderPadding(textField:UITextField, leftPadding:CGFloat) {
+            textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: leftPadding, height: textField.frame.height))
+    textField.leftViewMode = UITextField.ViewMode.always
+        }

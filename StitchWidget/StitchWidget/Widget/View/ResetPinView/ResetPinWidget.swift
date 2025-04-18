@@ -25,7 +25,7 @@ public class ResetPinWidget: UIView {
     var generalKey = ""
     public var cardType = ""
     public var type = ""
-    var widget:[WidgetSettingEntity] = []
+    var background = UIColor.blueColor
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,17 +40,13 @@ public class ResetPinWidget: UIView {
     }
     
     func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+        if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
         initalLoad()
         self.cardType = ConstantData.activated
-        let data = [
-            APIConstant.token: token,
-            APIConstant.devicePrint: deviceFingerPrint
-        ] as [String : Any]
-        sessionKeyAPI(body: data)
+       
 
             self.overView.isHidden = false
 
@@ -61,15 +57,21 @@ public class ResetPinWidget: UIView {
         overView.isHidden = false
         newPinTextField.delegate = self
         oldPinTextField.delegate = self
+        confirmTextField.delegate = self
         newPinTextField.keyboardType = .numberPad
         oldPinTextField.keyboardType = .numberPad
+        confirmTextField.keyboardType = .numberPad
         pinButton.setTitleColor(.white, for: .normal)
         pinButton.setCornerRadiusButton(size: 10)
         pinRequiredLabel.text = ConstantData.pinRequired
         pinButton.backgroundColor = UIColor.lightGrayColor
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        confirmTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setTypePin(pintype: "change_pin")
+        placeholderPadding(textField: oldPinTextField, leftPadding: 15)
+        placeholderPadding(textField: confirmTextField, leftPadding: 15)
+        placeholderPadding(textField: newPinTextField, leftPadding: 15)
 
     }
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
@@ -80,15 +82,12 @@ public class ResetPinWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        self.widget = widget
+        setWidgetData(widget: widget)
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){        if widget.count != 0 {
             
             for item in widget {
-
-                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
-                setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
 
                 if type == item.widgetStyle {
                     
@@ -97,8 +96,10 @@ public class ResetPinWidget: UIView {
                     pinRequiredLabel.textColor = item.fontColor
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
-                    pinButton.backgroundColor = item.buttonBackground
-                    
+                    pinButton.backgroundColor = UIColor.lightGrayColor
+                    background = item.buttonBackground ?? UIColor.blueColor
+                    setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
+                    setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
                     return
                 }else{
                     setfontValue(font: FontConstant.interMedium,fontSize: 16.0)
@@ -113,6 +114,9 @@ public class ResetPinWidget: UIView {
                     oldPinTextField.backgroundColor = .clear
                     pinButton.backgroundColor = UIColor.lightGrayColor
                     pinButton.setTitleColor(.white, for: .normal)
+                    setfontValue(font: FontConstant.interMedium,fontSize: 14.0)
+                    setStyleSheet(styleSheet: ConstantData.outlined)
+                    background = UIColor.blueColor
                 }
 
             }
@@ -131,6 +135,8 @@ public class ResetPinWidget: UIView {
             newPinTextField.backgroundColor = .clear
             oldPinTextField.backgroundColor = .clear
             pinButton.backgroundColor = UIColor.lightGrayColor
+            background = UIColor.blueColor
+
         }
         
     }
@@ -176,14 +182,39 @@ public class ResetPinWidget: UIView {
             oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             confirmTextField.layer.borderWidth = 1
             confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else if styleSheet == ConstantData.filled {
             newPinTextField.backgroundColor = UIColor.lightGrayColor
             oldPinTextField.backgroundColor = UIColor.lightGrayColor
             confirmTextField.backgroundColor = UIColor.lightGrayColor
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else{
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
             newPinTextField.addBottomBorder()
             oldPinTextField.addBottomBorder()
             confirmTextField.addBottomBorder()
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            
         }
     }
     
@@ -260,6 +291,11 @@ extension ResetPinWidget  {
             jailBreakLabel.isHidden = false
         }
         token = secureToken
+        let data = [
+            APIConstant.token: token,
+            APIConstant.devicePrint: deviceFingerPrint
+        ] as [String : Any]
+        sessionKeyAPI(body: data)
         
     }
     
@@ -308,10 +344,6 @@ private func changePinAPI(body: [String: Any]){
             }
         case .failure(let error):
             print(error)
-            self.overView.isHidden = true
-            self.removeFromSuperview()
-        
-
         }
     }
 }
@@ -349,7 +381,7 @@ extension ResetPinWidget: UITextFieldDelegate {
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
-            pinButton.backgroundColor = UIColor.blueColor
+            pinButton.backgroundColor = background
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor
             

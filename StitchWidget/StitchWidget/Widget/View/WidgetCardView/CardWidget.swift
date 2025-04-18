@@ -11,48 +11,9 @@ import PassKit
 var deviceFingerPrint = ""
 public class CardWidget: UIView {
     
-    @IBOutlet weak var backStripeView: UIView!
-    @IBOutlet weak var backCvvLabel: UILabel!
-    @IBOutlet weak var backDateLabel: UILabel!
-    @IBOutlet weak var backCardNo: UILabel!
     @IBOutlet weak public var frontCardView: UIView!
-    @IBOutlet weak var cvvLabel: UILabel!
-    @IBOutlet weak var cardNumberLabel: UILabel!
-    @IBOutlet weak var nameOnCardLabel: UILabel!
-    @IBOutlet weak public var backCardView: UIView!
     @IBOutlet weak public var overView: UIView!
-    @IBOutlet weak var backCvvBtn: UIButton!
-    @IBOutlet weak var backCardNoBtn: UIButton!
     @IBOutlet weak var frontImgView: UIImageView!
-    @IBOutlet weak var backImg: UIImageView!
-    @IBOutlet weak var backCardImg: UIImageView!
-    @IBOutlet weak var cardImg: UIImageView!
-    @IBOutlet weak var expiryLeadConstant: NSLayoutConstraint!
-    @IBOutlet weak var cvvLeadConstant: NSLayoutConstraint!
-    @IBOutlet weak var cardNoYaxisConstant: NSLayoutConstraint!
-    @IBOutlet weak var cardNoLeadConstant: NSLayoutConstraint!
-    @IBOutlet weak var expiryBottomConstant: NSLayoutConstraint!
-    @IBOutlet weak var cvvTrailConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCardNoTopConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCardNoYAxisConstant: NSLayoutConstraint!
-    @IBOutlet weak var backDateLeadConstant: NSLayoutConstraint!
-    @IBOutlet weak var backDateTrailConstant: NSLayoutConstraint!
-    @IBOutlet weak var backDateTopConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCvvLeadConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCvvTrailConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCvvtopConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCvvBottomConstant: NSLayoutConstraint!
-    @IBOutlet weak var backCardNoLead: NSLayoutConstraint!
-    @IBOutlet weak var cvvStackView: UIStackView!
-    @IBOutlet weak var bottomCVV: NSLayoutConstraint!
-    @IBOutlet weak var validThStackView: UIStackView!
-    @IBOutlet weak var bottomValidThruConstant: NSLayoutConstraint!
-    @IBOutlet weak var validThruValue: UILabel!
-    @IBOutlet weak var validThruLabel: UILabel!
-    @IBOutlet weak var cvvTitleLabel: UILabel!
-    @IBOutlet weak var titleCardName: UILabel!
-    @IBOutlet weak var cvvEyeBtn: UIButton!
-    @IBOutlet weak var cardNoEyeBtn: UIButton!
     @IBOutlet weak var jailBreakLabel: UILabel!
     
     var isCvvEye = false
@@ -65,7 +26,17 @@ public class CardWidget: UIView {
     var isCardMask = false
     var panLastFour = ""
     var token = ""
-    var widget:[WidgetSettingEntity] = []
+    var showEyeIcon = false
+    
+    let visaLabel = UIImageView()
+    let cardNumberLabel = UIButton()
+    let nameLabel = UILabel()
+    let validThruTitle = UILabel()
+    let validThruValue = UILabel()
+    let cvvTitle = UILabel()
+    let cvvValue = UIButton()
+    let eyeIconCvv = UIButton()
+    let eyeIcon = UIButton()
     
     public override func awakeFromNib() {
         
@@ -81,20 +52,102 @@ public class CardWidget: UIView {
         }
 
     }
-    func initializeSDK() throws {
-        if hasJailbreak() == CardSDKError.insecureEnvironment {
+    public override func layoutSubviews() {
+        setupCardUI()
+    }
+    private func initializeSDK() throws {
+        if isJailbroken() == CardSDKError.insecureEnvironment {
             throw CardSDKError.insecureEnvironment
         }
         // Continue with initialization if the device is secure
         initalLoad()
-        if widget.count == 0 {
-            setDefaultStype()
-        }else{
-            setWidgetData(widget: widget)
-        }
+      
         
         deviceFingerPrint = getDevicFingingerprint()
-        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
+    }
+    
+    private func setupCardUI() {
+            
+            visaLabel.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(visaLabel)
+            
+            // Card Number
+            cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+            cardNumberLabel.addTarget(self, action: #selector(self.onShowCardNoAction), for: .touchUpInside)
+            
+        overView.addSubview(cardNumberLabel)
+            
+            // Eye Icon
+            
+            eyeIcon.addTarget(self, action: #selector(self.onCardNoEyeAction), for: .touchUpInside)
+            
+            eyeIcon.translatesAutoresizingMaskIntoConstraints = false
+            eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+            
+        overView.addSubview(eyeIcon)
+            
+            // Name Label
+            nameLabel.text = "Elon Musk"
+            nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(nameLabel)
+            
+            // Valid Thru
+            validThruTitle.text = "VALID THRU"
+            validThruTitle.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(validThruTitle)
+            
+            validThruValue.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(validThruValue)
+            
+            // CVV
+            
+            cvvTitle.text = "CVV"
+            cvvTitle.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(cvvTitle)
+            cvvValue.addTarget(self, action: #selector(self.onCvvAction), for: .touchUpInside)
+            
+            cvvValue.translatesAutoresizingMaskIntoConstraints = false
+        overView.addSubview(cvvValue)
+            
+            eyeIconCvv.translatesAutoresizingMaskIntoConstraints = false
+            eyeIconCvv.addTarget(self, action: #selector(onCvvEyeAction), for: .touchUpInside)
+            
+            eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+        overView.addSubview(eyeIconCvv)
+            
+            // Constraints
+            NSLayoutConstraint.activate([
+                
+                visaLabel.topAnchor.constraint(equalTo: overView.topAnchor, constant: 16),
+                visaLabel.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -16),
+                
+                cardNumberLabel.topAnchor.constraint(equalTo: visaLabel.bottomAnchor, constant: 50),
+                cardNumberLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
+                
+                eyeIcon.centerYAnchor.constraint(equalTo: cardNumberLabel.centerYAnchor),
+                eyeIcon.leadingAnchor.constraint(equalTo: cardNumberLabel.trailingAnchor, constant: 10),
+                
+                nameLabel.leadingAnchor.constraint(equalTo: overView.leadingAnchor, constant: 16),
+                nameLabel.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -20),
+                validThruTitle.bottomAnchor.constraint(equalTo: validThruValue.topAnchor, constant: -2),
+                validThruTitle.trailingAnchor.constraint(equalTo: cvvTitle.leadingAnchor, constant: -15),
+                validThruValue.leadingAnchor.constraint(equalTo: validThruTitle.leadingAnchor),
+                validThruValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -16),
+                validThruValue.trailingAnchor.constraint(equalTo: cvvValue.leadingAnchor, constant: -15),
+                cvvTitle.leadingAnchor.constraint(equalTo: validThruValue.trailingAnchor, constant: 30),
+                validThruValue.heightAnchor.constraint(equalToConstant: 18),
+                cvvTitle.bottomAnchor.constraint(equalTo: cvvValue.topAnchor, constant: 2),
+                cvvTitle.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
+                
+                cvvValue.leadingAnchor.constraint(equalTo: cvvTitle.leadingAnchor),
+                cvvValue.bottomAnchor.constraint(equalTo: overView.bottomAnchor, constant: -7),
+                cvvValue.trailingAnchor.constraint(equalTo: eyeIconCvv.leadingAnchor, constant: -10),
+
+                eyeIconCvv.centerYAnchor.constraint(equalTo: cvvValue.centerYAnchor),
+                eyeIconCvv.leadingAnchor.constraint(equalTo: cvvValue.trailingAnchor, constant: 8),
+                
+                eyeIconCvv.trailingAnchor.constraint(equalTo: overView.trailingAnchor, constant: -25),
+            ])
     }
     
     private func initalLoad(){
@@ -102,43 +155,44 @@ public class CardWidget: UIView {
         overView.isHidden = false
 
         frontCardView.layer.cornerRadius = 10
-        backCardView.layer.cornerRadius = 10
         frontImgView.layer.cornerRadius = 10
-        backCardImg.layer.cornerRadius = 10
         overView.layer.cornerRadius = 10
-        cardImg.image = UIImage(named: "visa.png")
-        backCardView.isHidden = true
-        cardNumberLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x14)
-        titleCardName.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
-        cvvTitleLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
-        validThruLabel.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
-        cvvEyeBtn.setTitle("", for: .normal)
-        cardNoEyeBtn.setTitle("", for: .normal)
+        visaLabel.image = UIImage(named: "visa.png")
+        cardNumberLabel.titleLabel?.font = UIFont.setCustomFont(name: .semiBold, size: .x14)
+        cvvTitle.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
+        validThruTitle.font = UIFont.setCustomFont(name: .semiBold, size: .x12)
+        eyeIcon.setTitle("", for: .normal)
+        eyeIconCvv.setTitle("", for: .normal)
     }
     
     @IBAction func onCvvEyeAction(_ sender: Any) {
-        if isCvvEye {
-            if cvvLabel.text == ConstantData.xxx {
-                cvvLabel.text = cvv
-                cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
-
-            }else{
-                cvvLabel.text = ConstantData.xxx
-                cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+        if isCvvMask {
+            if isCvvEye {
+                if cvvValue.titleLabel?.text == ConstantData.xxx {
+                    cvvValue.setTitle(cvv, for: .normal)
+                    eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+                    
+                }else{
+                    cvvValue.setTitle(ConstantData.xxx, for: .normal)
+                    eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+                }
             }
         }
     }
     
     @IBAction func onCardNoEyeAction(_ sender: Any) {
-        if isCardNoEye {
-            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                cardNumberLabel.text = accountNo
-                cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
-
-            }else{
-                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
-                cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
-
+        if isCardMask {
+            
+            if isCardNoEye  {
+                if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                    cardNumberLabel.setTitle(accountNo, for: .normal)
+                    eyeIcon.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+                    
+                }else{
+                    cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
+                    eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+                    
+                }
             }
         }
     }
@@ -151,25 +205,31 @@ public class CardWidget: UIView {
             jailBreakLabel.text = CardSDKError.insecureEnvironment.localizedDescription
             jailBreakLabel.isHidden = false
         }
-        self.widget = widget
+        if widget.count == 0 {
+            setDefaultStype()
+        }else{
+            setWidgetData(widget: widget)
+        }
     }
     
     private  func setWidgetData(widget: [WidgetSettingEntity]){
         for item in widget {
             if item.widgetStyle == ConstantData.viewCard {
                 
-                setfontValue(font: item.fontFamily ?? FontConstant.euclidFlexMediumFont,fontSize: item.fontSize ?? 14.0)
+                setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
 
-                backCardView.backgroundColor = item.background
                 showEyeButton(isEyeIcon: item.showEyeIcon ?? false)
+                showEyeIcon = item.showEyeIcon ?? false
                
-                setTimer(maskCardNo: item.maskCardNumber ?? false, maskCvv: item.maskCvv ?? false)
+             
+                isCardMask = item.maskCardNumber ?? false
+                isCvvMask = item.maskCvv ?? false
+          
        
                 frontCardView.backgroundColor = item.background
                 setFontColor(fontColor: item.fontColor!)
                 
                 if item.backgroundImage != UIImage(named: "imageadd") {
-                    backImg.image = item.backgroundImage
                     frontImgView.image = item.backgroundImage
                 }
                 
@@ -190,127 +250,100 @@ public class CardWidget: UIView {
         self.isCvvEye = isEyeIcon
         self.isCardNoEye = isEyeIcon
         if isEyeIcon {
-            cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
-            cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
-            cvvEyeBtn.isHidden = false
-            cardNoEyeBtn.isHidden = false
+            eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+            eyeIcon.setImage(UIImage(named: ImageConstant.eyeOffImage), for: .normal)
+            eyeIconCvv.isHidden = false
+            eyeIcon.isHidden = false
         }else{
-            cvvEyeBtn.isHidden = true
-            cardNoEyeBtn.isHidden = true
+            eyeIconCvv.isHidden = true
+            eyeIcon.isHidden = true
         }
     }
     
-    private func setTimer(maskCardNo : Bool,maskCvv: Bool){
-        isCardMask = maskCardNo
-        isCvvMask = maskCvv
-    }
     
     private func setFontColor(fontColor: UIColor){
-        cvvLabel.textColor = fontColor
-        cardNumberLabel.textColor = fontColor
-        nameOnCardLabel.textColor = fontColor
-        backCvvLabel.textColor = fontColor
-        backDateLabel.textColor = fontColor
-        backCardNo.textColor = fontColor
-        cvvTitleLabel.textColor = fontColor
-        titleCardName.textColor = fontColor
-        validThruLabel.textColor = fontColor
+        cvvValue.setTitleColor(fontColor, for: .normal)
+        cardNumberLabel.setTitleColor(fontColor, for: .normal)
+        nameLabel.textColor = fontColor
+        cvvTitle.textColor = fontColor
+        validThruTitle.textColor = fontColor
         validThruValue.textColor = fontColor
     }
     private func setDatePadding(bottomDate: String,topDate: String,trailDate: String,leadDate: String){
-        if !bottomDate.isEmpty && bottomDate != "0"  {
-            self.bottomValidThruConstant.constant =  (bottomDate.cgFloatValue() ?? 0.0)
-        }
-        if !leadDate.isEmpty && leadDate != "0" {
-            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) -  (leadDate.cgFloatValue() ?? 0.0)
-        }
         
-        if !trailDate.isEmpty && trailDate != "0" {
-            self.cvvLeadConstant.constant = (self.validThStackView.frame.size.width ) +  (leadDate.cgFloatValue() ?? 0.0)
+        //Set padding for date
+        self.validThruTitle.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0), y: (topDate.cgFloatValue() ?? 0.0))
+        self.validThruValue.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0), y: (topDate.cgFloatValue() ?? 0.0))
+        if(bottomDate != "0") {
+            self.validThruTitle.transform = CGAffineTransform(translationX: self.validThruTitle.transform.tx, y: -(bottomDate.cgFloatValue() ?? 0.0) + (topDate.cgFloatValue() ?? 0.0))
+            self.validThruValue.transform = CGAffineTransform(translationX: self.validThruValue.transform.tx, y: -(bottomDate.cgFloatValue() ?? 0.0) + (topDate.cgFloatValue() ?? 0.0))
         }
-        
-        if !topDate.isEmpty && topDate != "0" {
-            self.bottomValidThruConstant.constant = (self.validThStackView.frame.size.height) - (topDate.cgFloatValue() ?? 0.0)
+        if(leadDate != "0") {
+            self.validThruTitle.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0) + (leadDate.cgFloatValue() ?? 0.0) , y: self.validThruTitle.transform.ty)
+            self.validThruValue.transform = CGAffineTransform(translationX: -(trailDate.cgFloatValue() ?? 0.0) + (leadDate.cgFloatValue() ?? 0.0) , y: self.validThruValue.transform.ty)
         }
-        self.frontCardView.layoutIfNeeded()
 
     }
     
     private func setCvvPadding(leadCvv: String,bottomCvv: String,trailCvv: String,cvvTop: String) {
-        if !leadCvv.isEmpty && leadCvv != "0" {
-            self.cvvLeadConstant.constant = leadCvv.cgFloatValue() ?? 0.0
-            backCvvLeadConstant.constant = leadCvv.cgFloatValue() ?? 0.0
+        
+        self.cvvTitle.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
+        self.cvvValue.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
+        self.eyeIconCvv.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0), y: (cvvTop.cgFloatValue() ?? 0.0))
+     
+        if(bottomCvv != "0") {
+            self.cvvTitle.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
+            self.cvvValue.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
+            self.eyeIconCvv.transform = CGAffineTransform(translationX: self.cvvTitle.transform.tx, y: -(bottomCvv.cgFloatValue() ?? 0.0) + (cvvTop.cgFloatValue() ?? 0.0))
         }
-        if !trailCvv.isEmpty && trailCvv != "0" {
-            self.cvvTrailConstant.constant = trailCvv.cgFloatValue() ?? 0.0
-            backCvvTrailConstant.constant = trailCvv.cgFloatValue() ?? 0.0
+        if(leadCvv != "0") {
+            
+            self.cvvTitle.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.cvvTitle.transform.ty)
+            self.cvvValue.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.cvvValue.transform.ty)
+            self.eyeIconCvv.transform = CGAffineTransform(translationX: -(trailCvv.cgFloatValue() ?? 0.0) + (leadCvv.cgFloatValue() ?? 0.0) , y: self.eyeIconCvv.transform.ty)
         }
-       
-        if !bottomCvv.isEmpty && bottomCvv != "0" {
-            self.bottomCVV.constant =  (bottomCvv.cgFloatValue() ?? 0.0)
-        }
-        if !cvvTop.isEmpty && cvvTop != "0" {
-            self.bottomCVV.constant =  (self.cvvStackView.frame.size.height) - (cvvTop.cgFloatValue() ?? 0.0)
-        }
-        self.frontCardView.layoutIfNeeded()
+
 
     }
     fileprivate func setCardNumberPadding(topCardNo: String,bottomCardNo: String,cardNoLeft: String,cardNoRight: String){
-        if !cardNoLeft.isEmpty && cardNoLeft != "0" {
-            self.cardNoLeadConstant.constant = cardNoLeft.cgFloatValue() ?? 0.0
-            self.backCardNoLead.constant = cardNoLeft.cgFloatValue() ?? 0.0
+        self.cardNumberLabel.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0), y: (topCardNo.cgFloatValue() ?? 0.0))
+        self.eyeIcon.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0), y: (topCardNo.cgFloatValue() ?? 0.0))
 
-        }
-        if !cardNoRight.isEmpty && cardNoRight != "0" {
-            self.cardNoLeadConstant.constant = ((cardNoLeft.cgFloatValue() ?? 0.0) - (cardNoRight.cgFloatValue() ?? 0.0))
-            self.backCardNoLead.constant = ((cardNoLeft.cgFloatValue() ?? 0.0) - (cardNoRight.cgFloatValue() ?? 0.0))
-        }
-     
-        if !bottomCardNo.isEmpty && bottomCardNo != "0" {
-            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) + (bottomCardNo.cgFloatValue() ?? 0.0)
-            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (bottomCardNo.cgFloatValue() ?? 0.0)
-        }
-        if !topCardNo.isEmpty && topCardNo != "0" {
-            self.cardNoYaxisConstant.constant = (self.cardNoYaxisConstant.constant) - (topCardNo.cgFloatValue() ?? 0.0)
-            backCardNoYAxisConstant.constant = (self.backCardNoYAxisConstant.constant) + (topCardNo.cgFloatValue() ?? 0.0)
-        }
-        self.frontCardView.layoutIfNeeded()
+                    if(bottomCardNo != "0") {
+                        self.cardNumberLabel.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y:  -(bottomCardNo.cgFloatValue() ?? 0.0) + (topCardNo.cgFloatValue() ?? 0.0))
+                        self.eyeIcon.transform = CGAffineTransform(translationX: self.cardNumberLabel.transform.tx, y:  -(bottomCardNo.cgFloatValue() ?? 0.0) + (topCardNo.cgFloatValue() ?? 0.0))
+                    }
+        
+                    if(cardNoLeft != "0") {
+                        self.cardNumberLabel.transform = CGAffineTransform(translationX: -(cardNoRight.cgFloatValue() ?? 0.0) + (cardNoLeft.cgFloatValue() ?? 0.0) , y: self.cardNumberLabel.transform.ty)
+                        self.eyeIcon.transform = CGAffineTransform(translationX:  -(cardNoRight.cgFloatValue() ?? 0.0) + (cardNoLeft.cgFloatValue() ?? 0.0), y: self.cardNumberLabel.transform.ty)
+                    }
     }
     
     fileprivate func setDefaultStype(){
-        backCardView.backgroundColor = .darkblueColor
         frontCardView.backgroundColor = .darkblueColor
-        cvvLabel.textColor = .white
-        cardNumberLabel.textColor = .white
-        nameOnCardLabel.textColor = .white
-        backCvvLabel.textColor = .white
-        backDateLabel.textColor = .white
-        backCardNo.textColor = .white
-        validThruLabel.textColor = .white
+        cvvTitle.textColor = .white
+        cardNumberLabel.setTitleColor(.white, for: .normal)
+        nameLabel.textColor = .white
+        validThruTitle.textColor = .white
         validThruValue.textColor = .white
         setfontValue(font: FontConstant.euclidFlexMediumFont,fontSize: 12.0)
-        backImg = nil
-        frontImgView = nil
-        isCardMask = true
-        isCvvMask = true
+        isCardMask = false
+        isCvvMask = false
         isCardNoEye = true
         isCvvEye = true
-        cvvEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
-        cardNoEyeBtn.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+        eyeIconCvv.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
+        eyeIcon.setImage(UIImage(named: ImageConstant.eyeImage), for: .normal)
 
     }
     fileprivate func setfontValue(font: String,fontSize: Float){
         let size = CGFloat(fontSize)
-        self.cvvTitleLabel.font = UIFont(name:font, size: size)
-        self.cvvLabel.font = UIFont(name:font, size: size)
-        self.nameOnCardLabel.font = UIFont(name:font, size: size)
-        self.cardNumberLabel.font = UIFont(name:font, size: size)
-        cvvTitleLabel.font = UIFont(name:font, size: size)
-        titleCardName.font = UIFont(name:font, size: size)
-        self.backCvvLabel.font = UIFont(name:font, size: size)
-        self.backDateLabel.font = UIFont(name:font, size: size)
-        self.backCardNo.font = UIFont(name:font, size: size)
-        self.validThruLabel.font = UIFont(name:font, size: size)
+        self.cvvTitle.font = UIFont(name:font, size: size)
+        self.cvvValue.titleLabel?.font = UIFont(name:font, size: size)
+        self.nameLabel.font = UIFont(name:font, size: size)
+        self.cardNumberLabel.titleLabel?.font = UIFont(name:font, size: size)
+       
+        self.validThruTitle.font = UIFont(name:font, size: size)
         self.validThruValue.font = UIFont(name:font, size: size)
     }
     public func sessionKey(token: String) {
@@ -323,58 +356,28 @@ public class CardWidget: UIView {
         }
         
         self.token = token
-       
-    }
-    
-    @IBAction func onBackCardNoAction(_ sender: Any) {
-        if isCardMask {
-            if backCardNo.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                backCardNo.text = accountNo
-            }else{
-                backCardNo.text = "\(ConstantData.cardXDigit) \(panLastFour)"
-            }
-        }
-    }
-    
-    
-    @IBAction func onCvvAction(_ sender: Any) {
-        if isCvvMask {
-            if backCvvLabel.text == ConstantData.xxx {
-                backCvvLabel.text = cvv
-            }else{
-                backCvvLabel.text = ConstantData.xxx
-            }
-        }
+        sessionKeyAPI(token: token,deviceFinger: deviceFingerPrint)
+
     }
     
     @IBAction func onCardNoAction(_ sender: Any) {
   
         if isCardMask {
-            if cardNumberLabel.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
-                cardNumberLabel.text = accountNo
+            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                cardNumberLabel.setTitle(accountNo, for: .normal)
             }else{
-                cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
+                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
             }
         }
     }
     @IBAction func onFrontCvvAction(_ sender: Any) {
         if isCvvMask {
             
-            if cvvLabel.text == ConstantData.xxx {
-                cvvLabel.text = cvv
+            if cvvValue.titleLabel?.text == ConstantData.xxx {
+                cvvValue.setTitle(cvv, for: .normal)
             }else{
-                cvvLabel.text = ConstantData.xxx
+                cvvValue.setTitle(ConstantData.xxx, for: .normal)
             }
-        }
-    }
-    public func showCard(showFrontBack: Bool){
-        
-        if showFrontBack {
-            frontCardView.isHidden = false
-            backCardView.isHidden = true
-        }else{
-            backCardView.isHidden = false
-            frontCardView.isHidden = true
         }
     }
     
@@ -403,7 +406,29 @@ extension CardWidget  {
         }
     }
     
+    @objc func onShowCardNoAction(){
+        if !showEyeIcon && isCardMask {
+            
+            if cardNumberLabel.titleLabel?.text == "\(ConstantData.cardXDigit) \(panLastFour)" {
+                cardNumberLabel.setTitle(self.accountNo, for: .normal)
+                
+            }else{
+                
+                cardNumberLabel.setTitle("\(ConstantData.cardXDigit) \(panLastFour)", for: .normal)
+            }
+        }
+    }
     
+    @objc func onCvvAction(){
+        if !showEyeIcon && isCvvMask {
+
+            if cvvValue.titleLabel?.text == "XXX" {
+                cvvValue.setTitle(self.cvv, for: .normal)
+            }else{
+                cvvValue.setTitle("XXX", for: .normal)
+            }
+        }
+    }
     
     fileprivate func getCardDetails(body: [String : Any]) {
         let url = baseUrlService + servicesURL.secureCard.rawValue
@@ -412,7 +437,7 @@ extension CardWidget  {
             switch result{
             case .success(let getCardDetail):
                 self.activityInstance.showIndicator()
-                self.nameOnCardLabel.text = getCardDetail.items?.embossedName ?? ""
+                self.nameLabel.text = getCardDetail.items?.embossedName ?? ""
                 self.decrypt(accountNo: getCardDetail.items?.cardNumber ?? "",cvv: getCardDetail.items?.cvv2 ?? "",expiry: getCardDetail.items?.expiry ?? "")
             case .failure(let error):
                 print(error)
@@ -425,18 +450,28 @@ extension CardWidget  {
             let accountNumber = try AESUtils().decrypt(encryptedText: accountNo, key: self.generalKey)
             let last4 = accountNumber.suffix(4)
             panLastFour = String(last4)
-            self.accountNo = accountNumber
+            let formattedCreditCardNumber = String(accountNumber).separate(every: 4, with: " ")
+            self.accountNo = formattedCreditCardNumber
             let cvvText = try AESUtils().decrypt(encryptedText: cvv, key: self.generalKey)
 
-                self.cardNumberLabel.text = "\(ConstantData.cardXDigit) \(panLastFour)"
-            self.cvvLabel.text = ConstantData.xxx
+            self.cardNumberLabel.setTitle(isCardMask ? "\(ConstantData.cardXDigit) \(panLastFour)" : self.accountNo, for: .normal)
 
             self.cvv = cvvText
+            self.cvvValue.setTitle(isCvvMask ? ConstantData.xxx : self.cvv, for: .normal)
+
             let expiryText = try AESUtils().decrypt(encryptedText: expiry, key: self.generalKey)
             cardNumberLabel.isHidden = false
-            cvvLabel.isHidden = false
-            self.validThruValue.text = expiryText
-            self.backDateLabel.text = expiryText
+            cvvValue.isHidden = false
+            
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "ddMM"
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd"
+
+            let dateStr: Date? = dateFormatterGet.date(from: expiryText)
+            print(dateFormatter.string(from: dateStr!))
+            self.validThruValue.text = dateFormatter.string(from: dateStr!)
             activityInstance.hideIndicator()
             
         } catch {
