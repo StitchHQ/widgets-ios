@@ -25,3 +25,7 @@ extension UITextField {
             self.layer.masksToBounds = true
         }
 }
+func placeholderPadding(textField:UITextField, leftPadding:CGFloat) {
+            textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: leftPadding, height: textField.frame.height))
+    textField.leftViewMode = UITextField.ViewMode.always
+        }

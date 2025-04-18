@@ -64,6 +64,8 @@ public class SetPinWidget: UIView {
         newPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setTypePin(pintype: "set_pin")
+        placeholderPadding(textField: oldPinTextField, leftPadding: 15)
+        placeholderPadding(textField: newPinTextField, leftPadding: 15)
 
 
     }

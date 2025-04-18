@@ -69,6 +69,9 @@ public class ResetPinWidget: UIView {
         oldPinTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         confirmTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setTypePin(pintype: "change_pin")
+        placeholderPadding(textField: oldPinTextField, leftPadding: 15)
+        placeholderPadding(textField: confirmTextField, leftPadding: 15)
+        placeholderPadding(textField: newPinTextField, leftPadding: 15)
 
     }
     public func setWidgetSetting(widget: [WidgetSettingEntity]){
