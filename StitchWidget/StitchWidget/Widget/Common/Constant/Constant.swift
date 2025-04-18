@@ -63,6 +63,7 @@ enum ConstantData {
 
 enum ColorConstant {
     static let lightGrayColor = "#D0D5DD"
+    static let clearColor = "#00000000"
 }
 
 enum ImageConstant {

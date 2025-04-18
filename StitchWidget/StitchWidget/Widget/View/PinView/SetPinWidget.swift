@@ -92,7 +92,7 @@ public class SetPinWidget: UIView {
                     pinRequiredLabel.textColor = item.fontColor
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
-                    pinButton.backgroundColor = item.buttonBackground
+                    pinButton.backgroundColor = UIColor.lightGrayColor
                     setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
                     setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
                     background = item.buttonBackground ?? UIColor.blueColor
@@ -179,14 +179,39 @@ public class SetPinWidget: UIView {
             oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             confirmTextField.layer.borderWidth = 1
             confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else if styleSheet == ConstantData.filled {
             newPinTextField.backgroundColor = UIColor.lightGrayColor
             oldPinTextField.backgroundColor = UIColor.lightGrayColor
             confirmTextField.backgroundColor = UIColor.lightGrayColor
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else{
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
             newPinTextField.addBottomBorder()
             oldPinTextField.addBottomBorder()
             confirmTextField.addBottomBorder()
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            
         }
     }
     

@@ -25,6 +25,7 @@ public class ResetPinWidget: UIView {
     var generalKey = ""
     public var cardType = ""
     public var type = ""
+    var background = UIColor.blueColor
 
     public override func awakeFromNib() {
         super.awakeFromNib()
@@ -92,7 +93,8 @@ public class ResetPinWidget: UIView {
                     pinRequiredLabel.textColor = item.fontColor
                     confirmPinLabel.textColor = item.fontColor
                     pinButton.setTitleColor(item.buttonFontColor, for: .normal)
-                    pinButton.backgroundColor = item.buttonBackground
+                    pinButton.backgroundColor = UIColor.lightGrayColor
+                    background = item.buttonBackground ?? UIColor.blueColor
                     setfontValue(font: item.fontFamily ?? FontConstant.interMedium,fontSize: item.fontSize ?? 14.0)
                     setStyleSheet(styleSheet: item.textFieldVariant ?? ConstantData.outlined)
                     return
@@ -111,6 +113,7 @@ public class ResetPinWidget: UIView {
                     pinButton.setTitleColor(.white, for: .normal)
                     setfontValue(font: FontConstant.interMedium,fontSize: 14.0)
                     setStyleSheet(styleSheet: ConstantData.outlined)
+                    background = UIColor.blueColor
                 }
 
             }
@@ -129,6 +132,8 @@ public class ResetPinWidget: UIView {
             newPinTextField.backgroundColor = .clear
             oldPinTextField.backgroundColor = .clear
             pinButton.backgroundColor = UIColor.lightGrayColor
+            background = UIColor.blueColor
+
         }
         
     }
@@ -174,14 +179,39 @@ public class ResetPinWidget: UIView {
             oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
             confirmTextField.layer.borderWidth = 1
             confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.lightGrayColor).cgColor
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else if styleSheet == ConstantData.filled {
             newPinTextField.backgroundColor = UIColor.lightGrayColor
             oldPinTextField.backgroundColor = UIColor.lightGrayColor
             confirmTextField.backgroundColor = UIColor.lightGrayColor
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            newPinTextField.removeBottomBorder()
+            oldPinTextField.removeBottomBorder()
+            confirmTextField.removeBottomBorder()
         }else{
+            newPinTextField.backgroundColor = UIColor.white
+            oldPinTextField.backgroundColor = UIColor.white
+            confirmTextField.backgroundColor = UIColor.white
             newPinTextField.addBottomBorder()
             oldPinTextField.addBottomBorder()
             confirmTextField.addBottomBorder()
+            newPinTextField.layer.borderWidth = 0
+            oldPinTextField.layer.borderWidth = 0
+            newPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            oldPinTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            confirmTextField.layer.borderWidth = 0
+            confirmTextField.layer.borderColor = UIColor(hexString: ColorConstant.clearColor).cgColor
+            
         }
     }
     
@@ -348,7 +378,7 @@ extension ResetPinWidget: UITextFieldDelegate {
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         if oldPinTextField.text != String.Empty && newPinTextField.text != String.Empty {
-            pinButton.backgroundColor = UIColor.blueColor
+            pinButton.backgroundColor = background
         }else{
             pinButton.backgroundColor = UIColor.lightGrayColor
             
